@@ -1,0 +1,110 @@
+<form id="offerListForm" class="offerListForm" method="post" action="/member/shang/canzhan-yijia-<{$case.case_id}>-<{$canzhan.cz_id}>.html">
+    <table width="100%" border="0" cellspacing="0" class="table-data table">
+        <tr>
+            <{if $canzhan.case_id==$case.case_id && !$canzhan.yijia && !$canzhan.baojia_id}> <th class="yijia">议价</th><{/if}>
+            <th>工厂名称</th>
+            <th>项目费(元)<span class="shang-offer-detail glyphicon detailAll">全部</span></th>
+            <th>场地费(元)</th>
+            <th>设计费(5%)</th>
+            <th>服务费(元)</th>
+            <th>税点(%)</th>
+            <th>税(元)</th>
+            <th>合计(元)</th>
+            <th>签约</th>
+        </tr>
+        <{foreach $items as $key=>$item}>
+        <tr>
+            <{if $canzhan.case_id==$case.case_id && !$canzhan.yijia && !$canzhan.baojia_id}>
+            <td class="yijia">
+
+                <label class="yijiaUi"><span class="glyphicon glyphicon-ok"></span></label>
+
+                <input type="checkbox" value="<{$item.baojia_id}>" name="baojia[]">
+            </td>
+            <{/if}>
+            <td><a href="/gong/chang-<{$item.company_id}>.html" target="_blank"><{$item.info.title|default:'工厂名称'}></a><{if $item.iser==1}>（二次报价中）<{elseif $item.iser==2}>(二次报价完成)<{/if}></td>
+
+            <td>
+                <{$item.price}><span class="shang-offer-detail glyphicon">明细</span>
+                <div class="shang-table-detail">
+                    <{if $item.yuandata && $item.iser==2}>
+                    <div class="shang-table-detail-inner delete">
+                        <{foreach $item.yuandata as $xiangmu}>
+                        <dl>
+                            <dd class="col-xs-6"><{$xiangmu.xiangmu}></dd>
+                            <dd class="col-xs-6"><{$xiangmu.price}></dd>
+                            <?PHP print_r($xiangmu); ?>
+                        </dl>
+                        <{/foreach}>
+                        <dl>
+                            <dd class="col-xs-6">合计：</dd>
+                            <dd class="col-xs-6 total"><{$item.yuanheji}></dd>
+                        </dl>
+                    </div>
+                    <{/if}>
+                    <div class="shang-table-detail-inner">
+                        <{foreach $item.data as $xiangmu}>
+                        <dl>
+                            <dd class="col-xs-6"><{$xiangmu.xiangmu}></dd>
+                            <dd class="col-xs-6"><{$xiangmu.price}></dd>
+                        </dl>
+                        <{/foreach}>
+                        <dl>
+                            <dd class="col-xs-6">合计：</dd>
+                            <dd class="col-xs-6 total"><{$item.xmheji}></dd>
+                        </dl>
+                    </div>
+                </div>
+            </td>
+            <td><{$item.cd_price}></td>
+            <td><{$item.sheji_price}></td>
+            <td><{$item.fuwu_price}></td>
+            <td><{$item.shuidian}></td>
+            <td><{$item.shui_price}></td>
+            <td><{$item.heji_price}></td>
+            <td><{if $canzhan.baojia_id}><{if $canzhan.baojia_id==$item.baojia_id}>签约<{else}>未<{/if}><{else}><a href="<{link ctl='member/shang/canzhan:qiandan' arg0=$item.baojia_id arg1=$cz_id}>" class="btn qiandan-btn" mini-act="签约" mini-confirm="确定要选择当前工厂签约？" >签约</a><{/if}></td>
+
+        </tr>
+
+        <{foreachelse}>
+        <tr><td colspan="20"><p class="text-align tip-notice">报价中...</p></td></tr>
+        <{/foreach}>
+    </table>
+    <{if $canzhan.case_id==$case.case_id && !$canzhan.yijia && !$canzhan.baojia_id}>
+    <fieldset class="reOfferCon">
+        <div class="col-sm-12 reOfferHead">温馨提示：您还可选五家工厂进行议价，五家工厂将二次报价以最终报价为准！也可以直接选择当前工厂报价签约！</div>
+        <div class="col-sm-2">您已选择需<span>0</span>家工厂：</div>
+        <div class="reOffer-inner col-sm-8"></div>
+        <div class="col-sm-2 reOfferBtn">
+            <input type="submit" class="btn btn-warning" id="reOfferBtn" value="开始议价">
+        </div>
+    </fieldset>
+    <{/if}>
+</form>
+
+<table width="100%" border="0" cellspacing="0" class="table-data table">
+    <tr>
+        <th>场地费用明细：</th><th>项目</th><th>备注</th><th>数量</th><th>单位</th><th>价格</th><th>合计</th>
+    </tr>
+    <{foreach $changdi.data as $key=>$val}>
+    <tr>
+        <td><{$key}></td>
+        <td><{$val.xiangmu}></td>
+        <td><{$val.beizhu}></td>
+        <td><{$val.num}></td>
+        <td><{$val.danwei}></td>
+        <td><{$val.price}></td>
+        <td><{$val.num*$val.price}></td>
+    </tr>
+    <{/foreach}>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>合计</td>
+        <td><{$changdi.price}></td>
+    </tr>
+
+</table>
