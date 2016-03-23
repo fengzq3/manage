@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1"/>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <script src="../js/jquery-1.11.3.min.js"></script>
+    <script src="../js/bootstrap.js"></script>
+
+    <link rel="stylesheet" href="../css/manage.css">
+    <script src="../js/manage.js"></script>
+    <title>后台管理系统</title>
+</head>
+<body>
+<header class="manage-header">
+    <nav role="navigation" class="navbar navbar-manage navbar-fixed-top">
+        <div class="navbar-header">
+            <a href="/" class="navbar-brand"><img src="../img/managelogo.jpg" alt="一路展"></a>
+        </div>
+        <div class="navbar-body">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">个人中心</a></li>
+                <li><a href="#">管理首页</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <span class="glyphicon glyphicon-bell"></span>消息
+                        <small class="notice badge ">123</small>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">新消息新消息新消息111 <span class="label label-danger">紧急</span></a></li>
+                        <li><a href="#">新消息新消息新消息222</a></li>
+                        <li><a href="#">新消息新消息新消息333</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">查看更多</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span>gongchang123</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-log-out"></span>退出</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="manage-body">
+    <nav role="navigation" class="menuSlide navbar">
+        <div class="menuSlide-content">
+            <ul class="nav nav-pills nav-stacked">
+                <li class="divider"><span class="glyphicon glyphicon-th-large"></span>管理菜单</li>
+                <li><a href="#"><span class="glyphicon glyphicon-tasks"></span>订单管理 <span
+                        class="badge pull-right">123</span></a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-saved"></span>签约监督</a></li>
+                <li class="divider"><span class="glyphicon glyphicon-cog"></span>个人中心</li>
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span>个人信息</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-pushpin"></span>发票信息</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-tower"></span>管理人员</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!--主内容-->
+    <div class="manage-content">
+        <div class="main-content1">
+            <div class="alert alert-success"><a href="#" class="close" data-dismiss="alert">&times;</a>新消息消息消息消息消息消息
+            </div>
+            <div class="alert alert-warning"><a href="#" class="close" data-dismiss="alert">&times;</a>新消息消息消息消息消息消息
+            </div>
+            <div class="alert alert-info"><a href="#" class="close" data-dismiss="alert">&times;</a>新消息消息消息消息消息消息</div>
+            <div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert">&times;</a>新消息消息消息消息消息消息
+            </div>
+        </div>
+        <div class="row main-content1">
+            <!--展商/工厂 容器-->
+            <div class="col-sm-4">
+                <div class="main-content-item">
+                    <div class="main-img">
+                        <span class="glyphicon glyphicon-flag"></span>
+                    </div>
+                    <h3><a href="#">工厂名称展商名称姓名</a> <span class="label label-info">认证</span></h3>
+                    <p>地址：工厂地址工厂地址工厂地址工厂地址</p>
+                    <p>
+                        <small>注册时间：2016.03.22</small>
+                    </p>
+                </div>
+            </div>
+            <!--设计师 容器-->
+            <div class="col-sm-4">
+                <div class="main-content-item">
+                    <div class="main-img">
+                        <img class="designer-tx" src="../img/txtest.jpg"/>
+                    </div>
+                    <h3>
+                        <a href="#">某某某</a> <span class="label label-info">认证</span>
+                    </h3>
+                    <p>设计理念：工厂地址工厂地址工厂地址工厂地址</p>
+                    <p>
+                        <small>注册时间：2016.03.22</small>
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="main-content-item">
+                    <div class="main-img">
+                        <span class="glyphicon glyphicon-usd"></span>
+                    </div>
+                    <h2>232560.00
+                        <small>元</small>
+                    </h2>
+                    <p>
+                        <small>一些说明信息一些说明信息一些说明信息一些说明信息一些说明信息</small>
+                    </p>
+                    <p>
+                        <a class="btn btn-success" href="#">充值</a>
+                        <a class="btn btn-warning" href="#">提现</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="main-content-item">
+                    <div class="main-img">
+                        <span class="glyphicon glyphicon-envelope"></span>
+                    </div>
+                    <div class="main-img-right">
+
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <!--内容头部结束-->
+        <div class="main-content1">
+            <div class="panel manage-panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">近期订单 <span class="badge">12355</span></h3>
+                </div>
+                <div class="panel-body">
+
+                    <div class="panel manage-panel-item">
+                        <table class="table">
+                            <thead class="panel-heading">
+                            <tr>
+                                <th><input type="checkbox" id="allOrder"></th>
+                                <th>
+                                    <div class="dropdown manage-order-dropdown">
+                                        <a href="#" data-toggle="dropdown">分类<b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">OEM</a></li>
+                                            <li><a href="#">定制</a></li>
+                                        </ul>
+                                    </div>
+                                </th>
+                                <th>订单信息</th>
+                                <th>展位信息</th>
+                                <th>
+                                    <div class="dropdown manage-order-dropdown">
+                                        <a href="#" data-toggle="dropdown">状态（全部）<b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">审核中</a></li>
+                                            <li><a href="#">已接单</a></li>
+                                            <li><a href="#">设计中</a></li>
+                                            <li><a href="#">报价中</a></li>
+                                            <li><a href="#">已签单</a></li>
+                                        </ul>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="dropdown manage-order-dropdown">
+                                        <a href="#" data-toggle="dropdown">执行经理（全部）<b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">未分配</a></li>
+                                            <li><a href="#">xxxx</a></li>
+                                            <li><a href="#">李对对对</a></li>
+                                        </ul>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="dropdown manage-order-dropdown">
+                                        <a href="#" data-toggle="dropdown">设计师（全部）<b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">未分配</a></li>
+                                            <li><a href="#">xxxx</a></li>
+                                            <li><a href="#">李对对对</a></li>
+                                        </ul>
+                                    </div>
+                                </th>
+                                <th>报价</th>
+                                <th>
+                                    <div class="dropdown manage-order-dropdown">
+                                        <a href="#" data-toggle="dropdown">监理（全部）<b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">未分配</a></li>
+                                            <li><a href="#">李xxx</a></li>
+                                        </ul>
+                                    </div>
+                                </th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody class="panel-body">
+
+                            <tr data-orderId="order51354523123">
+                                <td><input type="checkbox" id="order51354523123"></td>
+                                <td><span class="label label-success">OEM</span></td>
+                                <td>
+                                    <a class="myPop" href="#" title="公司名称名称名称名称名称名称"
+                                       data-content="<p>负责人：李xx</p><p>联系电话：18612034156</p><p>预算：12万</p>"
+                                       data-toggle="popover">公司名称1231321，10万</a>
+                                    <small>2016.03.22</small>
+                                </td>
+                                <td><a class="myPop" href="#" title="展会名称名称名称名称名称"
+                                       data-content="<p>展位号：A1232</p><p>展位面积：123㎡</p><p>开始时间：2016.03.22</p>"
+                                       data-toggle="popover">展会信息会信息</a>
+                                    <small>2016.03.22</small>
+                                </td>
+                                <td>
+                                    <div class="manage-order-zt">
+                                        <ul>
+                                            <li class="active">审核中</li>
+                                        </ul>
+                                    </div>
+                                </td>
+                                <td>
+                                    无
+                                </td>
+                                <td>
+                                    OEM稿件 <span class="badge notice">已上传</span>
+                                    <small>2016.03.22</small>
+                                    <button class="btn-link order-button-style" data-custom="works">看设计稿</button>
+                                </td>
+                                <td>
+                                    暂无报价
+                                </td>
+                                <td>
+                                    未分配
+                                </td>
+                                <td>
+                                    <div class="btn-group" data-toggle="buttons">
+                                        
+                                        <a class="btn btn-success" href="#">详细信息</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!--当前订单设计图-->
+                            <tr class="order-list-tr order51354523123">
+                                <td></td>
+                                <td></td>
+                                <td colspan="4">
+                                    <div class="order-designer-works">
+                                        <a href="#">
+                                            <img src="../img/place.jpg" alt="设计稿1">
+                                            <p>设计稿标题设计稿标题</p>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>徐查查</td>
+                                <td>推荐报价：213551</td>
+                                <td colspan="2">
+                                    <div class="btn-group" data-toggle="buttons">
+                                        <a class="btn btn-info" href="#">确认定稿</a>
+                                        <a class="btn btn-info" href="#">打包下载</a>
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <!--设计图 end-->
+                            <tr data-orderId="order51354546523">
+                                <td><input type="checkbox" id="order51354546523"></td>
+                                <td><span class="label label-success">OEM</span></td>
+                                <td>
+                                    <a class="myPop" href="#" title="公司名称名称名称名称名称名称"
+                                       data-content="<p>负责人：李xx</p><p>联系电话：18612034156</p><p>预算：12万</p>"
+                                       data-toggle="popover">公司名称1231321，10万</a>
+                                    <small>2016.03.22</small>
+                                </td>
+                                <td><a class="myPop" href="#" title="展会名称名称名称名称名称"
+                                       data-content="<p>展位号：A1232</p><p>展位面积：123㎡</p><p>开始时间：2016.03.22</p>"
+                                       data-toggle="popover">展会信息会信息</a>
+                                    <small>2016.03.22</small>
+                                </td>
+                                <td>
+                                    <div class="manage-order-zt">
+                                        <ul>
+                                            <li class="active">审核中</li>
+                                        </ul>
+                                    </div>
+                                </td>
+                                <td>
+                                    无
+                                </td>
+                                <td>
+                                    未上传
+                                    <a href="#" class="btn-link order-button-style" data-custom="uploadWorks">上传效果图</a>
+                                </td>
+                                <td>
+                                    暂无报价
+                                </td>
+                                <td>
+                                    未分配
+                                </td>
+                                <td>
+                                    <div class="btn-group" data-toggle="buttons">
+
+                                        <a class="btn btn-success" href="#">详细信息</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!--当前订单设计图-->
+                            <tr class="order-list-tr order51354546523">
+                                <td></td>
+                                <td></td>
+                                <td colspan="4">
+                                    <div class="order-designer-works">
+                                        <a href="#">
+                                            <img src="../img/place.jpg" alt="设计稿1">
+                                            <p>设计稿标题设计稿标题</p>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>徐查查</td>
+                                <td>推荐报价：213551</td>
+                                <td colspan="2">
+                                    <div class="btn-group" data-toggle="buttons">
+                                        <a class="btn btn-info" href="#">确认定稿</a>
+                                        <a class="btn btn-info" href="#">打包下载</a>
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <!--设计图 end-->
+                            <tr data-orderId="order5135454652">
+                                <td><input type="checkbox" id="order5135454652"></td>
+                                <td><span class="label label-primary">定制</span></td>
+                                <td><a class="myPop" href="#" title="公司名称名称名称名称名称名称"
+                                       data-content="<p>负责人：李xx</p><p>联系电话：18612034156</p><p>预算：12万</p>"
+                                       data-toggle="popover">公司名称1231321，10万
+                                    </a>
+                                    <small>2016.03.22</small>
+                                </td>
+                                <td><a class="myPop" href="#" title="展会名称名称名称名称名称"
+                                       data-content="<p>展位号：A1232</p><p>展位面积：123㎡</p><p>开始时间：2016.03.22</p>"
+                                       data-toggle="popover">展会信息会信息</a>
+                                    <small>2016.03.22</small>
+                                </td>
+                                <td>
+                                    <div class="manage-order-zt">
+                                        <ul>
+                                            <li>审核中</li>
+                                            <li class="active">已接单</li>
+                                        </ul>
+                                    </div>
+                                </td>
+                                <td>张XXX
+                                    <p>tel:155132656</p>
+                                    <p>QQ:54651131</p>
+                                </td>
+                                <td>
+                                    无
+                                </td>
+                                <td>
+                                    暂无报价
+                                </td>
+                                <td>
+                                    未分配
+                                </td>
+                                <td>
+                                    <div class="btn-group" data-toggle="buttons">
+
+                                        <a class="btn btn-primary" href="#">详细信息</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!--当前订单设计图-->
+                            <tr class="order-list-tr order5135454652">
+                                <td></td>
+                                <td></td>
+                                <td colspan="4">
+                                    <div class="order-designer-works">
+                                        <a href="#">
+                                            <img src="../img/place.jpg" alt="设计稿1">
+                                            <p>设计稿标题设计稿标题</p>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>徐查查</td>
+                                <td>推荐报价：213551</td>
+                                <td colspan="2">
+                                    <div class="btn-group" data-toggle="buttons">
+                                        <a class="btn btn-info" href="#">确认定稿</a>
+                                        <a class="btn btn-info" href="#">打包下载</a>
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <!--设计图 end-->
+                            <tr data-orderId="order5135454651">
+                                <td><input type="checkbox" id="order5135454651"></td>
+                                <td><span class="label label-primary">定制</span></td>
+                                <td><a class="myPop" href="#" title="公司名称名称名称名称名称名称"
+                                       data-content="<p>负责人：李xx</p><p>联系电话：18612034156</p><p>预算：12万</p>"
+                                       data-toggle="popover">公司名称1231321，10万</a>
+                                    <small>2016.03.22</small>
+                                </td>
+                                <td><a class="myPop" href="#" title="展会名称名称名称名称名称"
+                                       data-content="<p>展位号：A1232</p><p>展位面积：123㎡</p><p>开始时间：2016.03.22</p>"
+                                       data-toggle="popover">展会信息会信息</a>
+                                    <small>2016.03.22</small>
+                                </td>
+                                <td>
+                                    <div class="manage-order-zt">
+                                        <ul>
+                                            <li>审核中</li>
+                                            <li>已接单</li>
+                                            <li class="active">设计中</li>
+                                        </ul>
+                                    </div>
+                                </td>
+                                <td>张XXX
+                                    <p>tel:155132656</p>
+                                    <p>QQ:54651131</p>
+                                </td>
+                                <td>
+                                    徐散发 <span class="badge notice">新稿件</span>
+                                    <small>2016.03.22</small>
+                                    <button class="btn-link order-button-style" data-custom="works">看设计稿</button>
+                                </td>
+                                <td>
+                                    暂无报价
+                                </td>
+                                <td>
+                                    未分配
+                                </td>
+                                <td>
+                                    <div class="btn-group" data-toggle="buttons">
+
+                                        <a class="btn btn-primary" href="#">详细信息</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!--当前订单设计图-->
+                            <tr class="order-list-tr order5135454651">
+                                <td></td>
+                                <td></td>
+                                <td colspan="4">
+                                    <div class="order-designer-works">
+                                        <a href="#">
+                                            <img src="../img/place.jpg" alt="设计稿1">
+                                            <p>设计稿标题设计稿标题</p>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>徐查查</td>
+                                <td>推荐报价：213551</td>
+                                <td colspan="2">
+                                    <div class="btn-group" data-toggle="buttons">
+                                        <a class="btn btn-info" href="#">确认定稿</a>
+                                        <a class="btn btn-info" href="#">打包下载</a>
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr class="order-list-tr order5135454651">
+                                <td></td>
+                                <td></td>
+                                <td colspan="4">
+                                    <div class="order-designer-works">
+                                        <a href="#">
+                                            <img src="../img/place.jpg" alt="设计稿1">
+                                            <p>设计稿标题设计稿标题</p>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>徐查查</td>
+                                <td>推荐报价：213551</td>
+                                <td colspan="2">
+                                    <div class="btn-group" data-toggle="buttons">
+                                        <a class="btn btn-info" href="#">确认定稿</a>
+                                        <a class="btn btn-info" href="#">打包下载</a>
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <!--设计图 end-->
+                            <tr data-orderId="order21565133215">
+                                <td><input type="checkbox" id="order21565133215"></td>
+                                <td><span class="label label-primary">定制</span></td>
+                                <td><a class="myPop" href="#" title="公司名称名称名称名称名称名称"
+                                       data-content="<p>负责人：李xx</p><p>联系电话：18612034156</p><p>预算：12万</p>"
+                                       data-toggle="popover">公司名称1231321，10万</a>
+                                    <small>2016.03.22</small>
+                                </td>
+                                <td><a class="myPop" href="#" title="展会名称名称名称名称名称"
+                                       data-content="<p>展位号：A1232</p><p>展位面积：123㎡</p><p>开始时间：2016.03.22</p>"
+                                       data-toggle="popover">展会信息会信息</a>
+                                    <small>2016.03.22</small>
+                                </td>
+                                <td>
+                                    <div class="manage-order-zt">
+                                        <ul>
+                                            <li>审核中</li>
+                                            <li>已接单</li>
+                                            <li>设计中</li>
+                                            <li class="active">报价中</li>
+                                        </ul>
+                                    </div>
+                                </td>
+                                <td>张XXX
+                                    <p>tel:155132656</p>
+                                    <p>QQ:54651131</p>
+                                </td>
+                                <td>
+                                    徐散发 <span class="badge">已选</span>
+                                    <small>2016.03.22</small>
+                                    <button class="btn-link order-button-style" data-custom="works">看设计稿</button>
+                                </td>
+                                <td>
+                                    推荐报价：2546.00￥
+                                    <button class="btn-link order-button-style">查看详情</button>
+                                </td>
+                                <td>
+                                    未分配
+                                </td>
+                                <td>
+                                    <div class="btn-group" data-toggle="buttons">
+
+                                        <a class="btn btn-primary" href="#">详细信息</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!--当前订单设计图 没有订单-->
+                            <tr class="order-list-tr order21565133215">
+                                <td class="order-list-none" colspan="10">暂未上传</td>
+                            </tr>
+                            <!--设计图 end-->
+                            <tr data-orderId="5465611511">
+                                <td><input type="checkbox" id="5465611511"></td>
+                                <td><span class="label label-primary">定制</span></td>
+                                <td><a class="myPop" href="#" title="公司名称名称名称名称名称名称"
+                                       data-content="<p>负责人：李xx</p><p>联系电话：18612034156</p><p>预算：12万</p>"
+                                       data-toggle="popover">公司名称1231321，10万</a>
+                                    <small>2016.03.22</small>
+                                </td>
+                                <td><a class="myPop" href="#" title="展会名称名称名称名称名称"
+                                       data-content="<p>展位号：A1232</p><p>展位面积：123㎡</p><p>开始时间：2016.03.22</p>"
+                                       data-toggle="popover">展会信息会信息</a>
+                                    <small>2016.03.22</small>
+                                </td>
+                                <td>
+                                    <div class="manage-order-zt">
+                                        <ul>
+                                            <li>审核中</li>
+                                            <li>已接单</li>
+                                            <li>设计中</li>
+                                            <li>报价中</li>
+                                            <li class="active">已签单</li>
+                                        </ul>
+                                    </div>
+                                </td>
+                                <td>张XXX
+                                    <p>tel:155132656</p>
+                                    <p>QQ:54651131</p>
+                                </td>
+                                <td>
+                                    徐散发 <span class="badge">中标</span>
+                                    <button class="btn-link order-button-style" data-custom="works">看设计稿</button>
+                                </td>
+                                <td>
+                                    推荐报价：2546.00￥
+                                    <button class="btn-link order-button-style">查看详情</button>
+                                </td>
+                                <td>张伟业
+                                    <p>tel:55132366</p>
+                                    <p>QQ:54651131</p>
+                                </td>
+                                <td>
+                                    <div class="btn-group" data-toggle="buttons">
+
+                                        <a class="btn btn-primary" href="#">详细信息</a>
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr class="order-list-tr 5465611511">
+                                <td class="order-list-none" colspan="10">暂未上传</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="panel-footer">
+                            <div class="btn-group" data-toggle="buttons">
+                                <a class="btn btn-danger" href="#">删除</a>
+                                <a class="btn btn-warning" href="#">场地管理费</a>
+                                <a class="btn btn-info" href="#">分派执行经理</a>
+                                <a class="btn btn-primary" href="#">分派设计师</a>
+                                <a class="btn btn-success" href="#">分派监理</a>
+                            </div>
+                            <ul class="pagination pull-right order-pagination">
+                                <li><a href="#">&laquo;</a></li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#">&raquo;</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

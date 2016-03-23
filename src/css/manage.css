@@ -1,0 +1,131 @@
+body {
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, STHeiti, "Microsoft Yahei", sans-serif
+}
+
+.navbar-manage {
+    background-color: #293038;
+}
+
+.navbar-manage .navbar-nav > li > a {
+    color: #fff;
+}
+
+.navbar-manage .navbar-nav > li > a:hover, .navbar-manage .navbar-nav > li > a:focus {
+    color: #fff;
+    background-color: #37424f;
+}
+
+.navbar-manage .navbar-nav > li.active a,
+.navbar-manage .navbar-nav > li.active a:hover,
+.navbar-manage .navbar-nav > .open > a:focus,
+.navbar-manage .navbar-nav > .open > a,
+.navbar-manage .navbar-nav > .open > a:hover {
+    background-color: #091317;
+    color: #fff;
+}
+
+.navbar-manage .navbar-brand {
+    padding: 10px;
+}
+
+.navbar-manage .navbar-brand img {
+    height: 30px;
+}
+
+.navbar-body {
+}
+
+.navbar-body .navbar-right {
+    margin: 0;
+}
+
+.navbar-body .navbar-right .glyphicon {
+    padding-right: 10px;
+}
+
+.notice {
+    background-color: #ed7117;
+}
+/*body部分*/
+.manage-body{position:absolute;top:51px;bottom:0;width:100%;background-color:#eaedf1;}
+.menuSlide{position: absolute;overflow:hidden;border:0;
+    width: 180px;
+    top: 0;
+    bottom: 0;
+    background-color: #48515D;
+    border-radius: 0;
+    margin: 0;}
+.menuSlide-content{width:200px;height:100%;overflow:scroll;overflow-x:hidden;}
+.menuSlide-content .nav-pills>li>a{
+    -webkit-border-radius:0;
+    -moz-border-radius:0;
+    border-radius:0;}
+.menuSlide-content .divider{padding:10px 15px;color:#fff;background-color:#323840;}
+.menuSlide-content .divider .glyphicon{float:right;}
+.menuSlide-content .nav-pills a{color:#fff;}
+.menuSlide-content .nav-pills a .glyphicon{padding-right:5px;}
+.menuSlide-content .nav-pills >li a:hover,.menuSlide-content .nav-pills >li a:focus{background-color:#C74B00;color:#fff;}
+/*主内容*/
+.manage-content{position: absolute;overflow:hidden;
+    overflow-y: auto;
+    left: 180px;padding:15px;
+    top: 0;
+    bottom: 0;
+    right:0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.main-content-item{background-color:#fff;height:150px;overflow:hidden;margin-bottom:15px;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;}
+
+.main-content-item h3 a{color:#999;}
+.main-content-item h3 a:hover{color:#ed7117;text-decoration: none;}
+.main-img{float:left;background-color:#f9fafc;height:100%;margin-right:10px;}
+.main-img .glyphicon{margin: 55px 10px 0;
+    font-size: 2em;
+    color: #CACACA;}
+.main-img .designer-tx{width: 40px; margin: 55px 10px 0;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    border-radius:50%;}
+.main-content1{overflow:hidden;margin-left:0;margin-top:15px;}
+.main-content1 .col-sm-4{padding-left:0;}
+.manage-panel{border:0;}
+.manage-panel>.panel-heading{background-color:#f9fafc;border:0;padding:15px;}
+.manage-panel-item{border-color:#EAEDF1;
+    -webkit-border-radius:0;
+    -moz-border-radius:0;
+    border-radius:0;}
+.manage-panel-item .panel-heading{background-color:#f5f5f5;overflow: hidden;}
+.manage-panel-item .panel-body,.manage-panel-item .panel-body .myPop{color:#888;}
+
+.manage-panel-item .table tr th,.manage-panel-item .table tr td{vertical-align: middle;}
+.manage-panel-item .table tr td small{display:block;color:#ccc;padding-top:5px;}
+.manage-panel-item .table tr td p{margin:0;padding-top:5px;color:#ccc;}
+.manage-order-dropdown a{color:#333;text-decoration: none;}
+.manage-order-zt{padding-left:10px;}
+.manage-order-zt ul{list-style:none;margin:0;padding-left:10px;}
+.manage-order-zt ul li{position:relative;border-left: 2px solid #DDD;padding-left: 10px;}
+.manage-order-zt ul li:before{content: '';
+    position: absolute;
+    padding: 5px;
+    background-color: #DDD;
+    border-radius: 50%;
+    left: -6px;
+    top: 50%;
+    margin-top: -5px;}
+.manage-order-zt ul li.active{color:#ff6e17;border-color:#ff6e17;}
+.manage-order-zt ul li.active:before{background-color:#ff6e17;}
+.order-button-style{display:block;color:#5CB85C;outline: none;}
+.order-button-style:hover,.order-button-style:focus{color:#ff6e17;}
+.manage-panel-item .panel-body tr:hover,.manage-panel-item .panel-body tr.on{background-color: #f8f2e5;}
+.order-pagination{margin:0;}
+.order-list-tr{background-color: #F5F4F1;display:none;}
+.orderIn{background-color: #F5F4F1;display: table-row;}
+.order-list-none{font-size:2em;color:#ccc;text-align:center;}
+.order-designer-works{}
+.order-designer-works a:hover{text-decoration: none;}
+.order-designer-works img{width:120px;float:left;padding-right:10px;}
