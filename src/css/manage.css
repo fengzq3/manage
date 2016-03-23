@@ -53,7 +53,7 @@ body {
 }
 /*body部分*/
 .manage-body{position:absolute;top:51px;bottom:0;width:100%;background-color:#eaedf1;}
-.menuSlide{position: absolute;overflow:hidden;border:0;
+.menuSlide{position: absolute;overflow:hidden;border:0;z-index: 300;
     width: 180px;
     top: 0;
     bottom: 0;
@@ -81,7 +81,7 @@ body {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-.main-content-item{background-color:#fff;height:150px;overflow:hidden;margin-bottom:15px;
+.main-content-item{background-color:#fff;height:150px;overflow:hidden;margin-bottom:15px;padding-right:15px;
     -webkit-border-radius:4px;
     -moz-border-radius:4px;
     border-radius:4px;}
@@ -117,7 +117,8 @@ body {
 .manage-panel-item .table tr th,.manage-panel-item .table tr td{vertical-align: middle;}
 .manage-panel-item .table tr td small{display:block;color:#ccc;padding-top:5px;}
 .manage-panel-item .table tr td p{margin:0;padding-top:5px;color:#ccc;}
-.manage-order-dropdown a{color:#333;text-decoration: none;padding:.5em 1em;}
+.manage-order-dropdown a{color:#333;text-decoration: none;padding:.5em 0 .5em .5em;white-space: nowrap;}
+.manage-order-dropdown a b{margin-right:.5em;}
 .manage-order-dropdown a:hover,.manage-order-dropdown.open a{background-color:#fff;}
 .manage-order-dropdown .dropdown-menu{margin-top:.5em;}
 .manage-order-zt{padding-left:10px;}
@@ -143,6 +144,18 @@ body {
 .order-designer-works{}
 .order-designer-works a:hover{text-decoration: none;}
 .order-designer-works img{width:120px;float:left;padding-right:10px;}
+
+.mynuSlide-flag{position: absolute;z-index:300;
+    top: 0;left:-3em;
+    padding: 1em;
+    height: 3em;
+    width: 3em;
+    border-top-right-radius: 50%;
+    background-color: #48515D;
+    color: #FFF;
+    border-bottom-right-radius: 50%;}
+.mynuSlide-flag .glyphicon{top:-1px;}
+
 
 /*议价报价列表*/
 .shang-table ul,.shang-table dl{overflow:hidden;border-bottom:1px solid #ddd;}

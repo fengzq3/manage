@@ -7,7 +7,7 @@ module.exports = function (grunt) {
         uglify: {
             options: {
                 ASCIIOnly:true,
-                banner: '/*! <%= pkg.name %><%= pkg.version %> <%= grunt.template.today("yyyy-mm-dd") %> author:feng */',
+                banner: '/*! <%= pkg.name %><%= pkg.version %> <%= grunt.template.today("yyyy-mm-dd HH:mm:ss") %> author:feng */',
                 compress: {
                     drop_console: true
                 }
@@ -15,27 +15,26 @@ module.exports = function (grunt) {
             js: {
                 files: [{
                     expand: true,
-                    cwd: 'expo/js',
+                    cwd: 'src/js',
                     src: '**/*.js',
-                    dest: 'expo/build/js'
+                    dest: 'build/js'
                 }]
             }
         },
         cssmin: {
+            options: {
+                ASCIIOnly:true,
+                banner: '/*! <%= pkg.name %><%= pkg.version %> <%= grunt.template.today("yyyy-mm-dd HH:mm:ss") %> author:feng */',
+                compress: {
+                    drop_console: true
+                }
+            },
             css: {
                 files: [{
                     expand: true,
-                    cwd: 'expo/css',
+                    cwd: 'src/css',
                     src: '**/*.css',
-                    dest: 'expo/build/css'
-                }]
-            },
-            css2: {
-                files: [{
-                    expand: true,
-                    cwd: 'expo/member/css',
-                    src: '**/*.css',
-                    dest: 'expo/build/member/css'
+                    dest: 'build/css'
                 }]
             }
         }

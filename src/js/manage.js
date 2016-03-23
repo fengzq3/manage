@@ -14,6 +14,25 @@ $(function () {
         $(this).popover('hide');
     });
 
+    //处理slide显示隐藏
+    var hideSlide = $('.hideSlide'),munuSlide = $('.menuSlide'),mynuSlideFlag = $('.mynuSlide-flag'),manageContent = $('.manage-content');
+    hideSlide.on('click', function () {
+        manageContent.css('left',0);
+        munuSlide.animate({
+            'left':'-180px'
+        },200, function () {
+            mynuSlideFlag.css('left',0);
+        });
+    });
+    mynuSlideFlag.on('click', function () {
+        manageContent.css('left','180px');
+        mynuSlideFlag.animate({
+            'left':'-3em'
+        },200, function () {
+            munuSlide.css('left',0);
+        });
+    });
+
     //设计稿隐藏显示
     /**
      * 每个订单tr上必须标有：data-orderid=订单id，设计稿tr上必须有对应的orderid 类
