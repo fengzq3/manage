@@ -1,3 +1,4 @@
+@import "bootstrap-datetimepicker.css";
 body {
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, STHeiti, "Microsoft Yahei", sans-serif
 }
@@ -110,17 +111,21 @@ body {
     -webkit-border-radius:0;
     -moz-border-radius:0;
     border-radius:0;}
-.manage-panel-item .panel-heading{background-color:#f5f5f5;overflow: hidden;}
-.manage-panel-item .panel-heading th{padding:15px 8px;}
+.manage-panel-item .panel-heading{background-color:#F9FAFC;overflow: hidden;}
+.manage-panel-item .panel-heading th{padding:12px 8px;}
 .manage-panel-item .panel-body,.manage-panel-item .panel-body .myPop{color:#888;}
 
 .manage-panel-item .table tr th,.manage-panel-item .table tr td{vertical-align: middle;}
 .manage-panel-item .table tr td small{display:block;color:#ccc;padding-top:5px;}
 .manage-panel-item .table tr td p{margin:0;padding-top:5px;color:#ccc;}
-.manage-order-dropdown a{color:#333;text-decoration: none;padding:.5em 0 .5em .5em;white-space: nowrap;}
+.manage-order-dropdown>a{color:#333;text-decoration: none;padding:.5em 0 .5em .5em;white-space: nowrap;display:block;border:1px solid #F9FAFC;}
 .manage-order-dropdown a b{margin-right:.5em;}
-.manage-order-dropdown a:hover,.manage-order-dropdown.open a{background-color:#fff;}
-.manage-order-dropdown .dropdown-menu{margin-top:.5em;}
+.manage-order-dropdown>a:hover,.manage-order-dropdown.open>a{background-color:#fff;border-color:#ddd;border-color: rgba(0, 0, 0, .15);}
+.manage-order-dropdown .dropdown-menu{margin-top:-1px;width:100%;min-width:100%;border-top:0;padding:0;
+    -webkit-border-radius:0;
+    -moz-border-radius:0;
+    border-radius:0;}
+.manage-order-dropdown .dropdown-menu li a{line-height:2em;}
 .manage-order-zt{padding-left:10px;}
 .manage-order-zt ul{list-style:none;margin:0;padding-left:10px;}
 .manage-order-zt ul li{position:relative;border-left: 2px solid #DDD;padding-left: 10px;}
@@ -155,6 +160,14 @@ body {
     color: #FFF;
     border-bottom-right-radius: 50%;}
 .mynuSlide-flag .glyphicon{top:-1px;}
+.checkUi{width:40px;text-align: center;}
+.checkUi input{display:none;}
+.checkUi .labelUi{width: 20px;height:20px;margin-bottom:0;margin-top:2px;
+    text-align: center;
+    color: #fff;
+    background-color: #fff;
+    border: 1px solid #ccc;}
+.checkUi .labelUi.onChecked{color:#ff6e17;border-color:#ff6e17;}
 
 
 /*议价报价列表*/

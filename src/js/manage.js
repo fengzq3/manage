@@ -2,6 +2,7 @@
  * Created by feng on 2016/3/22.
  */
 $(function () {
+    "use strict";
     //处理提示工具
     var popoverElements = $('[data-toggle="popover"]');
     popoverElements.popover({html: true, placement: 'top'}).click(function (e) {
@@ -20,7 +21,7 @@ $(function () {
         manageContent.css('left',0);
         munuSlide.animate({
             'left':'-180px'
-        },200, function () {
+        },100, function () {
             mynuSlideFlag.css('left',0);
         });
     });
@@ -28,7 +29,7 @@ $(function () {
         manageContent.css('left','180px');
         mynuSlideFlag.animate({
             'left':'-3em'
-        },200, function () {
+        },100, function () {
             munuSlide.css('left',0);
         });
     });
@@ -39,17 +40,25 @@ $(function () {
      * @type {*|jQuery|HTMLElement}
      */
     //订单全选
-    var itemTr = $('.manage-panel-item .table tr'), allOrder = $('#allOrder'), allorderItem = itemTr.find('[type="checkbox"]');
+    var itemTr = $('.manage-panel-item .table tr'), allOrder = $('#allOrder'),labelUi = itemTr.find('.labelUi'), allorderItem = itemTr.find('[type="checkbox"]');
     allOrder.on('click', function () {
-        console.log(allorderItem);
-        if (!$(this).prop('checked')) {
+        console.log(allOrder);
+        if (allOrder.hasClass('onChecked')) {
+            allOrder.removeClass('onChecked');
+            labelUi.removeClass('onChecked');
+            //全取消
             allorderItem.each(function () {
                 $(this).prop('checked', false);
             });
+            itemTr.removeClass('on');
         } else {
+            allOrder.addClass('onChecked');
+            labelUi.addClass('onChecked');
+            //全选
             allorderItem.each(function () {
                 $(this).prop('checked', true);
             });
+            itemTr.addClass('on');
         }
     });
     //订单选中事件
@@ -57,14 +66,18 @@ $(function () {
         console.log('tr click');
         var id = $(this).data('orderid');
         var thisTr = $(this).find('#' + id);
+        var thisLabel = $(this).find('.labelUi');
+        //处理逻辑
         if (thisTr.length !== 0) {
-            allOrder.prop('checked', false);
+            allOrder.removeClass('onChecked');
             if (!thisTr.prop('checked')) {
                 thisTr.prop('checked', true);
                 $(this).addClass('on');
+                thisLabel.addClass('onChecked');
             } else {
                 thisTr.prop('checked', false);
                 $(this).removeClass('on');
+                thisLabel.removeClass('onChecked');
             }
         }
 
@@ -198,7 +211,7 @@ $(function () {
     }
 
 
-//定义dialog基本框架
+    //定义dialog基本框架
     function dialogFram(id) {
         var content = '';
         content = content + '<div class=\"modal fade\" id=\"' + id + '\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myDialogLabel\" aria-hidden=\"true\">';

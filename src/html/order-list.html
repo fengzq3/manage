@@ -10,7 +10,9 @@
     <script src="../js/bootstrap.js"></script>
 
     <link rel="stylesheet" href="../css/manage.css">
+
     <script src="../js/manage.js"></script>
+    <script src="../js/bootstrap-datetimepicker.js"></script>
     <title>后台管理系统</title>
 </head>
 <body>
@@ -48,20 +50,26 @@
 <div class="manage-body">
     <nav role="navigation" class="menuSlide navbar">
         <div class="menuSlide-content">
+
             <ul class="nav nav-pills nav-stacked">
-                <li class="divider"><span class="glyphicon glyphicon-th-large"></span>管理菜单</li>
-                <li><a href="#"><span class="glyphicon glyphicon-tasks"></span>订单管理 <span
+                <li class="divider hideSlide"><span class="glyphicon glyphicon-chevron-left"></span>管理菜单</li>
+                <li><a href="order-list.html"><span class="glyphicon glyphicon-tasks"></span>订单管理 <span
                         class="badge pull-right">123</span></a></li>
                 <li><a href="#"><span class="glyphicon glyphicon-saved"></span>签约监督</a></li>
                 <li class="divider"><span class="glyphicon glyphicon-cog"></span>个人中心</li>
-                <li><a href="index.html"><span class="glyphicon glyphicon-user"></span>个人信息</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span>个人信息</a></li>
                 <li><a href="#"><span class="glyphicon glyphicon-pushpin"></span>发票信息</a></li>
                 <li><a href="#"><span class="glyphicon glyphicon-tower"></span>管理人员</a></li>
             </ul>
         </div>
+
     </nav>
+    <div class="mynuSlide-flag">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+    </div>
     <!--主内容-->
     <div class="manage-content">
+        <!--面包屑-->
         <div class="main-content2">
             <ol class="breadcrumb">
                 <li><a href="#">个人中心</a></li>
@@ -69,7 +77,10 @@
                 <li class="active">订单详情</li>
             </ol>
         </div>
+        <!--搜素查找-->
+        <div class="main-content1">
 
+        </div>
         <!--内容区-->
         <div class="main-content1">
             <!--订单区-->
@@ -78,7 +89,9 @@
                 <table class="table">
                     <thead class="panel-heading">
                     <tr>
-                        <th><input type="checkbox" id="allOrder"></th>
+                        <th class="checkUi">
+                            <label class="labelUi" id="allOrder"><span class="glyphicon glyphicon-ok"></span></label>
+                        </th>
                         <th>
                             <div class="dropdown manage-order-dropdown">
                                 <a href="#" data-toggle="dropdown">分类<b class="caret"></b></a>
@@ -138,7 +151,10 @@
                     <tbody class="panel-body">
 
                     <tr data-orderId="order51354523123">
-                        <td><input type="checkbox" id="order51354523123"></td>
+                        <td class="checkUi">
+                            <label for="order51354523123" class="labelUi"><span class="glyphicon glyphicon-ok"></span></label>
+                            <input type="checkbox" id="order51354523123">
+                        </td>
                         <td><span class="label label-success">OEM</span></td>
                         <td>
                             <a class="myPop" href="#" title="公司名称名称名称名称名称名称"
@@ -203,7 +219,10 @@
                     </tr>
                     <!--设计图 end-->
                     <tr data-orderId="order51354546523">
-                        <td><input type="checkbox" id="order51354546523"></td>
+                        <td class="checkUi">
+                            <label for="order5135452123" class="labelUi"><span class="glyphicon glyphicon-ok"></span></label>
+                            <input type="checkbox" id="order5135452123">
+                        </td>
                         <td><span class="label label-success">OEM</span></td>
                         <td>
                             <a class="myPop" href="#" title="公司名称名称名称名称名称名称"
@@ -266,8 +285,11 @@
                         </td>
                     </tr>
                     <!--设计图 end-->
-                    <tr data-orderId="order5135454652">
-                        <td><input type="checkbox" id="order5135454652"></td>
+                    <tr data-orderId="order51354546521">
+                        <td class="checkUi">
+                            <label for="order51354546521" class="labelUi"><span class="glyphicon glyphicon-ok"></span></label>
+                            <input type="checkbox" id="order51354546521">
+                        </td>
                         <td><span class="label label-primary">定制</span></td>
                         <td><a class="myPop" href="#" title="公司名称名称名称名称名称名称"
                                data-content="<p>负责人：李xx</p><p>联系电话：18612034156</p><p>预算：12万</p>"
@@ -331,8 +353,11 @@
                         </td>
                     </tr>
                     <!--设计图 end-->
-                    <tr data-orderId="order5135454651">
-                        <td><input type="checkbox" id="order5135454651"></td>
+                    <tr data-orderId="order513545465211">
+                        <td class="checkUi">
+                            <label for="order513545465211" class="labelUi"><span class="glyphicon glyphicon-ok"></span></label>
+                            <input type="checkbox" id="order513545465211">
+                        </td>
                         <td><span class="label label-primary">定制</span></td>
                         <td><a class="myPop" href="#" title="公司名称名称名称名称名称名称"
                                data-content="<p>负责人：李xx</p><p>联系电话：18612034156</p><p>预算：12万</p>"
@@ -419,8 +444,11 @@
                         </td>
                     </tr>
                     <!--设计图 end-->
-                    <tr data-orderId="order21565133215">
-                        <td><input type="checkbox" id="order21565133215"></td>
+                    <tr data-orderId="order2152312215">
+                        <td class="checkUi">
+                            <label for="order2152312215" class="labelUi"><span class="glyphicon glyphicon-ok"></span></label>
+                            <input type="checkbox" id="order2152312215">
+                        </td>
                         <td><span class="label label-primary">定制</span></td>
                         <td><a class="myPop" href="#" title="公司名称名称名称名称名称名称"
                                data-content="<p>负责人：李xx</p><p>联系电话：18612034156</p><p>预算：12万</p>"
@@ -453,7 +481,9 @@
                         </td>
                         <td>
                             推荐报价：2546.00￥
-                            <button class="btn-link order-button-style" data-custom="dialog" data-action="/1231" title="2015年第十二届上海珠宝首饰展览会yy" data-mywidth="90%">查看详情</button>
+                            <button class="btn-link order-button-style" data-custom="dialog" data-action="/1231"
+                                    title="2015年第十二届上海珠宝首饰展览会yy" data-mywidth="90%">查看详情
+                            </button>
                         </td>
                         <td>
                             未分配
@@ -470,8 +500,11 @@
                         <td class="order-list-none" colspan="10">暂未上传</td>
                     </tr>
                     <!--设计图 end-->
-                    <tr data-orderId="5465611511">
-                        <td><input type="checkbox" id="5465611511"></td>
+                    <tr data-orderId="546561112511">
+                        <td class="checkUi">
+                            <label for="546561112511" class="labelUi"><span class="glyphicon glyphicon-ok"></span></label>
+                            <input type="checkbox" id="546561112511">
+                        </td>
                         <td><span class="label label-primary">定制</span></td>
                         <td><a class="myPop" href="#" title="公司名称名称名称名称名称名称"
                                data-content="<p>负责人：李xx</p><p>联系电话：18612034156</p><p>预算：12万</p>"
@@ -504,7 +537,9 @@
                         </td>
                         <td>
                             推荐报价：2546.00￥
-                            <button class="btn-link order-button-style" data-custom="dialog" data-action="/1231" title="2015年第十二届上海珠宝首饰展览会yy" data-mywidth="90%">查看详情</button>
+                            <button class="btn-link order-button-style" data-custom="dialog" data-action="/1231"
+                                    title="2015年第十二届上海珠宝首饰展览会yy" data-mywidth="90%">查看详情
+                            </button>
                         </td>
                         <td>张伟业
                             <p>tel:55132366</p>
@@ -521,8 +556,11 @@
                     <tr class="order-list-tr 5465611511">
                         <td class="order-list-none" colspan="10">暂未上传</td>
                     </tr>
-                    <tr data-orderId="order51354523123">
-                        <td><input type="checkbox" id="order51354523123"></td>
+                    <tr data-orderId="order513541223">
+                        <td class="checkUi">
+                            <label for="order513541223" class="labelUi"><span class="glyphicon glyphicon-ok"></span></label>
+                            <input type="checkbox" id="order513541223">
+                        </td>
                         <td><span class="label label-success">OEM</span></td>
                         <td>
                             <a class="myPop" href="#" title="公司名称名称名称名称名称名称"
@@ -587,7 +625,10 @@
                     </tr>
                     <!--设计图 end-->
                     <tr data-orderId="order51354546523">
-                        <td><input type="checkbox" id="order51354546523"></td>
+                        <td class="checkUi">
+                            <label for="order51354546523" class="labelUi"><span class="glyphicon glyphicon-ok"></span></label>
+                            <input type="checkbox" id="order51354546523">
+                        </td>
                         <td><span class="label label-success">OEM</span></td>
                         <td>
                             <a class="myPop" href="#" title="公司名称名称名称名称名称名称"
@@ -651,7 +692,10 @@
                     </tr>
                     <!--设计图 end-->
                     <tr data-orderId="order5135454652">
-                        <td><input type="checkbox" id="order5135454652"></td>
+                        <td class="checkUi">
+                            <label for="order5135454652" class="labelUi"><span class="glyphicon glyphicon-ok"></span></label>
+                            <input type="checkbox" id="order5135454652">
+                        </td>
                         <td><span class="label label-primary">定制</span></td>
                         <td><a class="myPop" href="#" title="公司名称名称名称名称名称名称"
                                data-content="<p>负责人：李xx</p><p>联系电话：18612034156</p><p>预算：12万</p>"
@@ -716,7 +760,10 @@
                     </tr>
                     <!--设计图 end-->
                     <tr data-orderId="order5135454651">
-                        <td><input type="checkbox" id="order5135454651"></td>
+                        <td class="checkUi">
+                            <label for="order5135454651" class="labelUi"><span class="glyphicon glyphicon-ok"></span></label>
+                            <input type="checkbox" id="order5135454651">
+                        </td>
                         <td><span class="label label-primary">定制</span></td>
                         <td><a class="myPop" href="#" title="公司名称名称名称名称名称名称"
                                data-content="<p>负责人：李xx</p><p>联系电话：18612034156</p><p>预算：12万</p>"
@@ -804,7 +851,10 @@
                     </tr>
                     <!--设计图 end-->
                     <tr data-orderId="order21565133215">
-                        <td><input type="checkbox" id="order21565133215"></td>
+                        <td class="checkUi">
+                            <label for="order21565133215" class="labelUi"><span class="glyphicon glyphicon-ok"></span></label>
+                            <input type="checkbox" id="order21565133215">
+                        </td>
                         <td><span class="label label-primary">定制</span></td>
                         <td><a class="myPop" href="#" title="公司名称名称名称名称名称名称"
                                data-content="<p>负责人：李xx</p><p>联系电话：18612034156</p><p>预算：12万</p>"
@@ -837,7 +887,9 @@
                         </td>
                         <td>
                             推荐报价：2546.00￥
-                            <button class="btn-link order-button-style" data-custom="dialog" data-action="/1231" title="2015年第十二届上海珠宝首饰展览会yy" data-mywidth="90%">查看详情</button>
+                            <button class="btn-link order-button-style" data-custom="dialog" data-action="/1231"
+                                    title="2015年第十二届上海珠宝首饰展览会yy" data-mywidth="90%">查看详情
+                            </button>
                         </td>
                         <td>
                             未分配
@@ -855,7 +907,10 @@
                     </tr>
                     <!--设计图 end-->
                     <tr data-orderId="5465611511">
-                        <td><input type="checkbox" id="5465611511"></td>
+                        <td class="checkUi">
+                            <label for="5465611511" class="labelUi"><span class="glyphicon glyphicon-ok"></span></label>
+                            <input type="checkbox" id="5465611511">
+                        </td>
                         <td><span class="label label-primary">定制</span></td>
                         <td><a class="myPop" href="#" title="公司名称名称名称名称名称名称"
                                data-content="<p>负责人：李xx</p><p>联系电话：18612034156</p><p>预算：12万</p>"
@@ -888,7 +943,9 @@
                         </td>
                         <td>
                             推荐报价：2546.00￥
-                            <button class="btn-link order-button-style" data-custom="dialog" data-action="/1231" title="2015年第十二届上海珠宝首饰展览会yy" data-mywidth="90%">查看详情</button>
+                            <button class="btn-link order-button-style" data-custom="dialog" data-action="/1231"
+                                    title="2015年第十二届上海珠宝首饰展览会yy" data-mywidth="90%">查看详情
+                            </button>
                         </td>
                         <td>张伟业
                             <p>tel:55132366</p>
