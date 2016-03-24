@@ -70,7 +70,7 @@ body {
 .menuSlide-content .divider .glyphicon{float:right;}
 .menuSlide-content .nav-pills a{color:#fff;}
 .menuSlide-content .nav-pills a .glyphicon{padding-right:5px;}
-.menuSlide-content .nav-pills >li a:hover,.menuSlide-content .nav-pills >li a:focus{background-color:#C74B00;color:#fff;}
+.menuSlide-content .nav-pills >li a:hover,.menuSlide-content .nav-pills >li a:focus{background-color:#4D5A69;color:#fff;}
 /*主内容*/
 .manage-content{position: absolute;overflow:hidden;
     overflow-y: auto;
@@ -215,3 +215,42 @@ body {
     margin-bottom: -5px;}
 .table-data .yijiaUi span{color:#fff;border:1px solid #fff;}
 .table-data tr.checked .yijiaUi{background-color:#FF6A00;}
+
+
+/*参展商manage Ui*/
+.shang-order-item{}
+.shang-order-item p{white-space: nowrap;overflow:hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;}
+.shang-order-item small{color:#8393A9;display:block;margin-bottom:3px;white-space: nowrap;overflow:hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;}
+.shang-order-add a{background-color:#606F84;}
+.shang-order-add p{margin:0; padding: 10px; border: 1px solid #A6ADB4;opacity: .5;}
+.shang-order-add span{height:70px;width:100%;margin:0;background:url(../img/addorder.png) no-repeat center 0;display:block;}
+.shang-order-add a:hover p{border-color:#2D354E;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+    -webkit-box-shadow: 0 0 2px #A6ADB4;
+    -moz-box-shadow: 0 0 2px #A6ADB4;
+    box-shadow: 0 0 2px #A6ADB4;}
+.shang-order-add a:hover span{ background-position: center -70px;}
+.noDate{text-align: center;opacity: .5;
+    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);}
+.noDate img{margin-bottom:1em;width:3em;height:3em;}
+
+/*load样式 全局*/
+.manage-loading{top:-50px;color:#fff;
+    position: absolute;
+    width: 500px;
+    height: 50px;line-height:50px;
+    z-index: 3000;
+    left: 50%;
+    margin-left: -250px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    text-align: center;}
+.manage-loading .loadLabel{margin:0;}
+.manage-loading.load-success{background: #3c763d;color:#CFF3D0;}

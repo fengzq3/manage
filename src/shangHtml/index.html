@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1"/>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <script src="../js/jquery-1.11.3.min.js"></script>
+    <script src="../js/bootstrap.js"></script>
+
+    <link rel="stylesheet" href="../css/manage.css">
+    <script src="../js/customDialog.js"></script>
+    <script src="../js/manage.js"></script>
+    <title>后台管理系统</title>
+</head>
+<body>
+<header class="manage-header">
+    <nav role="navigation" class="navbar navbar-manage navbar-fixed-top">
+        <div class="navbar-header">
+            <a href="/" class="navbar-brand"><img src="../img/managelogo.jpg" alt="一路展"></a>
+        </div>
+        <div class="navbar-body">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">个人中心</a></li>
+                <li><a href="#">管理首页</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <span class="glyphicon glyphicon-bell"></span>消息
+                        <small class="notice badge ">123</small>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">新消息新消息新消息111 <span class="label label-danger">紧急</span></a></li>
+                        <li><a href="#">新消息新消息新消息222</a></li>
+                        <li><a href="#">新消息新消息新消息333</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">查看更多</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span>gongchang123</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-log-out"></span>退出</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="manage-body">
+    <nav role="navigation" class="menuSlide navbar">
+        <div class="menuSlide-content">
+
+            <ul class="nav nav-pills nav-stacked">
+                <li class="divider hideSlide"><span class="badge notice pull-right">新</span><span
+                        class="glyphicon glyphicon-chevron-left"></span>个人中心
+                </li>
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span>个人信息</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-pushpin"></span>发票信息</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-tower"></span>管理人员</a></li>
+                <li class="divider"><span class="glyphicon glyphicon-cog"></span>订单管理</li>
+                <li class="shang-order-item">
+                    <a href="#" data-toggle="tooltip" title="第十二届上海珠宝首饰展览会展台海珠宝首饰展览会展台第十二届上海珠宝首饰展">
+                        <p>第十二届上海珠宝首饰展览会展台</p>
+                        <small><span class="glyphicon glyphicon-time"></span>时间：2016.03.23</small>
+                        <small><span class="glyphicon glyphicon-map-marker"></span>展位：A1235</small>
+                        <small><span class="glyphicon glyphicon-adjust"></span>面积：123㎡</small>
+                    </a>
+                </li>
+                <li class="shang-order-item">
+                    <a href="#" data-toggle="tooltip" title="第展览三界会展台第展览三界会展台第展览三界会展台">
+                        <p>第展览三界会展台</p>
+                        <small><span class="glyphicon glyphicon-time"></span>时间：2013.02.13</small>
+                        <small><span class="glyphicon glyphicon-map-marker"></span>展位：A1235</small>
+                        <small><span class="glyphicon glyphicon-adjust"></span>面积：123㎡</small>
+                    </a>
+                </li>
+                <li class="shang-order-add">
+                    <a href="../managehtml/fragment/baojia.html" data-toggle="tooltip" data-custom="dialog" title="添加订单"
+                       data-mywidth="90%"><p><span></span></p></a>
+                </li>
+                <!--<li><a href="#"><span class="glyphicon glyphicon-saved"></span>签约监督</a></li>-->
+
+            </ul>
+        </div>
+
+    </nav>
+    <div class="mynuSlide-flag">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+    </div>
+    <!--主内容-->
+    <div class="manage-content">
+        <div class="main-content1">
+            <!--<div class="alert alert-success"><a href="#" class="close" data-dismiss="alert">&times;</a>新消息消息消息消息消息消息</div>-->
+            <!--<div class="alert alert-warning"><a href="#" class="close" data-dismiss="alert">&times;</a>新消息消息消息消息消息消息</div>-->
+            <!--<div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert">&times;</a>新消息消息消息消息消息消息</div>-->
+            <div class="alert alert-info">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>2016.03.22期展台有新动态
+                <a href="#"> 立即查看》</a>
+            </div>
+        </div>
+        <div class="row main-content1">
+            <!--展商/工厂 容器-->
+            <div class="col-sm-4">
+                <div class="main-content-item">
+                    <div class="main-img">
+                        <span class="glyphicon glyphicon-flag"></span>
+                    </div>
+                    <h3><a href="#">工厂名称展商名称姓名</a> <span class="label label-info">认证</span></h3>
+                    <p>地址：工厂地址工厂地址工厂地址工厂地址</p>
+                    <p>
+                        <small>注册时间：2016.03.22</small>
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="main-content-item">
+                    <div class="main-img">
+                        <span class="glyphicon glyphicon-envelope"></span>
+                    </div>
+                    <div class="main-img-right">
+
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <!--内容头部结束-->
+        <div class="main-content1">
+            <div class="panel manage-panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">近期订单 <span class="badge">12355</span></h3>
+                </div>
+                <div class="panel-body">
+                    <!--订单区-->
+
+
+                    <!--订单区 END-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
