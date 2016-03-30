@@ -12,17 +12,28 @@ $(function () {
         loading = $('.manage-loading');
     }
     //隐藏load信息
-    function hideLoad() {
-        loading.animate({top:'-50px'},300);
+    function hideLoad(grade) {
+        loading.animate({top: 0}, 300, function () {
+            loading.removeClass(grade);
+        });
     }
 
-    //显示load信息
+
+    /**
+     * 显示load信息
+     * @param mesage    提示信息
+     * @param grade     信息级别，传入一个class来决定load颜色（默认无色）
+     * @param time      显示持续时间
+     */
+
     function showLoad(mesage, grade, time) {
         loading.addClass(grade).find('.loadLabel').html(mesage);
-        loading.animate({top:0},300);
+        loading.animate({top: '50px'}, 300);
         console.log('load time:' + time);
         if (typeof time !== 'undefined') {
-            setTimeout(hideLoad, time);
+            setTimeout(function () {
+                hideLoad(grade);
+            }, time);
         }
     }
 
@@ -42,22 +53,26 @@ $(function () {
 
     //处理侧边slide显示隐藏
     var hideSlide = $('.hideSlide'), munuSlide = $('.menuSlide'), mynuSlideFlag = $('.mynuSlide-flag'), manageContent = $('.manage-content');
-    hideSlide.on('click', function () {
+    hideSlide.on('click', hideSlideFun);
+    mynuSlideFlag.on('click', showSlideFun);
+
+    function hideSlideFun() {
         manageContent.css('left', 0);
         munuSlide.animate({
             'left': '-180px'
         }, 100, function () {
             mynuSlideFlag.css('left', 0);
         });
-    });
-    mynuSlideFlag.on('click', function () {
+    }
+
+    function showSlideFun() {
         manageContent.css('left', '180px');
         mynuSlideFlag.animate({
             'left': '-3em'
         }, 100, function () {
             munuSlide.css('left', 0);
         });
-    });
+    }
 
     //设计稿隐藏显示
     /**
@@ -136,36 +151,116 @@ $(function () {
     if (dialogFlag.length !== 0) {
 
         //初始化dialog
-        dialogFram('manageDialog','dialog');
+        customDialog.dialogFram('manageDialog', 'dialog');
         //绑定事件
         dialogFlag.on('click', function (e) {
             e.stopPropagation();
             e.preventDefault();
-            setDialog(this, 'manageDialog');
+            customDialog.setDialog(this, 'manageDialog');
 
         });
 
     }
     //全局confirm
-    var confirmFlag = $('[data-custom="confirm"]');
-    if(confirmFlag.length !== 0){
+    var confirmFlag = $('[data-custom="confirm"]'), thisConfirmOkUrl;
+    if (confirmFlag.length !== 0) {
         //初始化一个confirm
-        dialogFram('manageConfirm','confirm');
+        customDialog.dialogFram('manageConfirm', 'confirm');
         //绑定confirm显示事件
         confirmFlag.on('click', function (e) {
             e.stopPropagation();
             e.preventDefault();
-            setDialog(this,'manageConfirm');
+            customDialog.setDialog(this, 'manageConfirm');
+            thisConfirmOkUrl = $(this).attr('href');
         });
         //绑定点击确认事件
         var manageConfirm = $('#manageConfirm');
-        $('#confirmOk').on('click', function () {
-            console.log('确认弹窗');
-            //TODO 确认后操作
+        manageConfirm.find('#confirmOk').on('click', function () {
+
+            //确认后操作
+            confirmOkFun();
+
             manageConfirm.modal('hide');
+
         });
     }
 
+    //confirm 回调函数
+    function confirmOkFun() {
+        console.log('确认定稿');
+        console.log(thisConfirmOkUrl);
+        $.get(thisConfirmOkUrl).done(function (data) {
+            console.log(data);
+            try {
+                data = $.parseJSON(data);
+            } catch (e) {}
+            //显示信息
+
+            if(data.error === 0){
+                console.log('成功定稿');
+                showLoad(data.message,'load-success','2500');
+
+
+            }else{
+                console.log('定稿出错');
+                showLoad(data.message,'load-warning','2500');
+            }
+        });
+    }
+
+    //全局slidePanel 设置
+    var slidePanel = $('[data-custom="slidePanel"]');
+    console.log(slidePanel);
+    if(slidePanel.length !== 0){
+        //初始化slidePanel
+        customDialog.slidePanelFarm('manageSlidePanel');
+    }
+    /**
+     * 设计稿/报价 详情页面回调事件处理
+     * @param status    状态标记：返回success为成功，返回fail为失败
+     * @param data      返回的数据
+     */
+    //绑定设计师订单的 slidePanel 显示事件
+    $('#designerWorks').find(slidePanel).on('click', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        customDialog.setSlidePanel(this,'manageSlidePanel',setOfferEvent);
+    });
+    function setOfferEvent(status,data){
+        console.log('offer：'+status);
+        //报价栏声明
+        var offerPic = $('.order-offer-pic');
+        var offerDetail = $('.order-offer-detail');
+
+        //开始绑定报价列表事件
+        var orderOfferList = $('.order-offer-list');
+        orderOfferList.off('click').on('click','a', function (e) {
+            e.stopPropagation();
+            e.preventDefault();
+            var thisTarget = $(e.target);
+            console.log(thisTarget.attr('href'));
+
+            //处理数据并动态调整大小
+            offerPic.width('30%');
+            offerDetail.width('40%');
+
+        });
+    }
+
+    //slideMenu 中的 slidePanel 事件
+    $('.menuSlide-content').find(slidePanel).on('click', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        customDialog.setSlidePanel(this,'manageSlidePanel',setSlideMenu);
+    });
+    function setSlideMenu(status,data){
+        console.log('slideMenu：'+status);
+    }
+
+    //签单后，施工流程自适应宽度
+    var flowPanel = $('[data-custom="width"]'), flowItems = flowPanel.find('.flow-progress-item'), itemWidth = Math.floor(flowPanel.width() / flowItems.length);
+    console.log(flowPanel.width() + ' | ' + flowItems.length);
+    flowItems.width(itemWidth);
 
 
 //报价列表
