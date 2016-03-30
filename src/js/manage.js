@@ -37,7 +37,6 @@ $(function () {
         }
     }
 
-
     //处理提示工具
     var popoverElements = $('[data-toggle="popover"]');
     $('[data-toggle="tooltip"]').tooltip();
@@ -74,7 +73,7 @@ $(function () {
         });
     }
 
-    //设计稿隐藏显示
+    //设计稿隐藏显示：用于主manageHtml 的列表
     /**
      * 每个订单tr上必须标有：data-orderid=订单id，设计稿tr上必须有对应的orderid 类
      * @type {*|jQuery|HTMLElement}
@@ -221,8 +220,9 @@ $(function () {
      * @param status    状态标记：返回success为成功，返回fail为失败
      * @param data      返回的数据
      */
-        //绑定设计师订单的 slidePanel 显示事件
-    $('#designerWorks').find(slidePanel).on('click', function (e) {
+    //绑定设计师订单的 slidePanel 显示事件
+    var designerWorks = $('#designerWorks');
+    designerWorks.find(slidePanel).on('click', function (e) {
         e.stopPropagation();
         e.preventDefault();
         customDialog.setSlidePanel(this, 'manageSlidePanel', setOfferEvent);
@@ -266,7 +266,7 @@ $(function () {
         //panel内detail 设置
         function setOfferDetail(data) {
             //获取成功，处理数据
-            var detailData = data,timer;
+            var detailData = data, timer;
             offerDetail.html(detailData);
             //绑定 关闭/确认定稿 事件
             var offerPanelClose = offerDetail.find('#offerPanelClose');
@@ -377,6 +377,14 @@ $(function () {
     var flowPanel = $('[data-custom="width"]'), flowItems = flowPanel.find('.flow-progress-item'), itemWidth = Math.floor(flowPanel.width() / flowItems.length);
     console.log(flowPanel.width() + ' | ' + flowItems.length);
     flowItems.width(itemWidth);
+
+    //带价选稿部分：设计师列表
+    var designerWorksContent = designerWorks.find('.panel-body');
+    designerWorks.find('.designer-list-item').on('click', function () {
+        var designerid = $(this).data('designerid');
+        console.log(designerid);
+        //TODO 设计师列表
+    });
 
 
 //报价列表

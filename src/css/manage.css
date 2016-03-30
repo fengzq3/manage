@@ -271,8 +271,10 @@ body {
 .manage-order-panel1 .panel-body p{line-height: 2em; margin-bottom: -1px; padding: 5px 15px;border-bottom:1px solid #EAEDF1;overflow: hidden;}
 .manage-order-panel1 .panel-body p .glyphicon{padding-right:6px;}
 .manage-order-panel2{}
-.manage-order-panel2>.panel-heading{border-bottom:5px solid #FDF2CB;padding:10px 5px;}
+.manage-order-panel2.now>.panel-heading{border-color:#FDF2CB;}
+.manage-order-panel2>.panel-heading{border-bottom:5px solid #E4E4E4;padding:10px 5px;}
 .manage-order-panel2>.panel-body{padding:15px 0;}
+.manage-order-panel2.over>.panel-body{display:none;}
 .manage-order-panel2>.panel-body.row{margin-left:0;}
 
 .manageStep{padding:0;overflow:hidden;}
@@ -299,6 +301,14 @@ body {
 .manageStep-item.pass:after{border-color:#5BC0DE;}
 .order-panel-des{padding: 15px; margin: -15px 0 15px; list-style:none; background-color: #F9F9F9;overflow:hidden;}
 .order-panel-des li{padding:5px;color:#BFBFBF;}
+
+/*订单设计师、设计稿列表*/
+.designer-list-item{padding: 3px 8px;
+    background-color: #E3F9FF;
+    border: 1px solid #5BC0DE;
+    margin: 0 3px;}
+.designer-list-item.active,.designer-list-item:hover{background-color:#5BC0DE;color:#fff;cursor: pointer;}
+
 .works-list{display: block;
     margin-bottom: 20px;
     line-height: 1.42857143;
@@ -367,7 +377,7 @@ body {
 .flow-progress-item.active .badge,.flow-progress-item:hover .badge{background-color:#ff6e17;}
 .flow-progress-item.active:before,.flow-progress-item:hover:before{background-color:#ff6e17;}
 
-/*slidePanel 侧边*/
+/*slidePanel dialog样式侧边*/
 .slidePanelBg{position:absolute;background:#000;width:100%;height:100%;top:0;left:180px;display:none;z-index: 490;opacity:.3;
     -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);}

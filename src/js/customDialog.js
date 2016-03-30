@@ -76,7 +76,7 @@
                     url: action,
                     type: 'get',
                     cache: false
-                }).done(setDialogBody);
+                }).done(setDialogBody).fail(setDialogError);
 
             } else {
                 //confirm 弹框处理
@@ -89,6 +89,9 @@
                 //console.log(data);
                 dialog.find('.modal-body').html(data);
                 //d.resolve(dialog);
+            }
+            function setDialogError(e){
+                dialog.find('.modal-body').html('<div class=\"noDate\"><img src=\"../img/error.png\" /><p>数据载入错误，请重试！</p></div>');
             }
 
             //return d.promise();
