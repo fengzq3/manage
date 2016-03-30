@@ -313,7 +313,7 @@ body {
 .works-list-designer img{width:80px;position:absolute;bottom:0;left:10px;}
 
 .works-list-btnGroup{margin-bottom:0;overflow:hidden;border-top:1px solid #F1F1F1;}
-.works-list-btnGroup .btn{width:33.33%;text-align:center;float:left;padding:10px 0;
+.works-list-btnGroup .btn{width:50%;text-align:center;float:left;padding:10px 0;
     -webkit-border-radius:0;
     -moz-border-radius:0;
     border-radius:0;}
@@ -384,8 +384,14 @@ body {
     bottom: 0;
     overflow: hidden;
     overflow-y: auto;}
+.slidePanel .noDate{position:absolute;top:40%;width:100%;margin-top:-45px;}
+.slidePanel .noDate .noData-inner{    display: inline-block;
+    width: 140px;
+    padding: 20px;
+    background-color: #ccc;
+    border-radius: 4px;}
 
-/*baojia fragment 报价页面样式*/
+/*baojia.html fragment 订单详情页面样式*/
 .order-offer{position:absolute;left:0;right:0;top:0;bottom:0;}
 .order-offer-pic{overflow:hidden;overflow-y:auto;height:100%;width:70%;}
 .order-offer-pic img{width:100%;}
@@ -397,9 +403,21 @@ body {
 .order-offer-list{margin-left:-1px;margin-right:-1px;margin-bottom:0;}
 .order-offer-list .list-group-item{padding:0;}
 .order-offer-list .list-group-item.active{background-color:#F1F5FD;border-color:#CCD7EF;color:#333;padding:10px 15px;}
-.order-offer-list .list-group-item a{display:block;color:#7D7D7D;padding:10px 15px;}
-.order-offer-list .list-group-item a:hover{background-color: #e1ffff;color:#333;text-decoration: none;}
-.order-offer-detail{width:0;overflow:hidden;overflow-y:auto;height:100%;}
+.order-offer-list .list-group-item a{display:block;color:#7D7D7D;padding:10px 15px;white-space: nowrap;overflow:hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;}
+.order-offer-list .list-group-item a:hover,.order-offer-list .list-group-item a:focus,.order-offer-list .list-group-item a.on{background-color: #e1ffff;color:#333;text-decoration: none;}
+.order-offer-detail{width:0;overflow:hidden;overflow-y:auto;height:100%;position:relative;}
+
+/*baojiaDetail.html 报价详情页样式*/
+.offer-detail-panel{border:0;}
+.offer-detail-panel .panel-heading{background-color:#fff;border-color:#F1F5FD;}
+.offer-detail-panel .panel-body{padding:0;}
+.offer-detail-panel .panel-body .alert{margin:15px;}
+.offer-group{padding:0;list-style:none;}
+.offer-group li{padding:10px 15px;border-bottom:1px solid #F1F5FD;}
+.offer-panel-footer{padding:0 10px;margin-bottom:20px;}
+.offer-panel-footer .btn{margin:0 5px;}
 
 /*gallery 样式*/
 .lg-actions .lg-next, .lg-actions .lg-prev, .lg-sub-html, .lg-toolbar {

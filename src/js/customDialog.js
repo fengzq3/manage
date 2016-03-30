@@ -141,7 +141,7 @@
             }
             //获取失败回调
             function setSlideFail(data) {
-                slidePanel.find('.panel-body').html('<div class=\"noDate\"><p>数据载入失败，请重试！</p></div>');
+                slidePanel.find('.panel-body').html('<div class=\"noDate\"><img src=\"../img/error.png\" /><p>数据载入失败，请重试！</p></div>');
                 if (typeof callBack === 'function') {
                     callBack = callBack('fail',data);
                 }
@@ -165,6 +165,7 @@
             var slidePanel = $('#' + id);
             slidePanelBg.hide();
             slidePanel.css({right: '-100%'});
+            slidePanel.find('.panel-body').empty();
         }
 
     };

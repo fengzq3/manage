@@ -21,13 +21,13 @@ $(function () {
 
     /**
      * 显示load信息
-     * @param mesage    提示信息
+     * @param message    提示信息
      * @param grade     信息级别，传入一个class来决定load颜色（默认无色）
      * @param time      显示持续时间
      */
 
-    function showLoad(mesage, grade, time) {
-        loading.addClass(grade).find('.loadLabel').html(mesage);
+    function showLoad(message, grade, time) {
+        loading.addClass(grade).find('.loadLabel').html(message);
         loading.animate({top: '50px'}, 300);
         console.log('load time:' + time);
         if (typeof time !== 'undefined') {
@@ -193,17 +193,18 @@ $(function () {
             console.log(data);
             try {
                 data = $.parseJSON(data);
-            } catch (e) {}
+            } catch (e) {
+            }
             //显示信息
 
-            if(data.error === 0){
+            if (data.error === 0) {
                 console.log('成功定稿');
-                showLoad(data.message,'load-success','2500');
+                showLoad(data.message, 'load-success', '2500');
+                //TODO 定稿dom操作
 
-
-            }else{
+            } else {
                 console.log('定稿出错');
-                showLoad(data.message,'load-warning','2500');
+                showLoad(data.message, 'load-warning', '2500');
             }
         });
     }
@@ -211,7 +212,7 @@ $(function () {
     //全局slidePanel 设置
     var slidePanel = $('[data-custom="slidePanel"]');
     console.log(slidePanel);
-    if(slidePanel.length !== 0){
+    if (slidePanel.length !== 0) {
         //初始化slidePanel
         customDialog.slidePanelFarm('manageSlidePanel');
     }
@@ -220,41 +221,156 @@ $(function () {
      * @param status    状态标记：返回success为成功，返回fail为失败
      * @param data      返回的数据
      */
-    //绑定设计师订单的 slidePanel 显示事件
+        //绑定设计师订单的 slidePanel 显示事件
     $('#designerWorks').find(slidePanel).on('click', function (e) {
         e.stopPropagation();
         e.preventDefault();
-        customDialog.setSlidePanel(this,'manageSlidePanel',setOfferEvent);
+        customDialog.setSlidePanel(this, 'manageSlidePanel', setOfferEvent);
     });
-    function setOfferEvent(status,data){
-        console.log('offer：'+status);
+    function setOfferEvent(status, data) {
+        console.log('offer：' + status);
+        $('[data-toggle="tooltip"]').tooltip();
         //报价栏声明
         var offerPic = $('.order-offer-pic');
         var offerDetail = $('.order-offer-detail');
 
         //开始绑定报价列表事件
         var orderOfferList = $('.order-offer-list');
-        orderOfferList.off('click').on('click','a', function (e) {
+        orderOfferList.find('a').off('click').on('click', function (e) {
             e.stopPropagation();
             e.preventDefault();
-            var thisTarget = $(e.target);
-            console.log(thisTarget.attr('href'));
+            //处理工厂报价列表的两个状态
+            if (!$(this).hasClass('on')) {
+                $(this).addClass('on').parent().tooltip('hide').siblings().find('a').removeClass('on');
+                var thisTargetUrl = $(this).attr('href');
+                console.log(thisTargetUrl);
+                //处理数据并动态调整大小
+                offerPic.width('30%');
+                //显示detail面板，占位数据
+                offerDetail.width('40%').html('<div class=\"noDate\"><div class=\"noData-inner\"><img src=\"../img/listload.gif\" /><p>数据载入中...</p></div></div>');
+                //获取数据
+                $.ajax({type: 'get', url: thisTargetUrl})
+                    .then(setOfferDetail, function (e) {
+                        //获取失败，处理
+                        offerDetail.html('<div class=\"noDate\"><img src=\"../img/error.png\" /><p>获取数据失败，请重试！</p></div>');
+                    });
+            } else {
+                $(this).removeClass('on').parent().tooltip('hide');
+                offerPic.width('70%');
+                offerDetail.width(0).empty();
+            }
 
-            //处理数据并动态调整大小
-            offerPic.width('30%');
-            offerDetail.width('40%');
 
         });
+
+        //panel内detail 设置
+        function setOfferDetail(data) {
+            //获取成功，处理数据
+            var detailData = data,timer;
+            offerDetail.html(detailData);
+            //绑定 关闭/确认定稿 事件
+            var offerPanelClose = offerDetail.find('#offerPanelClose');
+            var offerPanelConfirm = offerDetail.find('#offerPanelConfirm');
+            var offerPanelTwice = offerDetail.find('#offerPanelTwice');
+            //关闭
+            offerPanelClose.on('click', function () {
+                orderOfferList.find('.on').removeClass('on');
+                offerDetail.width(0).empty();
+                offerPic.width('70%');
+            });
+            //确认定稿
+            offerPanelConfirm.on('click', function (e) {
+                e.stopPropagation();
+                e.preventDefault();
+                var thisUrl = $(this).attr('href');
+                offerDetail.append('<div class=\"noDate\"><div class=\"noData-inner\"><img src=\"../img/listload.gif\" /><p>提交中...</p></div></div>');
+                //处理url
+                $.ajax({type: 'get', url: thisUrl})
+                    .then(function (data) {
+                        try {
+                            data = $.parseJSON(data);
+                        } catch (e) {
+                        }
+
+                        if (data.error === 0) {
+                            //返回成功
+                            showLoad(data.message, 'load-success', 2500);
+                            offerDetail.find('.noDate').html('<div class=\"noData-inner\"><img src=\"../img/success.png\" /><p>' + data.message + '</p></div>');
+                            timer = setTimeout(function () {
+                                //方法迭代设置
+                                setOfferDetail(detailData);
+                            }, 1000);
+
+                        } else {
+                            //返回失败
+                            showLoad(data.message, 'load-warning', 2500);
+                            offerDetail.find('.noDate').html('<div class=\"noData-inner\"><img src=\"../img/error.png\" /><p>' + data.message + '</p></div>');
+                            timer = setTimeout(function () {
+                                //定稿失败
+                                offerDetail.find('.noDate').remove();
+                            }, 1000);
+
+                        }
+                    }, function (e) {
+                        showLoad('网络异常', 'load-warning', 2500);
+                    });
+            });
+            //二次报价
+            offerPanelTwice.on('click', function (e) {
+                e.stopPropagation();
+                e.preventDefault();
+                var thisUrl = $(this).attr('href');
+                offerDetail.append('<div class=\"noDate\"><div class=\"noData-inner\"><img src=\"../img/listload.gif\" /><p>提交中...</p></div></div>');
+                $.ajax({type: 'get', url: thisUrl})
+                    .then(function (data) {
+                        try {
+                            data = $.parseJSON(data);
+                        } catch (e) {
+                        }
+
+                        if (data.error === 0) {
+                            //返回成功
+                            showLoad(data.message, 'load-success', 2500);
+                            //提交二次报价成功后操作
+                            offerDetail.find('.noDate').html('<div class=\"noData-inner\"><img src=\"../img/success.png\" /><p>' + data.message + '</p></div>');
+                            timer = setTimeout(function () {
+                                //方法迭代设置
+                                setOfferDetail(detailData);
+                            }, 1000);
+
+                        } else {
+                            //返回失败
+                            showLoad(data.message, 'load-warning', 2500);
+                            offerDetail.find('.noDate').html('<div class=\"noData-inner\"><img src=\"../img/error.png\" /><p>' + data.message + '</p></div>');
+                            timer = setTimeout(function () {
+                                //二次报价错误
+                                offerDetail.find('.noDate').remove();
+                            }, 1000);
+                        }
+                    }, function (e) {
+                        showLoad('网络异常', 'load-warning', 2500);
+                    });
+            });
+
+        }
+
+        //panel内定detail设置 END
+
+    }
+
+    //定稿成功后的操作
+    function chooseWorkFinal() {
+
     }
 
     //slideMenu 中的 slidePanel 事件
     $('.menuSlide-content').find(slidePanel).on('click', function (e) {
         e.stopPropagation();
         e.preventDefault();
-        customDialog.setSlidePanel(this,'manageSlidePanel',setSlideMenu);
+        customDialog.setSlidePanel(this, 'manageSlidePanel', setSlideMenu);
     });
-    function setSlideMenu(status,data){
-        console.log('slideMenu：'+status);
+    function setSlideMenu(status, data) {
+        console.log('slideMenu：' + status);
     }
 
     //签单后，施工流程自适应宽度
