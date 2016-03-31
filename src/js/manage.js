@@ -4,6 +4,15 @@
 $(function () {
     "use strict";
 
+    //设置全局变量
+    var timer;
+    var designerWorks = $('#designerWorks'),orderFlow = $('#orderFlow');
+    //施工流程自适应宽度
+    setOrderProgress();
+    function setOrderProgress(){
+        var flowPanel = $('[data-custom="width"]'), flowItems = flowPanel.find('.flow-progress-item'), itemWidth = Math.floor(flowPanel.width() / flowItems.length);
+        flowItems.width(itemWidth);
+    }
     //定义全局load信息
     //初始化一个load容器
     var loadContent = '<div class=\"manage-loading\"><p class=\"loadLabel\"></p></div>', loading = $('.manage-loading');
@@ -200,7 +209,7 @@ $(function () {
                 console.log('成功定稿');
                 showLoad(data.message, 'load-success', '2500');
                 //TODO 定稿dom操作
-
+                chooseWorkFinal();
             } else {
                 console.log('定稿出错');
                 showLoad(data.message, 'load-warning', '2500');
@@ -221,7 +230,6 @@ $(function () {
      * @param data      返回的数据
      */
     //绑定设计师订单的 slidePanel 显示事件
-    var designerWorks = $('#designerWorks');
     designerWorks.find(slidePanel).on('click', function (e) {
         e.stopPropagation();
         e.preventDefault();
@@ -266,7 +274,7 @@ $(function () {
         //panel内detail 设置
         function setOfferDetail(data) {
             //获取成功，处理数据
-            var detailData = data, timer;
+            var detailData = data;
             offerDetail.html(detailData);
             //绑定 关闭/确认定稿 事件
             var offerPanelClose = offerDetail.find('#offerPanelClose');
@@ -296,6 +304,9 @@ $(function () {
                             //返回成功
                             showLoad(data.message, 'load-success', 2500);
                             offerDetail.find('.noDate').html('<div class=\"noData-inner\"><img src=\"../img/success.png\" /><p>' + data.message + '</p></div>');
+                            if (typeof timer !== 'undefined') {
+                                clearTimeout(timer);
+                            }
                             timer = setTimeout(function () {
                                 //方法迭代设置
                                 setOfferDetail(detailData);
@@ -305,6 +316,9 @@ $(function () {
                             //返回失败
                             showLoad(data.message, 'load-warning', 2500);
                             offerDetail.find('.noDate').html('<div class=\"noData-inner\"><img src=\"../img/error.png\" /><p>' + data.message + '</p></div>');
+                            if (typeof timer !== 'undefined') {
+                                clearTimeout(timer);
+                            }
                             timer = setTimeout(function () {
                                 //定稿失败
                                 offerDetail.find('.noDate').remove();
@@ -333,6 +347,9 @@ $(function () {
                             showLoad(data.message, 'load-success', 2500);
                             //提交二次报价成功后操作
                             offerDetail.find('.noDate').html('<div class=\"noData-inner\"><img src=\"../img/success.png\" /><p>' + data.message + '</p></div>');
+                            if (typeof timer !== 'undefined') {
+                                clearTimeout(timer);
+                            }
                             timer = setTimeout(function () {
                                 //方法迭代设置
                                 setOfferDetail(detailData);
@@ -342,6 +359,9 @@ $(function () {
                             //返回失败
                             showLoad(data.message, 'load-warning', 2500);
                             offerDetail.find('.noDate').html('<div class=\"noData-inner\"><img src=\"../img/error.png\" /><p>' + data.message + '</p></div>');
+                            if (typeof timer !== 'undefined') {
+                                clearTimeout(timer);
+                            }
                             timer = setTimeout(function () {
                                 //二次报价错误
                                 offerDetail.find('.noDate').remove();
@@ -358,9 +378,54 @@ $(function () {
 
     }
 
-    //定稿成功后的操作
-    function chooseWorkFinal() {
+    //定稿成功后的操作 设计师区域
 
+    function chooseWorkFinal() {
+        var designerWorksContent = designerWorks.find('.panel-body'),chooseWorkFinalUrl = designerWorks.data('workfinalurl');
+        //操作设计师设计稿区域
+        designerWorks.removeClass('now');
+        designerWorksContent.html('<div class=\"noDate\"><img src=\"../img/listload.gif\" /><p>定稿中...</p></div>');
+        $.ajax({type:'get',url:chooseWorkFinalUrl})
+            .then(function (data) {
+                //定稿成功后获取定稿数据，并载入
+                designerWorksContent.html(data);
+                //绑定查看详情事件
+                $('.media-orderFinal').children('a').on('click', function (e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    customDialog.setSlidePanel(this, 'manageSlidePanel', setOfferEvent);
+                });
+            }, function (e) {
+                designerWorksContent.html('<div class=\"noDate\"><img src=\"../img/error.png\" /><p>拉取数据失败，刷新重试！</p></div>');
+            });
+        //设计稿区 END
+        //签单流程区开始
+        orderFlow.addClass('now');
+        getOrderFlow();
+
+    }
+    //TODO 签单数据 h5消息提示获取更新
+    //签单区数据获取
+    function getOrderFlow(){
+        var orderFlowUrl = orderFlow.data('workfinalurl');
+        orderFlow.html('<div class=\"noDate\"><img src=\"../img/listload.gif\" /><p>载入中...</p></div>');
+        $.ajax({type:'get',url:orderFlowUrl})
+            .then(function (data) {
+                orderFlow.html(data);
+                //设置flowProgress宽度
+                setOrderProgress();
+                //设置slidePanel响应事件
+                $('.order-flow-list-item').find('[data-custom="slidePanel"]').on('click', function (e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    customDialog.setSlidePanel(this, 'manageSlidePanel', function (status,data) {
+                        console.log('order-flow-list-item：' + status);
+                    });
+                });
+
+            }, function (e) {
+                orderFlow.addClass('now').html('<div class=\"noDate\"><img src=\"../img/error.png\" /><p>拉取开工信息失败，刷新重试！</p></div>');
+            });
     }
 
     //slideMenu 中的 slidePanel 事件
@@ -373,18 +438,6 @@ $(function () {
         console.log('slideMenu：' + status);
     }
 
-    //签单后，施工流程自适应宽度
-    var flowPanel = $('[data-custom="width"]'), flowItems = flowPanel.find('.flow-progress-item'), itemWidth = Math.floor(flowPanel.width() / flowItems.length);
-    console.log(flowPanel.width() + ' | ' + flowItems.length);
-    flowItems.width(itemWidth);
-
-    //带价选稿部分：设计师列表
-    var designerWorksContent = designerWorks.find('.panel-body');
-    designerWorks.find('.designer-list-item').on('click', function () {
-        var designerid = $(this).data('designerid');
-        console.log(designerid);
-        //TODO 设计师列表
-    });
 
 
 //报价列表

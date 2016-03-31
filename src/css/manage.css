@@ -272,9 +272,10 @@ body {
 .manage-order-panel1 .panel-body p .glyphicon{padding-right:6px;}
 .manage-order-panel2{}
 .manage-order-panel2.now>.panel-heading{border-color:#FDF2CB;}
+.manage-order-panel2.now>.panel-heading .badge{background-color:#ED7117;}
+
 .manage-order-panel2>.panel-heading{border-bottom:5px solid #E4E4E4;padding:10px 5px;}
 .manage-order-panel2>.panel-body{padding:15px 0;}
-.manage-order-panel2.over>.panel-body{display:none;}
 .manage-order-panel2>.panel-body.row{margin-left:0;}
 
 .manageStep{padding:0;overflow:hidden;}
@@ -303,12 +304,6 @@ body {
 .order-panel-des li{padding:5px;color:#BFBFBF;}
 
 /*订单设计师、设计稿列表*/
-.designer-list-item{padding: 3px 8px;
-    background-color: #E3F9FF;
-    border: 1px solid #5BC0DE;
-    margin: 0 3px;}
-.designer-list-item.active,.designer-list-item:hover{background-color:#5BC0DE;color:#fff;cursor: pointer;}
-
 .works-list{display: block;
     margin-bottom: 20px;
     line-height: 1.42857143;
@@ -338,7 +333,7 @@ body {
 .works-list.active .works-list-btn2:hover,.works-list:hover .works-list-btn2:hover{background-color:#2A748A;color:#fff;}
 
 .order-flow-list{list-style: none;padding-left:30px;}
-.order-flow-list li{padding:10px 20px;border-left: 2px solid #ccc;position:relative;}
+.order-flow-list li{padding:10px 0 10px 20px;border-left: 2px solid #ccc;position:relative;}
 .order-flow-list li.active{border-left: 2px solid #ff6e17;}
 .order-flow-list-time{border-left:0 !important;padding:10px 0 !important;margin-left:-20px;}
 .order-flow-list-time:before{display:none;}
@@ -366,6 +361,9 @@ body {
     box-shadow: 0 0 0 3px #FFE8DB;}
 .order-flow-list li.active .order-flow-list-item{background-color: #FFFCFA;border-color:#ff6e17;}
 .order-flow-list li.active .order-flow-list-item:before{border-right-color:#ff6e17;}
+/*orderWorks.html 定稿后样式*/
+.media-orderFinal{margin-right:15px;}
+.media-orderFinal>a img{width:250px;height:150px;}
 
 /*开工进度条*/
 .flow-progress{}
@@ -394,6 +392,7 @@ body {
     bottom: 0;
     overflow: hidden;
     overflow-y: auto;}
+.slidePanel .panel-body img{max-width:100%;}
 .slidePanel .noDate{position:absolute;top:40%;width:100%;margin-top:-45px;}
 .slidePanel .noDate .noData-inner{    display: inline-block;
     width: 140px;
