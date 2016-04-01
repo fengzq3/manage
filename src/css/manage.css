@@ -1295,3 +1295,21 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     transition: left 1s cubic-bezier(0, 0, .25, 1) 0s, opacity .1s ease 0s
 }
 /*gallery 样式 END*/
+
+/*个人信息/发票信息/管理人员 等slidePanel 嵌入form*/
+.manage-info{margin:-15px -15px 0;}
+.manage-form{overflow:hidden;margin:0 -15px -15px;background-color:#F9FAFC;}
+.manage-form-item{overflow: hidden;padding: 10px 15px;border-top: 1px solid #EAEAEA;}
+.manage-form-item .col-sm-3,.manage-form-item .col-sm-9{padding-left:0;padding-right:0;}
+.manage-form-item .manage-form-label{width:100px;float:left;}
+.manage-form-item .manage-form-input{width:250px;float:left;}
+.manage-form-item .manage-form-select{width:250px;float:left;}
+.manage-form-item .manage-form-select{width:250px;float:left;}
+.manage-form-item .manage-form-textarea{width:450px;float:left;}
+.manage-form-item .input-help-block{padding-left:360px;}
+.manage-form-item .help-block.error{color: #e70002;}
+.manage-form-item .help-block.success{color: #15b555;}
+.manage-form-item .help-block .glyphicon{padding-right:10px;}
+.manage-form-item .textarea-help-block{padding-left:100px;}
+.manage-form-select .province{width:120px;margin-right:10px;float:left;}
+.manage-form-select .city{width:120px;float:left;}

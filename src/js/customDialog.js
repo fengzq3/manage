@@ -3,6 +3,7 @@
  * <a href="#" data-custom="confirm" title="确认删除信息" data-confirm-content="确定需要删除吗？" data-mywidth="400px">测试confirm</a>
  * @param id 初始化弹窗并设置一个id
  * @param type 弹窗样式：dialog 或 confirm
+ * dialog callback回调函数，传回两个参数：第一个为状态status，第二个为data为ajax请求返回的数据，第三个obj（调用setSlidePanel方法的this对象）
  */
 
 (function ($, document) {
@@ -90,7 +91,8 @@
                 dialog.find('.modal-body').html(data);
                 //d.resolve(dialog);
             }
-            function setDialogError(e){
+
+            function setDialogError(e) {
                 dialog.find('.modal-body').html('<div class=\"noDate\"><img src=\"../img/error.png\" /><p>数据载入错误，请重试！</p></div>');
             }
 
@@ -139,14 +141,15 @@
                 console.log('插入slideBody');
                 slidePanel.find('.panel-body').html(data);
                 if (typeof callBack === 'function') {
-                    callBack = callBack('success',data);
+                    callBack = callBack('success', data);
                 }
             }
+
             //获取失败回调
             function setSlideFail(data) {
                 slidePanel.find('.panel-body').html('<div class=\"noDate\"><img src=\"../img/error.png\" /><p>数据载入失败，请重试！</p></div>');
                 if (typeof callBack === 'function') {
-                    callBack = callBack('fail',data);
+                    callBack = callBack('fail', data);
                 }
             }
 

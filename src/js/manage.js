@@ -6,13 +6,14 @@ $(function () {
 
     //设置全局变量
     var timer;
-    var designerWorks = $('#designerWorks'),orderFlow = $('#orderFlow');
+    var designerWorks = $('#designerWorks'), orderFlow = $('#orderFlow');
     //施工流程自适应宽度
     setOrderProgress();
-    function setOrderProgress(){
+    function setOrderProgress() {
         var flowPanel = $('[data-custom="width"]'), flowItems = flowPanel.find('.flow-progress-item'), itemWidth = Math.floor(flowPanel.width() / flowItems.length);
         flowItems.width(itemWidth);
     }
+
     //定义全局load信息
     //初始化一个load容器
     var loadContent = '<div class=\"manage-loading\"><p class=\"loadLabel\"></p></div>', loading = $('.manage-loading');
@@ -208,7 +209,7 @@ $(function () {
             if (data.error === 0) {
                 console.log('成功定稿');
                 showLoad(data.message, 'load-success', '2500');
-                //TODO 定稿dom操作
+                //定稿dom操作
                 chooseWorkFinal();
             } else {
                 console.log('定稿出错');
@@ -229,7 +230,7 @@ $(function () {
      * @param status    状态标记：返回success为成功，返回fail为失败
      * @param data      返回的数据
      */
-    //绑定设计师订单的 slidePanel 显示事件
+        //绑定设计师订单的 slidePanel 显示事件
     designerWorks.find(slidePanel).on('click', function (e) {
         e.stopPropagation();
         e.preventDefault();
@@ -309,7 +310,9 @@ $(function () {
                             }
                             timer = setTimeout(function () {
                                 //方法迭代设置
-                                setOfferDetail(detailData);
+                                //setOfferDetail(detailData);
+                                customDialog.slidePanelHide('manageSlidePanel');
+                                chooseWorkFinal();
                             }, 1000);
 
                         } else {
@@ -381,11 +384,11 @@ $(function () {
     //定稿成功后的操作 设计师区域
 
     function chooseWorkFinal() {
-        var designerWorksContent = designerWorks.find('.panel-body'),chooseWorkFinalUrl = designerWorks.data('workfinalurl');
+        var designerWorksContent = designerWorks.find('.panel-body'), chooseWorkFinalUrl = designerWorks.data('workfinalurl');
         //操作设计师设计稿区域
         designerWorks.removeClass('now');
         designerWorksContent.html('<div class=\"noDate\"><img src=\"../img/listload.gif\" /><p>定稿中...</p></div>');
-        $.ajax({type:'get',url:chooseWorkFinalUrl})
+        $.ajax({type: 'get', url: chooseWorkFinalUrl})
             .then(function (data) {
                 //定稿成功后获取定稿数据，并载入
                 designerWorksContent.html(data);
@@ -404,12 +407,13 @@ $(function () {
         getOrderFlow();
 
     }
+
     //TODO 签单数据 h5消息提示获取更新
     //签单区数据获取
-    function getOrderFlow(){
+    function getOrderFlow() {
         var orderFlowUrl = orderFlow.data('workfinalurl');
         orderFlow.html('<div class=\"noDate\"><img src=\"../img/listload.gif\" /><p>载入中...</p></div>');
-        $.ajax({type:'get',url:orderFlowUrl})
+        $.ajax({type: 'get', url: orderFlowUrl})
             .then(function (data) {
                 orderFlow.html(data);
                 //设置flowProgress宽度
@@ -418,7 +422,7 @@ $(function () {
                 $('.order-flow-list-item').find('[data-custom="slidePanel"]').on('click', function (e) {
                     e.stopPropagation();
                     e.preventDefault();
-                    customDialog.setSlidePanel(this, 'manageSlidePanel', function (status,data) {
+                    customDialog.setSlidePanel(this, 'manageSlidePanel', function (status, data) {
                         console.log('order-flow-list-item：' + status);
                     });
                 });
@@ -428,16 +432,45 @@ $(function () {
             });
     }
 
-    //slideMenu 中的 slidePanel 事件
-    $('.menuSlide-content').find(slidePanel).on('click', function (e) {
+    //slideMenu 中的 slidePanel 事件(个人信息/发票信息/管理人员)
+    //个人信息
+    munuSlide.find('#slideInfomation').on('click', function (e) {
         e.stopPropagation();
         e.preventDefault();
-        customDialog.setSlidePanel(this, 'manageSlidePanel', setSlideMenu);
+        customDialog.setSlidePanel(this, 'manageSlidePanel', infoFormEvent);
     });
-    function setSlideMenu(status, data) {
-        console.log('slideMenu：' + status);
+    function infoFormEvent() {
+        var manageSlidePanelForm = $('#manageSlidePanel').find('form');
+        //绑定关闭事件
+        manageSlidePanelForm.find('#offerPanelClose').on('click', function () {
+            customDialog.slidePanelHide('manageSlidePanel');
+        });
+        //绑定focus/blur提示事件
+        var inputCon = manageSlidePanelForm.find('.manage-form-item');
+        inputCon.find('input,textarea').focus(function () {
+            $(this).parent().siblings('.help-block').removeClass('success').addClass('error').html('<span class=\"glyphicon glyphicon-warning-sign\"></span>' + $(this).attr('placeholder'));
+        }).blur(function () {
+            if ($(this).val() !== '') {
+                $(this).parent().siblings('.help-block').removeClass('error').addClass('success').html('<span class=\"glyphicon glyphicon-ok\"></span>');
+            }
+        });
+        //提交表单
+        manageSlidePanelForm.on('submit', function () {
+            //TODO 处理提交个人信息表单
+            /**
+             * 问题1：如何兼容IE，ie不支持submit事件，如何截断form表单的提交
+             */
+
+        });
+
+        //处理二级联动
     }
 
+    //二级联动方法
+    function provinceCity(){
+        //TODO 处理二级联动方法
+
+    }
 
 
 //报价列表
@@ -491,5 +524,24 @@ $(function () {
         $('.reOfferHead span').html(offerCon.children().length);
     }
 
+    //处理不支持placeholder的浏览器
+    if (!placeholderSupport()) {   // 判断浏览器是否支持 placeholder
+        $('[placeholder]').focus(function () {
+            var input = $(this);
+            if (input.val() == input.attr('placeholder')) {
+                input.val('');
+                input.removeClass('placeholder');
+            }
+        }).blur(function () {
+            var input = $(this);
+            if (input.val() == '' || input.val() == input.attr('placeholder')) {
+                input.addClass('placeholder');
+                input.val(input.attr('placeholder'));
+            }
+        }).blur();
+    }
+    function placeholderSupport() {
+        return 'placeholder' in document.createElement('input');
+    }
 
 });
