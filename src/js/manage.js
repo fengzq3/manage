@@ -455,19 +455,89 @@ $(function () {
             }
         });
         //提交表单
-        manageSlidePanelForm.on('submit', function () {
-            //TODO 处理提交个人信息表单
-            /**
-             * 问题1：如何兼容IE，ie不支持submit事件，如何截断form表单的提交
-             */
-
-        });
+        /**
+         * 问题1：如何兼容IE，ie不支持submit事件，如何截断form表单的提交
+         */
+        submitInfoForm(manageSlidePanelForm);
 
         //处理二级联动
     }
 
+    //发票信息
+    munuSlide.find('#slideInvoice').on('click', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        customDialog.setSlidePanel(this, 'manageSlidePanel', infoFormEvent);
+    });
+
+    //管理人员
+    munuSlide.find('#slideStaff').on('click', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        customDialog.setSlidePanel(this, 'manageSlidePanel', infoFormEvent);
+    });
+
+    //提交表单方法
+    function submitInfoForm(theForm) {
+        //TODO 处理提交个人信息表单
+        /**
+         * 兼容IE方案：
+         * 判断：
+         * 若IE，则表单添加onsubmit="return false;"阻断默认表单提交,然后绑定确定按钮click事件
+         * 非IE，则绑定submit事件提交
+         */
+        var actionUrl = theForm.attr('action'), data = theForm.serialize();
+        if (navigator.userAgent.indexOf('MSIE') > 0) {
+            //是IE
+            theForm.attr('onsubmit', 'return false;').find('#offerPanelSubmit').on('click', function () {
+                submitInfo();
+            });
+        } else {
+            //不是IE
+            theForm.on('submit', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                submitInfo();
+            });
+
+        }
+
+
+        //提交方法
+        function submitInfo() {
+            $.ajax({
+                type: 'post',
+                url: actionUrl,
+                data: data
+            }).then(function (data) {
+                try {
+                    data = $.parseJSON(data);
+                } catch (e) {
+                }
+                if (data.error === 0 || data.error === '0') {
+                    showLoad(data.message, 'load-success', 2500);
+                    if (typeof timer !== 'undefined') {
+                        clearTimeout(timer);
+                    }
+                    timer = setTimeout(function () {
+                        customDialog.slidePanelHide('manageSlidePanel');
+                    },2000);
+
+                } else {
+                    showLoad(data.message, 'load-warning', 2500);
+                }
+
+            }, function (e) {
+                //提交失败
+                showLoad('网络错误，请刷新重试！', 'load-warning', 2500);
+            });
+        }
+
+        //提交方法 END
+    }
+
     //二级联动方法
-    function provinceCity(){
+    function provinceCity() {
         //TODO 处理二级联动方法
 
     }
