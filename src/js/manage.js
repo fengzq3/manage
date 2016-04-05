@@ -410,6 +410,7 @@ $(function () {
 
     //TODO 签单数据 h5消息提示获取更新
     //签单区数据获取
+    setFlowPanel();
     function getOrderFlow() {
         var orderFlowUrl = orderFlow.data('workfinalurl');
         orderFlow.html('<div class=\"noDate\"><img src=\"../img/listload.gif\" /><p>载入中...</p></div>');
@@ -419,22 +420,28 @@ $(function () {
                 //设置flowProgress宽度
                 setOrderProgress();
                 //设置slidePanel响应事件
-                $('.order-flow-list-item').find('[data-custom="slidePanel"]').on('click', function (e) {
-                    e.stopPropagation();
-                    e.preventDefault();
-                    customDialog.setSlidePanel(this, 'manageSlidePanel', function (status, data) {
-                        console.log('order-flow-list-item：' + status);
-                    });
-                });
+                setFlowPanel();
 
             }, function (e) {
                 orderFlow.addClass('now').html('<div class=\"noDate\"><img src=\"../img/error.png\" /><p>拉取开工信息失败，刷新重试！</p></div>');
             });
     }
+    //设置slidePanel响应事件
+    function setFlowPanel(){
+        var orderFlowItem = $('.order-flow-list-item');
+        //初始化签单流程项目
+        orderFlowItem.find('[data-custom="slidePanel"]').on('click', function (e) {
+            e.stopPropagation();
+            e.preventDefault();
+            customDialog.setSlidePanel(this, 'manageSlidePanel', function (status, data) {
+                console.log('order-flow-list-item：' + status);
+            });
+        });
+    }
 
     //slideMenu 中的 slidePanel 事件(个人信息/发票信息/管理人员)
-    //个人信息
-    munuSlide.find('#slideInfomation').on('click', function (e) {
+    //个人信息（#slideInfomation） 发票信息（#slideInvoice） 管理人员（#slideStaff）
+    munuSlide.find('a[data-custom="slidePanel"]').on('click', function (e) {
         e.stopPropagation();
         e.preventDefault();
         customDialog.setSlidePanel(this, 'manageSlidePanel', infoFormEvent);
@@ -454,6 +461,27 @@ $(function () {
                 $(this).parent().siblings('.help-block').removeClass('error').addClass('success').html('<span class=\"glyphicon glyphicon-ok\"></span>');
             }
         });
+
+        //处理radio事件
+        var invoiceType = $('#invoiceType'),invoiceCon = $('#invoiceCon');
+        if(invoiceType.length !== 0){
+            console.log('radio');
+            invoiceType.find('input').change(function () {
+                var radioVal = invoiceType.find('input:checked').val();
+                console.log(radioVal);
+                //console.log(invoiceCon);
+                if(radioVal == 0){
+                    invoiceCon.slideUp(300);
+                }
+                if(radioVal == 1){
+                    invoiceCon.slideDown(300);
+                }
+
+            });
+        }
+
+        //TODO 处理webUploader上传
+
         //提交表单
         /**
          * 问题1：如何兼容IE，ie不支持submit事件，如何截断form表单的提交
@@ -463,23 +491,9 @@ $(function () {
         //处理二级联动
     }
 
-    //发票信息
-    munuSlide.find('#slideInvoice').on('click', function (e) {
-        e.stopPropagation();
-        e.preventDefault();
-        customDialog.setSlidePanel(this, 'manageSlidePanel', infoFormEvent);
-    });
-
-    //管理人员
-    munuSlide.find('#slideStaff').on('click', function (e) {
-        e.stopPropagation();
-        e.preventDefault();
-        customDialog.setSlidePanel(this, 'manageSlidePanel', infoFormEvent);
-    });
-
     //提交表单方法
     function submitInfoForm(theForm) {
-        //TODO 处理提交个人信息表单
+        //处理提交个人信息表单
         /**
          * 兼容IE方案：
          * 判断：

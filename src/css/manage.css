@@ -1313,3 +1313,4 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 .manage-form-item .textarea-help-block{padding-left:100px;}
 .manage-form-select .province{width:120px;margin-right:10px;float:left;}
 .manage-form-select .city{width:120px;float:left;}
+.manage-form-inner{display:none;}

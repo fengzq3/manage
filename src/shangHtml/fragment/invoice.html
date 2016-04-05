@@ -1,89 +1,61 @@
 <form class="form-horizontal manage-form" role="form" method="post" action="../testData/success">
     <div class="manage-form-item">
-        <label for="capName" class="control-label manage-form-label">公司名称：</label>
+        <label for="capName" class="control-label manage-form-label">发票抬头：</label>
         <div class="manage-form-input">
-            <input type="text" id="capName" class="form-control" placeholder="请输入公司名称" value="">
+            <input type="text" id="capName" class="form-control" placeholder="请输入发票抬头" value="">
         </div>
         <p class="help-block input-help-block"></p>
     </div>
     <div class="manage-form-item">
-        <label for="province" class="control-label manage-form-label">所属地区：</label>
-        <div class="manage-form-select" id="area">
-            <select class="form-control province" name="province" id="province">
-                <option value="1">11111</option>
-                <option value="1">11111</option>
-                <option value="1">11111</option>
-            </select>
-            <select class="form-control city" name="city" id="city">
-                <option value="1">11111</option>
-                <option value="1">11111</option>
-                <option value="1">11111</option>
-            </select>
+        <label for="invoiceType" class="control-label manage-form-label">发票类型：</label>
+        <div class="manage-form-radio" id="invoiceType">
+            <label class="checkbox-inline">
+                <input checked type="radio" name="invoiceType" id="invoiceType1" value="0">增值税普通发票
+            </label>
+            <label class="checkbox-inline">
+                <input type="radio" name="invoiceType" id="invoiceType2" value="1">增值税专用发票
+            </label>
         </div>
     </div>
-    <div class="manage-form-item">
-        <label for="capName" class="control-label manage-form-label">公司负责人：</label>
-        <div class="manage-form-input">
-            <input type="text" id="capName" class="form-control" placeholder="请输入公司负责人" value="">
+    <div class="manage-form-inner" id="invoiceCon">
+        <div class="manage-form-item">
+            <label for="capName" class="control-label manage-form-label">税务登记证号：</label>
+            <div class="manage-form-input">
+                <input type="text" id="capName" class="form-control" placeholder="请输入税务登记证号" value="">
+            </div>
+            <p class="help-block input-help-block"></p>
         </div>
-        <p class="help-block input-help-block"></p>
-    </div>
-    <div class="manage-form-item">
-        <label for="capName" class="control-label manage-form-label">负责人手机：</label>
-        <div class="manage-form-input">
-            <input type="text" id="capName" class="form-control" placeholder="请输入负责人手机" value="">
+        <div class="manage-form-item">
+            <label for="capName" class="control-label manage-form-label">开户银行名称：</label>
+            <div class="manage-form-input">
+                <input type="text" id="capName" class="form-control" placeholder="请输入基本开户银行名称" value="">
+            </div>
+            <p class="help-block input-help-block"></p>
         </div>
-        <p class="help-block input-help-block"></p>
-    </div>
-    <div class="manage-form-item">
-        <label for="capName" class="control-label manage-form-label">公司电话：</label>
-        <div class="manage-form-input">
-            <input type="text" id="capName" class="form-control" placeholder="请输入公司电话" value="">
+        <div class="manage-form-item">
+            <label for="capName" class="control-label manage-form-label">基本开户账号：</label>
+            <div class="manage-form-input">
+                <input type="text" id="capName" class="form-control" placeholder="请输入基本开户账号" value="">
+            </div>
+            <p class="help-block input-help-block"></p>
         </div>
-        <p class="help-block input-help-block"></p>
-    </div>
-    <div class="manage-form-item">
-        <label for="capName" class="control-label manage-form-label">公司邮箱：</label>
-        <div class="manage-form-input">
-            <input type="text" id="capName" class="form-control" placeholder="请输入公司邮箱" value="">
+        <div class="manage-form-item">
+            <label for="capName" class="control-label manage-form-label">注册场所地址：</label>
+            <div class="manage-form-input">
+                <input type="text" id="capName" class="form-control" placeholder="请输入注册场所地址" value="">
+            </div>
+            <p class="help-block input-help-block"></p>
         </div>
-        <p class="help-block input-help-block"></p>
-    </div>
-    <div class="manage-form-item">
-        <label for="capName" class="control-label manage-form-label">公司传真：</label>
-        <div class="manage-form-input">
-            <input type="text" id="capName" class="form-control" placeholder="请输入公司传真" value="">
+        <div class="manage-form-item">
+            <label for="capName" class="control-label manage-form-label">注册固定电话：</label>
+            <div class="manage-form-input">
+                <input type="text" id="capName" class="form-control" placeholder="请输入注册固定电话" value="">
+            </div>
+            <p class="help-block input-help-block"></p>
         </div>
-        <p class="help-block input-help-block"></p>
     </div>
-    <div class="manage-form-item">
-        <label for="capName" class="control-label manage-form-label">QQ：</label>
-        <div class="manage-form-input">
-            <input type="text" id="capName" class="form-control" placeholder="请输入常用QQ" value="">
-        </div>
-        <p class="help-block input-help-block"></p>
-    </div>
-    <div class="manage-form-item">
-        <label for="capName" class="control-label manage-form-label">公司网站：</label>
-        <div class="manage-form-input">
-            <input type="text" id="capName" class="form-control" placeholder="请输入公司网站" value="">
-        </div>
-        <p class="help-block input-help-block"></p>
-    </div>
-    <div class="manage-form-item">
-        <label for="capName" class="control-label manage-form-label">公司地址：</label>
-        <div class="manage-form-input">
-            <input type="text" id="capName" class="form-control" placeholder="请输入公司地址" value="">
-        </div>
-        <p class="help-block input-help-block"></p>
-    </div>
-    <div class="manage-form-item">
-        <label for="info" class="control-label manage-form-label">公司介绍：</label>
-        <div class="manage-form-textarea">
-            <textarea id="info" class="form-control" placeholder="请输入公司简介" rows="5"></textarea>
-        </div>
-        <p class="help-block textarea-help-block"></p>
-    </div>
+
+
     <div class="manage-form-item">
         <label class="control-label manage-form-label"></label>
         <button type="button" class="btn btn-warning" id="offerPanelClose">关闭</button>
