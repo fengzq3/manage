@@ -473,6 +473,9 @@ $(function () {
         /**
          *定义一个upload项目，由myUploader回传实例，用于下面的与表单同步上传功能
          * @type {JQuery|jQuery|Array}
+         * invoiceType 发票种类选择
+         * invoiceCon 增值税发票特殊要求
+         * uploaderFlag 是否初始化uploader组件成功 (boolean)
          */
         var invoiceType = $('#invoiceType'), invoiceCon = $('#invoiceCon'), uploaderFlag;
         if (invoiceType.length !== 0) {
@@ -495,39 +498,11 @@ $(function () {
             });
         }
 
+        //处理二级联动
+
         //提交表单
         submitInfoForm(manageSlidePanelForm);
 
-        //TODO 上传动作 待集成
-        //
-        //$('#testupload').on('click', function () {
-        //    console.log('click testupload');
-        //    console.log(uploaderFlag);
-        //
-        //
-        //});
-
-
-        /**
-         * 检测uploader，如果存在：
-         * ----则先提交uploader
-         */
-        //var dUpload;
-        //
-        //if(uploaderFlag){
-        //    dUpload = customUpload.uploading();
-        //}
-        //
-        ////全部上传成功
-        //dUpload.then(function (data) {
-        //        console.log(data);
-        //        submitInfoForm(manageSlidePanelForm);
-        //    }, function (e) {
-        //        console.log(e);
-        //    });
-
-
-        //处理二级联动
     }
 
     //提交表单方法
@@ -540,7 +515,7 @@ $(function () {
          * 若IE，则表单添加onsubmit="return false;"阻断默认表单提交,然后绑定确定按钮click事件
          * 非IE，则绑定submit事件提交
          */
-        var actionUrl = theForm.attr('action'), data = theForm.serialize();
+
         if (navigator.userAgent.indexOf('MSIE') > 0) {
             //是IE
             theForm.attr('onsubmit', 'return false;').find('#offerPanelSubmit').off('click').on('click', function () {
@@ -584,6 +559,7 @@ $(function () {
 
         //提交方法
         function submitInfo() {
+            var actionUrl = theForm.attr('action'), data = theForm.serialize();
             //AJAX提交表单
             $.ajax({
                 type: 'post',

@@ -67,7 +67,6 @@
      * ---btnCls        按钮容器
      * ---limit         上传数量限制
      */
-    //TODO webUploader 实现方法
     function myUploader(opt) {
 
         //处理上传参数
