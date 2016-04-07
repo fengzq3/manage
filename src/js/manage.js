@@ -1,6 +1,41 @@
 /**
  * Created by feng on 2016/3/22.
  */
+(function () {
+    var loading = $('<div class=\"manage-loading\"><p class=\"loadLabel\"></p></div>');
+
+    window.load = {
+        init: function () {
+            if ($('.manage-loading').length === 0) {
+                $('body').append(loading);
+            }
+        },
+        hideLoad: function (grade) {
+            //隐藏load信息
+            loading.animate({top: 0}, 300, function () {
+                loading.removeClass(grade);
+            });
+        },
+        showLoad: function (message, grade, time) {
+            /**
+             * 显示load信息
+             * @param message    提示信息
+             * @param grade     信息级别，传入一个class来决定load颜色（默认无色）
+             * @param time      显示持续时间
+             */
+            loading.addClass(grade).find('.loadLabel').html(message);
+            loading.animate({top: '50px'}, 300);
+            console.log('load time:' + time);
+            if (typeof time !== 'undefined') {
+                setTimeout(function () {
+                    load.hideLoad(grade);
+                }, time);
+            }
+        }
+    };
+
+})(jQuery);
+
 $(function () {
     "use strict";
 
@@ -16,36 +51,7 @@ $(function () {
 
     //定义全局load信息
     //初始化一个load容器
-    var loadContent = '<div class=\"manage-loading\"><p class=\"loadLabel\"></p></div>', loading = $('.manage-loading');
-    if (loading.length === 0) {
-        $('body').append(loadContent);
-        loading = $('.manage-loading');
-    }
-    //隐藏load信息
-    function hideLoad(grade) {
-        loading.animate({top: 0}, 300, function () {
-            loading.removeClass(grade);
-        });
-    }
-
-
-    /**
-     * 显示load信息
-     * @param message    提示信息
-     * @param grade     信息级别，传入一个class来决定load颜色（默认无色）
-     * @param time      显示持续时间
-     */
-
-    function showLoad(message, grade, time) {
-        loading.addClass(grade).find('.loadLabel').html(message);
-        loading.animate({top: '50px'}, 300);
-        console.log('load time:' + time);
-        if (typeof time !== 'undefined') {
-            setTimeout(function () {
-                hideLoad(grade);
-            }, time);
-        }
-    }
+    load.init();
 
     //处理提示工具
     var popoverElements = $('[data-toggle="popover"]');
@@ -208,12 +214,12 @@ $(function () {
 
             if (data.error === 0) {
                 console.log('成功定稿');
-                showLoad(data.message, 'load-success', '2500');
+                load.showLoad(data.message, 'load-success', '2500');
                 //定稿dom操作
                 chooseWorkFinal();
             } else {
                 console.log('定稿出错');
-                showLoad(data.message, 'load-warning', '2500');
+                load.showLoad(data.message, 'load-warning', '2500');
             }
         });
     }
@@ -303,7 +309,7 @@ $(function () {
 
                         if (data.error === 0) {
                             //返回成功
-                            showLoad(data.message, 'load-success', 2500);
+                            load.showLoad(data.message, 'load-success', 2500);
                             offerDetail.find('.noDate').html('<div class=\"noData-inner\"><img src=\"../img/success.png\" /><p>' + data.message + '</p></div>');
                             if (typeof timer !== 'undefined') {
                                 clearTimeout(timer);
@@ -317,7 +323,7 @@ $(function () {
 
                         } else {
                             //返回失败
-                            showLoad(data.message, 'load-warning', 2500);
+                            load.showLoad(data.message, 'load-warning', 2500);
                             offerDetail.find('.noDate').html('<div class=\"noData-inner\"><img src=\"../img/error.png\" /><p>' + data.message + '</p></div>');
                             if (typeof timer !== 'undefined') {
                                 clearTimeout(timer);
@@ -329,7 +335,7 @@ $(function () {
 
                         }
                     }, function (e) {
-                        showLoad('网络异常', 'load-warning', 2500);
+                        load.showLoad('网络异常', 'load-warning', 2500);
                     });
             });
             //二次报价
@@ -347,7 +353,7 @@ $(function () {
 
                         if (data.error === 0) {
                             //返回成功
-                            showLoad(data.message, 'load-success', 2500);
+                            load.showLoad(data.message, 'load-success', 2500);
                             //提交二次报价成功后操作
                             offerDetail.find('.noDate').html('<div class=\"noData-inner\"><img src=\"../img/success.png\" /><p>' + data.message + '</p></div>');
                             if (typeof timer !== 'undefined') {
@@ -360,7 +366,7 @@ $(function () {
 
                         } else {
                             //返回失败
-                            showLoad(data.message, 'load-warning', 2500);
+                            load.showLoad(data.message, 'load-warning', 2500);
                             offerDetail.find('.noDate').html('<div class=\"noData-inner\"><img src=\"../img/error.png\" /><p>' + data.message + '</p></div>');
                             if (typeof timer !== 'undefined') {
                                 clearTimeout(timer);
@@ -371,7 +377,7 @@ $(function () {
                             }, 1000);
                         }
                     }, function (e) {
-                        showLoad('网络异常', 'load-warning', 2500);
+                        load.showLoad('网络异常', 'load-warning', 2500);
                     });
             });
 
@@ -426,8 +432,9 @@ $(function () {
                 orderFlow.addClass('now').html('<div class=\"noDate\"><img src=\"../img/error.png\" /><p>拉取开工信息失败，刷新重试！</p></div>');
             });
     }
+
     //设置slidePanel响应事件
-    function setFlowPanel(){
+    function setFlowPanel() {
         var orderFlowItem = $('.order-flow-list-item');
         //初始化签单流程项目
         orderFlowItem.find('[data-custom="slidePanel"]').on('click', function (e) {
@@ -463,36 +470,69 @@ $(function () {
         });
 
         //处理radio事件
-        var invoiceType = $('#invoiceType'),invoiceCon = $('#invoiceCon');
-        if(invoiceType.length !== 0){
+        /**
+         *定义一个upload项目，由myUploader回传实例，用于下面的与表单同步上传功能
+         * @type {JQuery|jQuery|Array}
+         */
+        var invoiceType = $('#invoiceType'), invoiceCon = $('#invoiceCon'), uploaderFlag;
+        if (invoiceType.length !== 0) {
             console.log('radio');
             invoiceType.find('input').change(function () {
                 var radioVal = invoiceType.find('input:checked').val();
                 console.log(radioVal);
                 //console.log(invoiceCon);
-                if(radioVal == 0){
+                if (radioVal == 0) {
                     invoiceCon.slideUp(300);
                 }
-                if(radioVal == 1){
+                if (radioVal == 1) {
                     invoiceCon.slideDown(300);
+                    //TODO 引用初始化上传控件
+                    uploaderFlag = customUpload.init();
+                    //提交表单
+                    submitInfoForm(manageSlidePanelForm, uploaderFlag);
                 }
 
             });
         }
 
-        //TODO 处理webUploader上传
-
         //提交表单
-        /**
-         * 问题1：如何兼容IE，ie不支持submit事件，如何截断form表单的提交
-         */
         submitInfoForm(manageSlidePanelForm);
+
+        //TODO 上传动作 待集成
+        //
+        //$('#testupload').on('click', function () {
+        //    console.log('click testupload');
+        //    console.log(uploaderFlag);
+        //
+        //
+        //});
+
+
+        /**
+         * 检测uploader，如果存在：
+         * ----则先提交uploader
+         */
+        //var dUpload;
+        //
+        //if(uploaderFlag){
+        //    dUpload = customUpload.uploading();
+        //}
+        //
+        ////全部上传成功
+        //dUpload.then(function (data) {
+        //        console.log(data);
+        //        submitInfoForm(manageSlidePanelForm);
+        //    }, function (e) {
+        //        console.log(e);
+        //    });
+
 
         //处理二级联动
     }
 
     //提交表单方法
-    function submitInfoForm(theForm) {
+    function submitInfoForm(theForm, uploaderFlag) {
+
         //处理提交个人信息表单
         /**
          * 兼容IE方案：
@@ -503,22 +543,48 @@ $(function () {
         var actionUrl = theForm.attr('action'), data = theForm.serialize();
         if (navigator.userAgent.indexOf('MSIE') > 0) {
             //是IE
-            theForm.attr('onsubmit', 'return false;').find('#offerPanelSubmit').on('click', function () {
-                submitInfo();
+            theForm.attr('onsubmit', 'return false;').find('#offerPanelSubmit').off('click').on('click', function () {
+                uploadPic();
             });
         } else {
             //不是IE
-            theForm.on('submit', function (e) {
+            theForm.off('submit').on('submit', function (e) {
                 e.preventDefault();
                 e.stopPropagation();
-                submitInfo();
+                uploadPic();
             });
+
+        }
+
+        function uploadPic() {
+            /**
+             * 检测uploader，如果存在：
+             * ----则先提交uploader
+             */
+
+            console.log(!!uploaderFlag);
+            if (!!uploaderFlag) {
+                var dUpload = customUpload.uploading();
+
+                console.log(dUpload);
+                //全部上传成功
+                dUpload.then(function (data) {
+                    console.log('全部上传成功');
+                    submitInfo();
+                }, function (e) {
+                    console.log(e);
+                });
+            } else {
+                submitInfo();
+            }
+
 
         }
 
 
         //提交方法
         function submitInfo() {
+            //AJAX提交表单
             $.ajax({
                 type: 'post',
                 url: actionUrl,
@@ -529,21 +595,21 @@ $(function () {
                 } catch (e) {
                 }
                 if (data.error === 0 || data.error === '0') {
-                    showLoad(data.message, 'load-success', 2500);
+                    load.showLoad(data.message, 'load-success', 2500);
                     if (typeof timer !== 'undefined') {
                         clearTimeout(timer);
                     }
                     timer = setTimeout(function () {
                         customDialog.slidePanelHide('manageSlidePanel');
-                    },2000);
+                    }, 2000);
 
                 } else {
-                    showLoad(data.message, 'load-warning', 2500);
+                    load.showLoad(data.message, 'load-warning', 2500);
                 }
 
             }, function (e) {
                 //提交失败
-                showLoad('网络错误，请刷新重试！', 'load-warning', 2500);
+                load.showLoad('网络错误，请刷新重试！', 'load-warning', 2500);
             });
         }
 

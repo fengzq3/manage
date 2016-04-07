@@ -1314,3 +1314,33 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 .manage-form-select .province{width:120px;margin-right:10px;float:left;}
 .manage-form-select .city{width:120px;float:left;}
 .manage-form-inner{display:none;}
+
+/*webUploader 样式*/
+.webuploader-container {
+    position: relative;
+}
+
+.webuploader-element-invisible {
+    position: absolute !important;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px,1px,1px,1px);
+}
+.webuploader-pick {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    border:1px solid #00b7ee;
+    padding: 5px 10px;
+    color: #00b7ee;
+    text-align: center;
+    border-radius: 3px;
+    overflow: hidden;
+}
+.webuploader-pick-hover {
+    background: #00a2d4;color:#fff;
+}
+
+.webuploader-pick-disable {
+    opacity: 0.6;
+    pointer-events:none;
+}
