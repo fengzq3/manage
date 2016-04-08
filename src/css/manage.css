@@ -1344,6 +1344,24 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     opacity: 0.6;
     pointer-events:none;
 }
+.uploader-list{overflow:hidden;}
+.file-item{float:left;margin-bottom:10px;margin-right:10px;position:relative;}
+.file-item .info{position:absolute;bottom:4px;left:4px;right:4px;background-color:rgba(255,255,255,.8);overflow:hidden;white-space: nowrap;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;}
+.file-item .remove-this{cursor: pointer;
+    position: absolute;
+    color: #fff;
+    width: 20px;
+    height: 20px;
+    background-color: #D42905;
+    text-align: center;
+    font-size: 1.5em;
+    line-height: 20px;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+}
 
 /*管理人员样式*/
 .manage-people{padding:0;margin:0;overflow:hidden;list-style:none;}

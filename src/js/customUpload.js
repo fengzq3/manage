@@ -11,8 +11,11 @@
             var mainCon = $('[data-custom="uploader"]');
 
             if (mainCon.length !== 0) {
-                mainCon.each(function () {
-                    uploads.push(myUploader({mainCon: this}));
+                mainCon.each(function (i) {
+                    if(!$(mainCon[i]).data('uploaderFlag')){
+                        uploads.push(myUploader({mainCon: this}));
+                    }
+
                 });
                 return true;
             } else {
@@ -127,6 +130,7 @@
                     '<div id="' + file.id + '" class="file-item thumbnail">' +
                     '<img>' +
                     '<div class="info">' + file.name + '</div>' +
+                    '<div class="remove-this">&times;</div>' +
                     '</div>'
                 ),
                 $img = $li.find('img');
@@ -146,6 +150,12 @@
 
                 $img.attr('src', src);
             }, '100', '100');
+
+            //绑定队列中图片删除事件
+            $li.on('click', '.remove-this', function() {
+                uploader.removeFile( file );
+                $('#'+file.id).remove();
+            });
         });
 
         //上传状态处理
@@ -204,9 +214,7 @@
 
             $error.text('上传失败');
             //回调
-            //if (!!errorCallback) {
-            //    errorCallback = errorCallback(reason);
-            //}
+            allSuccessPromise.reject(reason);
         });
 
         //检测队列失败情况
