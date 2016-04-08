@@ -177,7 +177,7 @@ $(function () {
 
     }
     //全局confirm
-    var confirmFlag = $('[data-custom="confirm"]'), thisConfirmOkUrl;
+    var confirmFlag = $('[data-custom="confirm"]');
     if (confirmFlag.length !== 0) {
         //初始化一个confirm
         customDialog.dialogFram('manageConfirm', 'confirm');
@@ -185,43 +185,31 @@ $(function () {
         confirmFlag.on('click', function (e) {
             e.stopPropagation();
             e.preventDefault();
-            customDialog.setDialog(this, 'manageConfirm');
-            thisConfirmOkUrl = $(this).attr('href');
-        });
-        //绑定点击确认事件
-        var manageConfirm = $('#manageConfirm');
-        manageConfirm.find('#confirmOk').on('click', function () {
-
-            //确认后操作
-            confirmOkFun();
-
-            manageConfirm.modal('hide');
+            customDialog.setDialog(this, 'manageConfirm', confirmOkFun);
 
         });
     }
 
     //confirm 回调函数
-    function confirmOkFun() {
+    function confirmOkFun(data) {
         console.log('确认定稿');
-        console.log(thisConfirmOkUrl);
-        $.get(thisConfirmOkUrl).done(function (data) {
-            console.log(data);
-            try {
-                data = $.parseJSON(data);
-            } catch (e) {
-            }
-            //显示信息
+        console.log(data);
+        try {
+            data = $.parseJSON(data);
+        } catch (e) {
+        }
+        //显示信息
 
-            if (data.error === 0) {
-                console.log('成功定稿');
-                load.showLoad(data.message, 'load-success', '2500');
-                //定稿dom操作
-                chooseWorkFinal();
-            } else {
-                console.log('定稿出错');
-                load.showLoad(data.message, 'load-warning', '2500');
-            }
-        });
+        if (data.error === 0) {
+            console.log('成功定稿');
+            load.showLoad(data.message, 'load-success', '2500');
+            //定稿dom操作
+            chooseWorkFinal();
+        } else {
+            console.log('定稿出错');
+            load.showLoad(data.message, 'load-warning', '2500');
+        }
+
     }
 
     //全局slidePanel 设置
@@ -454,7 +442,7 @@ $(function () {
         customDialog.setSlidePanel(this, 'manageSlidePanel', infoFormEvent);
     });
     function infoFormEvent() {
-        var manageSlidePanelForm = $('#manageSlidePanel').find('form');
+        var manageSlidePanel = $('#manageSlidePanel'), manageSlidePanelForm = manageSlidePanel.find('form');
         //绑定关闭事件
         manageSlidePanelForm.find('#offerPanelClose').on('click', function () {
             customDialog.slidePanelHide('manageSlidePanel');
@@ -499,6 +487,54 @@ $(function () {
         }
 
         //处理二级联动
+
+        //管理人员 改密/删除 功能
+        //删除人员
+        var formConfirmFlag = manageSlidePanel.find('[data-custom="confirm"]');
+        console.log(formConfirmFlag);
+        if (formConfirmFlag.length !== 0) {
+            //绑定confirm显示事件
+            formConfirmFlag.on('click', function (e) {
+                e.stopPropagation();
+                e.preventDefault();
+                var _this = $(this).parent().parent();
+                customDialog.setDialog(this, 'manageConfirm', function (data) {
+                    console.log(data);
+                    //TODO 管理人员修改删除
+                    try {
+                        data = $.parseJSON(data);
+                    } catch (e) {
+                    }
+
+
+                    if (data.error == 0) {
+                        load.showLoad(data.message, 'load-success', 2500);
+                        _this.animate({opacity: 0}, 1000, function () {
+                            _this.remove();
+                        });
+                    } else {
+                        load.showLoad(data.message, 'load-warning', 2500);
+                    }
+
+                });
+
+            });
+        }
+
+        //修改人员
+        var formChangeFlag = manageSlidePanel.find('[data-custom="change"]');
+        if (formChangeFlag.length !== 0) {
+            formChangeFlag.on('click', function (e) {
+                e.stopPropagation();
+                e.preventDefault();
+                var _this = $(this).parent().siblings('span');
+
+                manageSlidePanelForm.find('#ppUser').val($(_this[0]).text());
+                manageSlidePanelForm.find('#ppName').val($(_this[1]).text());
+                manageSlidePanelForm.find('#ppTel').val($(_this[2]).text());
+
+            });
+        }
 
         //提交表单
         submitInfoForm(manageSlidePanelForm);

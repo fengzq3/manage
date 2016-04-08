@@ -1,88 +1,81 @@
+<div class="manage-info">
+    <ul class="manage-people">
+        <li class="manage-pp-list">
+            <span class="col-sm-2">账户</span>
+            <span class="col-sm-1">姓名</span>
+            <span class="col-sm-2">手机</span>
+            <span class="col-sm-2">注册时间</span>
+            <span class="col-sm-2">最后登录</span>
+            <span class="col-sm-1">状态</span>
+            <span class="col-sm-2">操作</span>
+        </li>
+        <li>
+            <span class="col-sm-2">阿萨德12313</span>
+            <span class="col-sm-1">阿斯顿</span>
+            <span class="col-sm-2">18612037193</span>
+            <span class="col-sm-2">2016.03.22</span>
+            <span class="col-sm-2">2016.01.11</span>
+            <span class="col-sm-1">正常</span>
+            <span class="col-sm-2">
+                <a data-custom="change" href="#">修改</a>
+                <a data-custom="confirm" title="确认信息" data-confirm-content="确定删除？" data-mywidth="400px" href="../testData/success">删除</a>
+            </span>
+        </li>
+        <li>
+            <span class="col-sm-2">阿萨德12313</span>
+            <span class="col-sm-1">阿斯顿</span>
+            <span class="col-sm-2">18612037193</span>
+            <span class="col-sm-2">2016.03.22</span>
+            <span class="col-sm-2">2016.01.11</span>
+            <span class="col-sm-1">正常</span>
+            <span class="col-sm-2">
+                <a data-custom="change" href="#">修改</a>
+                <a data-custom="confirm" title="确认信息" data-confirm-content="确定删除？" data-mywidth="400px" href="../testData/success">删除</a>
+            </span>
+        </li>
+        <li>
+            <span class="col-sm-2">阿萨德12313</span>
+            <span class="col-sm-1">阿斯顿</span>
+            <span class="col-sm-2">18612037193</span>
+            <span class="col-sm-2">2016.03.22</span>
+            <span class="col-sm-2">2016.01.11</span>
+            <span class="col-sm-1">正常</span>
+            <span class="col-sm-2">
+                <a data-custom="change" href="../testData/success">修改</a>
+                <a data-custom="confirm" title="确认信息" data-confirm-content="确定删除？" data-mywidth="400px" href="../testData/error.json">删除</a>
+            </span>
+        </li>
+    </ul>
+</div>
+
 <form class="form-horizontal manage-form" role="form" method="post" action="../testData/success">
     <div class="manage-form-item">
-        <label for="capName" class="control-label manage-form-label">公司名称：</label>
+        <label for="ppUser" class="control-label manage-form-label">账户名称：</label>
         <div class="manage-form-input">
-            <input type="text" id="capName" class="form-control" placeholder="请输入公司名称" value="">
+            <input type="text" id="ppUser" name="ppUser" class="form-control" placeholder="请输入账户名称" value="">
         </div>
         <p class="help-block input-help-block"></p>
     </div>
     <div class="manage-form-item">
-        <label for="province" class="control-label manage-form-label">所属地区：</label>
-        <div class="manage-form-select" id="area">
-            <select class="form-control province" name="province" id="province">
-                <option value="1">11111</option>
-                <option value="1">11111</option>
-                <option value="1">11111</option>
-            </select>
-            <select class="form-control city" name="city" id="city">
-                <option value="1">11111</option>
-                <option value="1">11111</option>
-                <option value="1">11111</option>
-            </select>
-        </div>
-    </div>
-    <div class="manage-form-item">
-        <label for="capName" class="control-label manage-form-label">公司负责人：</label>
+        <label for="ppName" class="control-label manage-form-label">真实姓名：</label>
         <div class="manage-form-input">
-            <input type="text" id="capName" class="form-control" placeholder="请输入公司负责人" value="">
+            <input type="text" id="ppName" name="ppName" class="form-control" placeholder="请输入用户真实姓名" value="">
         </div>
         <p class="help-block input-help-block"></p>
     </div>
     <div class="manage-form-item">
-        <label for="capName" class="control-label manage-form-label">负责人手机：</label>
+        <label for="ppTel" class="control-label manage-form-label">手机：</label>
         <div class="manage-form-input">
-            <input type="text" id="capName" class="form-control" placeholder="请输入负责人手机" value="">
+            <input type="text" id="ppTel" name="ppTel" class="form-control" placeholder="请输入联系人手机" value="">
         </div>
         <p class="help-block input-help-block"></p>
     </div>
     <div class="manage-form-item">
-        <label for="capName" class="control-label manage-form-label">公司电话：</label>
+        <label for="ppPwd" class="control-label manage-form-label">账户密码：</label>
         <div class="manage-form-input">
-            <input type="text" id="capName" class="form-control" placeholder="请输入公司电话" value="">
+            <input type="password" id="ppPwd" name="ppPwd" class="form-control" placeholder="请输入账户密码" value="">
         </div>
         <p class="help-block input-help-block"></p>
-    </div>
-    <div class="manage-form-item">
-        <label for="capName" class="control-label manage-form-label">公司邮箱：</label>
-        <div class="manage-form-input">
-            <input type="text" id="capName" class="form-control" placeholder="请输入公司邮箱" value="">
-        </div>
-        <p class="help-block input-help-block"></p>
-    </div>
-    <div class="manage-form-item">
-        <label for="capName" class="control-label manage-form-label">公司传真：</label>
-        <div class="manage-form-input">
-            <input type="text" id="capName" class="form-control" placeholder="请输入公司传真" value="">
-        </div>
-        <p class="help-block input-help-block"></p>
-    </div>
-    <div class="manage-form-item">
-        <label for="capName" class="control-label manage-form-label">QQ：</label>
-        <div class="manage-form-input">
-            <input type="text" id="capName" class="form-control" placeholder="请输入常用QQ" value="">
-        </div>
-        <p class="help-block input-help-block"></p>
-    </div>
-    <div class="manage-form-item">
-        <label for="capName" class="control-label manage-form-label">公司网站：</label>
-        <div class="manage-form-input">
-            <input type="text" id="capName" class="form-control" placeholder="请输入公司网站" value="">
-        </div>
-        <p class="help-block input-help-block"></p>
-    </div>
-    <div class="manage-form-item">
-        <label for="capName" class="control-label manage-form-label">公司地址：</label>
-        <div class="manage-form-input">
-            <input type="text" id="capName" class="form-control" placeholder="请输入公司地址" value="">
-        </div>
-        <p class="help-block input-help-block"></p>
-    </div>
-    <div class="manage-form-item">
-        <label for="info" class="control-label manage-form-label">公司介绍：</label>
-        <div class="manage-form-textarea">
-            <textarea id="info" class="form-control" placeholder="请输入公司简介" rows="5"></textarea>
-        </div>
-        <p class="help-block textarea-help-block"></p>
     </div>
     <div class="manage-form-item">
         <label class="control-label manage-form-label"></label>

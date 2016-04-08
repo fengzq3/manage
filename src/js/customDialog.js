@@ -32,7 +32,7 @@
             $('body').append(content);
         },
         //设置弹窗属性
-        setDialog: function (obj, id) {
+        setDialog: function (obj, id, successCallBack) {
             /**
              * 定义全局方法
              * @param action 数据连接地址
@@ -40,7 +40,6 @@
              * @param mywidth   弹框宽度
              * @param id    设置dialogId
              */
-            //var d = new $.Deferred();
 
             //兼容a标签和button标签
             var action = $(obj).data('action') || $(obj).attr('href');
@@ -80,23 +79,34 @@
                 }).done(setDialogBody).fail(setDialogError);
 
             } else {
-                //confirm 弹框处理
+                //confirm 弹框内容处理
                 dialog.find('.modal-body').html(confirmContent);
                 //d.resolve(dialog);
             }
 
+            //TODO 处理confirm弹窗确认事件
+            if(!!successCallBack){
+                var suCallBack = successCallBack;
+            }
+
+            dialog.find('#confirmOk').off('click').on('click',function () {
+                //隐藏confirm
+                dialog.modal('hide');
+                //处理数据
+                $.get(action).always(suCallBack);
+
+            });
 
             function setDialogBody(data) {
                 //console.log(data);
                 dialog.find('.modal-body').html(data);
-                //d.resolve(dialog);
+
             }
 
             function setDialogError(e) {
                 dialog.find('.modal-body').html('<div class=\"noDate\"><img src=\"../img/error.png\" /><p>数据载入错误，请重试！</p></div>');
             }
 
-            //return d.promise();
 
         },
         //slidePanel
