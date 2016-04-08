@@ -12,7 +12,7 @@
         },
         hideLoad: function (grade) {
             //隐藏load信息
-            loading.animate({top: 0}, 300, function () {
+            loading.animate({top: '-50px', opacity: 0}, 500, function () {
                 loading.removeClass(grade);
             });
         },
@@ -24,7 +24,7 @@
              * @param time      显示持续时间
              */
             loading.addClass(grade).find('.loadLabel').html(message);
-            loading.animate({top: '50px'}, 300);
+            loading.animate({top: '50px', opacity: 1}, 300);
             console.log('load time:' + time);
             if (typeof time !== 'undefined') {
                 setTimeout(function () {
@@ -164,17 +164,8 @@ $(function () {
     var dialogFlag = $('[data-custom="dialog"]');
     console.log(dialogFlag);
     if (dialogFlag.length !== 0) {
-
         //初始化dialog
         customDialog.dialogFram('manageDialog', 'dialog');
-        //绑定事件
-        dialogFlag.on('click', function (e) {
-            e.stopPropagation();
-            e.preventDefault();
-            customDialog.setDialog(this, 'manageDialog');
-
-        });
-
     }
     //全局confirm
     var confirmFlag = $('[data-custom="confirm"]');
@@ -541,7 +532,104 @@ $(function () {
 
     }
 
-    //提交表单方法
+    //添加订单
+    $('.shang-order-add').find('[data-custom="dialog"]').on('click', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        customDialog.setDialog(this, 'manageDialog', dialogFormCallback);
+    });
+    //订单dialog回调
+    function dialogFormCallback(status) {
+        //TODO 订单
+        console.log(status);
+        //绑定input提示信息
+        var manageDialog = $('#manageDialog'), manageDialogForm = manageDialog.find('.manage-form'), uploaderFlag;
+        var inputCon = manageDialogForm.find('.manage-form-item');
+        inputCon.find('input,textarea').focus(function () {
+            $(this).parent().siblings('.help-block').removeClass('success').addClass('error').html('<span class=\"glyphicon glyphicon-warning-sign\"></span>' + $(this).attr('placeholder'));
+        }).blur(function () {
+            if ($(this).val() !== '') {
+                $(this).parent().siblings('.help-block').removeClass('error').addClass('success').html('<span class=\"glyphicon glyphicon-ok\"></span>');
+            }
+        });
+        //初始化上传组件
+
+
+        //处理表单提交
+        submitDialogForm(manageDialogForm, uploaderFlag);
+
+    }
+
+    //dialog提交表单方法
+    function submitDialogForm(dialogForm, uploaderFlag) {
+        //TODO 处理不同按钮不同动作
+        var orderSubmit = dialogForm.find('button[type="submit"]');
+
+        orderSubmit.on('click', function () {
+
+        });
+
+
+        //处理上传方法
+        function uploadPic() {
+            /**
+             * 检测uploader，如果存在：
+             * ----则先提交uploader
+             */
+            console.log(!!uploaderFlag);
+            if (!!uploaderFlag) {
+                var dUpload = customUpload.uploading();
+
+                console.log(dUpload);
+                //全部上传成功
+                dUpload.then(function (data) {
+                    console.log('全部上传成功');
+                    submitForm();
+                }, function (e) {
+                    console.log(e);
+                });
+            } else {
+                submitForm();
+            }
+
+
+        }
+
+        //提交方法
+        function submitForm() {
+            var actionUrl = dialogForm.attr('action'), data = dialogForm.serialize();
+            //AJAX提交表单
+            $.ajax({
+                type: 'post',
+                url: actionUrl,
+                data: data
+            }).then(function (data) {
+
+                try {
+                    data = $.parseJSON(data);
+                } catch (e) {
+                }
+                var forward = data.forward;
+                if (data.error == 0) {
+                    load.showLoad(data.message, 'load-success', 2500);
+                    if (!!forward) {
+                        //todo 处理dialog连调
+
+                    }
+
+                } else {
+                    load.showLoad(data.message, 'load-warning', 2500);
+                }
+
+            }, function (e) {
+                //提交失败
+                load.showLoad('网络错误，请刷新重试！', 'load-warning', 2500);
+            });
+        }
+
+    }
+
+    //slidePanel提交表单方法
     function submitInfoForm(theForm, uploaderFlag) {
 
         //处理提交个人信息表单
@@ -626,6 +714,7 @@ $(function () {
         }
 
         //提交方法 END
+
     }
 
     //二级联动方法

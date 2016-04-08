@@ -100,11 +100,18 @@
             function setDialogBody(data) {
                 //console.log(data);
                 dialog.find('.modal-body').html(data);
+                //设置dialog回调
+                if(!!successCallBack){
+                    successCallBack = successCallBack('success');
+                }
 
             }
 
             function setDialogError(e) {
                 dialog.find('.modal-body').html('<div class=\"noDate\"><img src=\"../img/error.png\" /><p>数据载入错误，请重试！</p></div>');
+                if(!!successCallBack){
+                    successCallBack = successCallBack('error');
+                }
             }
 
 
