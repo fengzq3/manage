@@ -110,7 +110,7 @@ body {
     -moz-border-radius:0;
     border-radius:0;}
 .main-content2 .breadcrumb > li + li:before{content:'>';}
-.main-content1 .col-lg-4,.main-content1 .col-md-6{padding-left:0;}
+.main-content1 .col-lg-4,.main-content1 .col-md-6,.main-content1 .col-sm-6{padding-left:0;}
 .manage-panel{border-color:#C6D3EF;}
 .manage-panel>.panel-heading .panel-title{line-height:25px;}
 .manage-panel>.panel-heading{background-color:#f1f5fd;border-color:#CCD7EF;padding:20px;overflow:hidden;}
@@ -299,7 +299,7 @@ body {
 .manageStep-item.pass{color: #5BC0DE;}
 .manageStep-item.pass i{border-color:#5BC0DE;}
 .manageStep-item.pass:after{border-color:#5BC0DE;}
-.order-panel-des{padding: 15px; margin: -15px 0 15px; list-style:none; background-color: #F9F9F9;overflow:hidden;}
+.order-panel-des{padding: 15px; margin: -15px -15px 15px; list-style:none; background-color: #F9F9F9;overflow:hidden;}
 .order-panel-des li{padding:5px;color:#BFBFBF;}
 
 /*订单设计师、设计稿列表*/
@@ -1370,3 +1370,20 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     text-overflow: ellipsis;}
 .manage-people li span + span{border-left:1px solid #F7F7F7;}
 .manage-pp-list{background-color:#F1F5FD;}
+
+/*添加订单*/
+.manage-setp{padding:15px;background-color:#F9FAFC;}
+/*step2*/
+.manage-lg-btn{text-align: center;
+    display: block;
+    padding: 3em 15px;}
+.manage-lg-btn p{overflow:hidden;white-space: normal;line-height:2em;}
+.manage-lg-btn .btn-title .glyphicon{padding-right:15px;}
+.btn-lgStyle1{background-color: #F7F7F7; color: #FD8936; border-color: #FDDCC5;}
+.btn-lgStyle1:hover,.btn-lgStyle1:focus{background-color: #FFEEDE; color: #FD8936; border-color: #FD8936;}
+.btn-lgStyle2{background-color: #F7F7F7; color: #5BC0E0; border-color: #BFE5F1;}
+.btn-lgStyle2:hover,.btn-lgStyle2:focus{background-color: #F0FBFF; color: #5BC0DE; border-color: #5BC0DE;}
+/*上传OEM设计稿：上传组件样式*/
+.UploadDesignerWork{}
+.designerWork-list{float:left;overflow:hidden;}
+.designerPicker{float:left;}

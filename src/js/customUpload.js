@@ -7,13 +7,29 @@
     var uploads = [];
 
     window.customUpload = {
-        init: function () {
+        init: function (opt) {
+
             var mainCon = $('[data-custom="uploader"]');
+
+            //处理上传参数
+            var defaultOpt = {
+                listCon: '.uploader-list',
+                inputCon: '.uploader-input',
+                btnCls: '.filePicker',
+                limit: 0
+            };
+            opt = $.extend(defaultOpt, opt);
 
             if (mainCon.length !== 0) {
                 mainCon.each(function (i) {
-                    if(!$(mainCon[i]).data('uploaderFlag')){
-                        uploads.push(myUploader({mainCon: this}));
+                    if (!$(mainCon[i]).data('uploaderFlag')) {
+                        uploads.push(myUploader({
+                            mainCon: this,
+                            listCon: opt.listCon,
+                            inputCon: opt.inputCon,
+                            btnCls: opt.btnCls,
+                            limit: opt.limit
+                        }));
                     }
 
                 });
@@ -72,20 +88,22 @@
      */
     function myUploader(opt) {
 
-        //处理上传参数
-        var defaultOpt = {
-            mainCon: '.myUploader',
-            listCon: '.uploader-list',
-            inputCon: '.uploader-input',
-            btnCls: '.filePicker',
-            limit: 0
-        };
-        opt = $.extend(defaultOpt, opt);
-
         var mainCon = $(opt.mainCon);
         var serUrl = mainCon.data('uploadurl');
         if (!serUrl) throw '请设置上传地址！';
         var limit = mainCon.data('uploadlimit') || opt.limit;
+        //标记是否允许上传图片以外的文件（默认只可上传图片）
+        var acceptFile = mainCon.data('acceptfile'),accept = '';
+        if (!acceptFile) {
+            accept = {
+                title: 'Images',
+                extensions: 'gif,jpg,jpeg,bmp,png',
+                mimeTypes: 'image/*'
+            }
+        }
+        //标记是否自动上传（默认不自动上传）
+        var autoUpload = !!mainCon.data('autoupload');
+
         var allSuccessPromise = new $.Deferred();
 
         console.log(serUrl + ' | ' + limit);
@@ -99,7 +117,7 @@
         var uploader = WebUploader.create({
 
             // 选完文件后，是否自动上传。
-            auto: false,
+            auto: autoUpload,
 
             // swf文件路径
             swf: '../js/Uploader.swf',
@@ -115,12 +133,20 @@
             pick: pickBtn,
 
             // 只允许选择图片文件。
-            accept: {
-                title: 'Images',
-                extensions: 'gif,jpg,jpeg,bmp,png',
-                mimeTypes: 'image/*'
-            }
+            accept: accept
         });
+
+        //当非图片文件加入队列前，判断文件类型是否合法
+        if(!!acceptFile){
+            var fileType = ['rar','zip','gz'];
+            uploader.on('beforeFileQueued', function (file) {
+                if(fileType.indexOf(file.ext) < 0){
+                    load.showLoad('请上传rar、zip、tar.gz格式文件','load-warning',2500);
+                    return false;
+                }
+            });
+        }
+
 
         // 当有文件添加进来的时候 创建缩略图
         var thumCon = mainCon.find(opt.listCon), inputCon = mainCon.find(opt.inputCon), photoUrl;
@@ -144,7 +170,7 @@
             // thumbnailWidth x thumbnailHeight 为 100 x 100
             uploader.makeThumb(file, function (error, src) {
                 if (error) {
-                    $img.replaceWith('<span>不能预览</span>');
+                    $img.replaceWith('<img src=\"../img/file.png\"/>');
                     return;
                 }
 
@@ -152,9 +178,9 @@
             }, '100', '100');
 
             //绑定队列中图片删除事件
-            $li.on('click', '.remove-this', function() {
-                uploader.removeFile( file );
-                $('#'+file.id).remove();
+            $li.on('click', '.remove-this', function () {
+                uploader.removeFile(file);
+                $('#' + file.id).remove();
             });
         });
 
@@ -225,6 +251,9 @@
             }
             if (e === 'F_DUPLICATE') {
                 load.showLoad('已经添加过该文件', 'load-warning', 2500);
+            }
+            if (e === 'Q_TYPE_DENIED') {
+                load.showLoad('文件类型不合法', 'load-warning', 2500);
             }
         });
 

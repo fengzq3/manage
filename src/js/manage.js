@@ -2,7 +2,7 @@
  * Created by feng on 2016/3/22.
  */
 (function () {
-    var loading = $('<div class=\"manage-loading\"><p class=\"loadLabel\"></p></div>');
+    var loading = $('<div class=\"manage-loading\"><p class=\"loadLabel\"></p></div>'), timer;
 
     window.load = {
         init: function () {
@@ -15,6 +15,8 @@
             loading.animate({top: '-50px', opacity: 0}, 500, function () {
                 loading.removeClass(grade);
             });
+            //清空定时器timer
+            if (!!timer) clearTimeout(timer);
         },
         showLoad: function (message, grade, time) {
             /**
@@ -27,7 +29,7 @@
             loading.animate({top: '50px', opacity: 1}, 300);
             console.log('load time:' + time);
             if (typeof time !== 'undefined') {
-                setTimeout(function () {
+                timer = setTimeout(function () {
                     load.hideLoad(grade);
                 }, time);
             }
@@ -540,7 +542,7 @@ $(function () {
     });
     //订单dialog回调
     function dialogFormCallback(status) {
-        //TODO 订单
+        //TODO dialog提交订单
         console.log(status);
         //绑定input提示信息
         var manageDialog = $('#manageDialog'), manageDialogForm = manageDialog.find('.manage-form'), uploaderFlag;
@@ -552,9 +554,6 @@ $(function () {
                 $(this).parent().siblings('.help-block').removeClass('error').addClass('success').html('<span class=\"glyphicon glyphicon-ok\"></span>');
             }
         });
-        //初始化上传组件
-
-
         //处理表单提交
         submitDialogForm(manageDialogForm, uploaderFlag);
 
@@ -562,12 +561,25 @@ $(function () {
 
     //dialog提交表单方法
     function submitDialogForm(dialogForm, uploaderFlag) {
-        //TODO 处理不同按钮不同动作
+        //定义timer
+        var timer;
+        //兼容IE
         var orderSubmit = dialogForm.find('button[type="submit"]');
 
-        orderSubmit.on('click', function () {
+        if (navigator.userAgent.indexOf('MSIE') > 0) {
+            //是IE
+            dialogForm.attr('onsubmit', 'return false;').find('#offerPanelSubmit').off('click').on('click', function () {
+                uploadPic();
+            });
+        } else {
+            //不是IE
+            dialogForm.off('submit').on('submit', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                uploadPic();
+            });
 
-        });
+        }
 
 
         //处理上传方法
@@ -611,9 +623,29 @@ $(function () {
                 }
                 var forward = data.forward;
                 if (data.error == 0) {
-                    load.showLoad(data.message, 'load-success', 2500);
+                    load.showLoad(data.message, 'load-success');
                     if (!!forward) {
-                        //todo 处理dialog连调
+                        /**
+                         * 若forward 存在，则后台get forward数据，成功后跳转（为了增加交互效果）
+                         */
+                        console.log(forward);
+                        $.get(forward).then(function () {
+                            if (!!timer) {
+                                clearTimeout(timer);
+                            }
+                            timer = setTimeout(function () {
+                                window.location.href = forward;
+                            }, 2000);
+                        }, function (e) {
+                            if (!!timer) {
+                                clearTimeout(timer);
+                            }
+                            timer = setTimeout(function () {
+                                load.showLoad('跳转发生错误，请检测网络后刷新重试！', 'load-warning', 2500);
+                            }, 2000);
+
+                        });
+
 
                     }
 
@@ -721,6 +753,37 @@ $(function () {
     function provinceCity() {
         //TODO 处理二级联动方法
 
+    }
+
+    //订单第二步：填写需求或上传设计稿
+    //判断OEM或定制
+    var isOem = $('[data-custom="chooseOem"]');
+    if (isOem.length !== 0) {
+        isOem.on('click', function (e) {
+            e.stopPropagation();
+            e.preventDefault();
+            console.log(this);
+            var chooseOemBtn = $(this), dataUrl = chooseOemBtn.attr('href'), btnText = chooseOemBtn.html(), orderStepCon = $('.manage-order-area');
+            //显示loading状态
+            chooseOemBtn.html('<div class=\"noDate\"><div class=\"noData-inner\"><img src=\"../img/listload.gif\" /><h2>loading...</h2></div></div>');
+            $.get(dataUrl).then(function (data) {
+                orderStepCon.html(data);
+                //绑定上传设计稿
+                if (!!timer) clearTimeout(timer);
+                timer = setTimeout(setUploadDesignerWork, 0);
+            }, function (e) {
+                load.showLoad('网络错误，请刷新重试！', 'load-warning', 2500);
+                chooseOemBtn.html(btnText);
+            });
+        });
+    }
+    //上传设计稿初始化方法
+    function setUploadDesignerWork() {
+        //初始化
+        customUpload.init({
+            listCon:'.designerWork-list',
+            btnCls:'.designerPicker'
+        });
     }
 
 
