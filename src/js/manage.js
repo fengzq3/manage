@@ -630,7 +630,7 @@ $(function () {
                          */
                         console.log(forward);
                         $.get(forward).then(function () {
-                            if (!!timer) {
+                            if (typeof timer !== 'undefined') {
                                 clearTimeout(timer);
                             }
                             timer = setTimeout(function () {
@@ -757,33 +757,85 @@ $(function () {
 
     //订单第二步：填写需求或上传设计稿
     //判断OEM或定制
-    var isOem = $('[data-custom="chooseOem"]');
-    if (isOem.length !== 0) {
-        isOem.on('click', function (e) {
+    var chooseOem = $('[data-custom="chooseOem"]');
+    if (chooseOem.length !== 0) {
+        chooseOem.on('click', function (e) {
             e.stopPropagation();
             e.preventDefault();
             console.log(this);
-            var chooseOemBtn = $(this), dataUrl = chooseOemBtn.attr('href'), btnText = chooseOemBtn.html(), orderStepCon = $('.manage-order-area');
+            var chooseOemBtn = $(this), dataUrl = chooseOemBtn.attr('href'), btnText = chooseOemBtn.html();
             //显示loading状态
             chooseOemBtn.html('<div class=\"noDate\"><div class=\"noData-inner\"><img src=\"../img/listload.gif\" /><h2>loading...</h2></div></div>');
-            $.get(dataUrl).then(function (data) {
-                orderStepCon.html(data);
-                //绑定上传设计稿
-                if (!!timer) clearTimeout(timer);
-                timer = setTimeout(setUploadDesignerWork, 0);
+            $.get(dataUrl).then(function () {
+                window.location.href = dataUrl;
             }, function (e) {
                 load.showLoad('网络错误，请刷新重试！', 'load-warning', 2500);
                 chooseOemBtn.html(btnText);
             });
         });
     }
-    //上传设计稿初始化方法
-    function setUploadDesignerWork() {
-        //初始化
-        customUpload.init({
-            listCon:'.designerWork-list',
-            btnCls:'.designerPicker'
+
+    //isOem 判断 OEM页面开始绑定上传按钮
+    var isOem = $('[data-custom="isOem"]');
+    if (isOem.length !== 0) {
+        //上传按钮容器
+        var manageOrderPanelBtn = $('.manage-order-panelBtn');
+        //绑定上传设计稿 上传设计稿初始化方法
+        var setUploadDesignerWork = customUpload.init({
+            listCon: '.designerWork-list',
+            btnCls: '.designerPicker'
         });
+        //pin底部按钮
+        manageOrderPanelBtn.pinDown({offsetH: 20, offsetW: 20});
+
+        //绑定上传动作
+        if (!!setUploadDesignerWork) {
+
+            manageOrderPanelBtn.find('.btn').on('click', function (e) {
+                e.stopPropagation();
+                e.preventDefault();
+                var that = $(this);
+                that.text('上传中...');
+                customUpload.uploading().then(function () {
+                    //上传成功后提交表单
+                    var thisForm = $('#oemUploadForm');
+                    $.ajax({
+                        type: 'post',
+                        url: thisForm.attr('action'),
+                        data: thisForm.serialize()
+                    }).then(function (data) {
+                        //格式化数据
+                        try {
+                            data = $.parseJSON(data);
+                        } catch (e) {
+                        }
+                        if (data.error == 0) {
+                            load.showLoad(data.message, 'load-success');
+                            //forward 是下一个页面跳转地址
+                            if (!!data.forward) {
+                                $.get(data.forward).then(function () {
+                                    if (!!timer) clearTimeout(timer);
+                                    timer = setTimeout(function () {
+                                        window.location.href = data.forward;
+                                    }, 2000);
+                                }, function (e) {
+                                    load.showLoad(data.message, 'load-warning', 2500);
+                                    that.text('重新提交');
+                                });
+                            }
+
+                        } else {
+                            load.showLoad(data.message, 'load-warning', 2500);
+                            that.text('重新上传');
+                        }
+                    });
+                }, function (e) {
+                    load.showLoad('有文件上传失败，请重新上传', 'load-warning', 2500);
+                    that.text('重新上传');
+                });
+            });
+        }
+
     }
 
 

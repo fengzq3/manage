@@ -262,7 +262,7 @@ body {
 .manage-loading.load-success{background: #3c763d;color:#CFF3D0;}
 .manage-loading.load-warning{background: #980008;color: #ffdad0;}
 
-.manage-order-area{padding:0;}
+.manage-order-area{padding:0;position:relative;}
 .manage-order-des{padding-right:0;}
 .manage-order-panel1{border-color:#EAEDF1;}
 .manage-order-panel1 .panel-heading{border:0;background-color:#EAEDF1;}
@@ -299,7 +299,7 @@ body {
 .manageStep-item.pass{color: #5BC0DE;}
 .manageStep-item.pass i{border-color:#5BC0DE;}
 .manageStep-item.pass:after{border-color:#5BC0DE;}
-.order-panel-des{padding: 15px; margin: -15px -15px 15px; list-style:none; background-color: #F9F9F9;overflow:hidden;}
+.order-panel-des{padding: 15px; margin: -15px 0 15px; list-style:none; background-color: #F9F9F9;overflow:hidden;}
 .order-panel-des li{padding:5px;color:#BFBFBF;}
 
 /*订单设计师、设计稿列表*/
@@ -1343,6 +1343,9 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     opacity: 0.6;
     pointer-events:none;
 }
+.upload-state-done .remove-this{display:none;}
+.uploadSuccess{position:absolute;top:0;bottom:0;left:0;right:0;background-color:rgba(0,0,0,.5);color:#fff;margin:0;text-align:center;line-height:108px;}
+
 .uploader-list{overflow:hidden;}
 .file-item{float:left;margin-bottom:10px;margin-right:10px;position:relative;}
 .file-item .info{position:absolute;bottom:4px;left:4px;right:4px;background-color:rgba(255,255,255,.8);overflow:hidden;white-space: nowrap;
@@ -1361,6 +1364,16 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     right: 0;
     border-radius: 50%;
 }
+.file-item .upload-progress{position:absolute;left:0;right:0;height:1em;top:50%; margin: -.5em 0 0;background-color:rgba(255,255,255,.8);}
+.file-item .upload-progress span{position:absolute;left:0;height:100%;background-color:#ED7117;}
+.file-item .error{position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    text-align: center;
+    background-color: #D42905;
+    color: #fff;
+    margin-top: -.5em;}
 
 /*管理人员样式*/
 .manage-people{padding:0;margin:0;overflow:hidden;list-style:none;}
@@ -1385,5 +1398,17 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 .btn-lgStyle2:hover,.btn-lgStyle2:focus{background-color: #F0FBFF; color: #5BC0DE; border-color: #5BC0DE;}
 /*上传OEM设计稿：上传组件样式*/
 .UploadDesignerWork{}
-.designerWork-list{float:left;overflow:hidden;}
+.designerWork-list{}
 .designerPicker{float:left;}
+.designerPicker .webuploader-pick{height: 110px;color:#8C8C8C;
+    width: 110px;
+    line-height: 100px;
+    border-color: #DDD;
+}
+.designerPicker .webuploader-pick-hover{border-color:#00b7ee;background-color:#F4FCFF;color:#00b7ee;}
+.manage-order-panelBtn{padding:10px;margin:0;text-align: left;border-top:1px solid #ddd;overflow:hidden;
+    -webkit-border-radius:0;
+    -moz-border-radius:0;
+    border-radius:0;}
+.manage-order-panelBtn.pinBottom{background-color:#F1F1F1;}
+.panel-order-info{padding-right:120px;}

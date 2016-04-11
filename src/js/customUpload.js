@@ -3,6 +3,7 @@
  */
 
 (function ($) {
+    "use strict";
 
     var uploads = [];
 
@@ -64,6 +65,8 @@
                         i = 0;
                         d.resolve();
                     }
+                }).fail(function (e) {
+                    d.reject();
                 });
             }
 
@@ -93,7 +96,7 @@
         if (!serUrl) throw '请设置上传地址！';
         var limit = mainCon.data('uploadlimit') || opt.limit;
         //标记是否允许上传图片以外的文件（默认只可上传图片）
-        var acceptFile = mainCon.data('acceptfile'),accept = '';
+        var acceptFile = mainCon.data('acceptfile'), accept = '';
         if (!acceptFile) {
             accept = {
                 title: 'Images',
@@ -137,11 +140,11 @@
         });
 
         //当非图片文件加入队列前，判断文件类型是否合法
-        if(!!acceptFile){
-            var fileType = ['rar','zip','gz'];
+        if (!!acceptFile) {
+            var fileType = ['rar', 'zip', 'gz'];
             uploader.on('beforeFileQueued', function (file) {
-                if(fileType.indexOf(file.ext) < 0){
-                    load.showLoad('请上传rar、zip、tar.gz格式文件','load-warning',2500);
+                if (fileType.indexOf(file.ext) < 0) {
+                    load.showLoad('请上传rar、zip、tar.gz格式文件', 'load-warning', 2500);
                     return false;
                 }
             });
@@ -188,11 +191,11 @@
         // 文件上传过程中创建进度条实时显示。
         uploader.on('uploadProgress', function (file, percentage) {
             var $li = $('#' + file.id),
-                $percent = $li.find('.progress span');
+                $percent = $li.find('.upload-progress span');
 
             // 避免重复创建
             if (!$percent.length) {
-                $percent = $('<p class="progress"><span></span></p>')
+                $percent = $('<p class="upload-progress"><span></span></p>')
                     .appendTo($li)
                     .find('span');
             }
@@ -202,11 +205,15 @@
 
         // 文件上传成功，给item添加成功class, 用样式标记上传成功。
         uploader.on('uploadSuccess', function (file, response) {
-            $('#' + file.id).addClass('upload-state-done');
+            var $li = $('#' + file.id);
+            if(!$li.hasClass('upload-state-done')){
+                $li.addClass('upload-state-done').append('<p class="uploadSuccess">上传成功</p>');
+            }
+
             console.log(response._raw);
             //处理返回数据
             try {
-                response = $.parseJSON(response);
+                response = $.parseJSON(response._raw);
             } catch (e) {
             }
             //组装url存入hidden input
@@ -266,7 +273,7 @@
         uploader.on('uploadComplete', function (file) {
             console.log('上传结束1个文件');
             // 完成上传完了，成功或者失败，先删除进度条。
-            $('#' + file.id).find('.progress').remove();
+            $('#' + file.id).find('.upload-progress').remove();
 
         });
 

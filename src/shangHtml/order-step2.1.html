@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../css/manage.css">
     <script src="../js/customDialog.js"></script>
     <script src="../js/customUpload.js"></script>
+    <script src="../js/pinDom.js"></script>
     <script src="../js/manage.js"></script>
     <title>后台管理系统</title>
 </head>
@@ -56,11 +57,14 @@
                 <li class="divider hideSlide"><span
                         class="glyphicon glyphicon-chevron-left"></span>个人中心
                 </li>
-                <li><a id="slideInfomation" href="fragment/infomation.html" data-custom="slidePanel" data-mywidth="600px" title="设置个人信息"><span
+                <li><a id="slideInfomation" href="fragment/infomation.html" data-custom="slidePanel"
+                       data-mywidth="600px" title="设置个人信息"><span
                         class="glyphicon glyphicon-user"></span>个人信息</a></li>
-                <li><a id="slideInvoice" href="fragment/invoice.html" data-custom="slidePanel" data-mywidth="600px" title="设置发票信息"><span
+                <li><a id="slideInvoice" href="fragment/invoice.html" data-custom="slidePanel" data-mywidth="600px"
+                       title="设置发票信息"><span
                         class="glyphicon glyphicon-pushpin"></span>发票信息</a></li>
-                <li><a id="slideStaff" href="fragment/renyuan.html" data-custom="slidePanel" data-mywidth="900px" title="设置管理人员"><span
+                <li><a id="slideStaff" href="fragment/renyuan.html" data-custom="slidePanel" data-mywidth="900px"
+                       title="设置管理人员"><span
                         class="glyphicon glyphicon-tower"></span>管理人员</a></li>
                 <li class="divider"><span class="badge notice pull-right">新</span>订单管理</li>
                 <li class="shang-order-item">
@@ -94,7 +98,7 @@
     </div>
     <!--主内容-->
     <div class="manage-content">
-<!--order 容器-->
+        <!--order 容器-->
         <div class="main-content1">
             <div class="panel manage-panel">
                 <div class="panel-heading">
@@ -113,7 +117,7 @@
                         </ul>
                     </div>
                     <h3 class="panel-title" title="继续完成订单信息" data-toggle="tooltip">请继续完成订单信息 <span
-                            class="label label-info">2016.03.24</span></h3>
+                            class="label label-success">上传设计稿</span></h3>
                 </div>
                 <div class="panel-body">
                     <!--基本信息-->
@@ -129,26 +133,91 @@
                     </ul>
 
                     <!--订单区-->
-                    <div class="col-lg-9 manage-order-area">
+                    <div class="col-lg-9 manage-order-area" data-custom="isOem">
+                        <!--OEM 上传表单-->
 
-                        <div class="panel manage-order-panel2 now">
-                            <div class="panel-body row">
-
-                                <div class="col-sm-6">
-                                    <a href="order-step2.1.html" class="btn manage-lg-btn btn-lgStyle1" data-custom="chooseOem">
-                                        <h2 class="btn-title"><span class="glyphicon glyphicon-screenshot"></span>有图报价</h2>
-                                        <p>若已有设计图，可以直接上传施工图！<br/>工厂会根据您的图纸直接工厂报价!</p>
-                                    </a>
+                        <form action="../testData/oemSuccess.json" method="post" id="oemUploadForm">
+                            <div class="panel manage-order-panel2 now">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        添加效果图
+                                        <span class="badge">支持JPG、PNG,每稿不超50张图片</span>
+                                    </h3>
                                 </div>
-                                <div class="col-sm-6">
-                                    <a href="order-step2.2.html" class="btn manage-lg-btn btn-lgStyle2" data-custom="chooseOem">
-                                        <h2 class="btn-title"><span class="glyphicon glyphicon-send"></span>需要设计</h2>
-                                        <p>若无设计师，可以提交您的需求！<br/>一路展专业设计师团队会根据您的需求进行设计！</p>
-                                    </a>
+                                <div class="panel-body row">
+                                    <div class="myUploader UploadDesignerWork" data-custom="uploader"
+                                         data-uploadurl="../testData/photoSuccess"
+                                         data-uploadlimit="50">
+                                        <!--用来存放item-->
+                                        <div class="designerWork-list"></div>
+                                        <input type="hidden" name="tax3" class="uploader-input">
+                                        <div class="designerPicker">添加效果图</div>
+                                    </div>
                                 </div>
-
                             </div>
-                        </div>
+                            <div class="panel manage-order-panel2 now">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        添加报馆图
+                                        <span class="badge">支持JPG、PNG、GIF格式</span>
+                                    </h3>
+                                </div>
+                                <div class="panel-body row">
+                                    <div class="myUploader UploadDesignerWork" data-custom="uploader"
+                                         data-uploadurl="../testData/photoSuccess"
+                                         data-uploadlimit="50">
+                                        <!--用来存放item-->
+                                        <div class="designerWork-list"></div>
+                                        <input type="hidden" name="tax3" class="uploader-input">
+                                        <div class="designerPicker">添加报馆图</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel manage-order-panel2 now">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        添加施工图
+                                        <span class="badge">支持JPG、PNG、GIF格式</span>
+                                    </h3>
+                                </div>
+                                <div class="panel-body row">
+                                    <div class="myUploader UploadDesignerWork" data-custom="uploader"
+                                         data-uploadurl="../testData/photoSuccess"
+                                         data-uploadlimit="50">
+                                        <!--用来存放item-->
+                                        <div class="designerWork-list"></div>
+                                        <input type="hidden" name="tax3" class="uploader-input">
+                                        <div class="designerPicker">添加施工图</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel manage-order-panel2 now">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        添加3D模型
+                                        <span class="badge">支持rar、zip、tar.gz格式</span>
+                                    </h3>
+                                </div>
+                                <div class="panel-body row">
+                                    <div class="myUploader UploadDesignerWork" data-custom="uploader"
+                                         data-uploadurl="../testData/photoSuccess"
+                                         data-uploadlimit="50" data-acceptfile="true">
+                                        <!--用来存放item-->
+                                        <div class="designerWork-list"></div>
+                                        <input type="hidden" name="tax3" class="uploader-input">
+                                        <div class="designerPicker">添加3D模型</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--btn 上传图片按钮-->
+                            <div class="panel manage-order-panelBtn">
+                                <button type="submit" class="btn btn-success btn-lg pull-right">开始上传</button>
+                                <div class="panel-order-info">
+                                    请尽量详细的添加图纸，方便工厂准确报价请尽量详细的添加图纸，方便工厂准确报价请尽量详细的添加图纸
+                                </div>
+                            </div>
+                        </form>
+                        <!--OEM 上传表单 END-->
 
                     </div>
 
