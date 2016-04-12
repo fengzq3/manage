@@ -262,6 +262,8 @@ body {
 .manage-loading.load-success{background: #3c763d;color:#CFF3D0;}
 .manage-loading.load-warning{background: #980008;color: #ffdad0;}
 
+.manage-order-info .list-group{margin-bottom:10px;}
+.manage-order-btnGroup{margin-bottom:10px;}
 .manage-order-area{padding:0;position:relative;}
 .manage-order-des{padding-right:0;}
 .manage-order-panel1{border-color:#EAEDF1;}

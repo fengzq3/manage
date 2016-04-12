@@ -141,10 +141,10 @@
 
         //当非图片文件加入队列前，判断文件类型是否合法
         if (!!acceptFile) {
-            var fileType = ['rar', 'zip', 'gz'];
+            var fileType = ['rar', 'zip', 'gz', 'doc', 'docx', 'xls', 'xlsx'];
             uploader.on('beforeFileQueued', function (file) {
                 if (fileType.indexOf(file.ext) < 0) {
-                    load.showLoad('请上传rar、zip、tar.gz格式文件', 'load-warning', 2500);
+                    load.showLoad('文件格式不正确', 'load-warning', 2500);
                     return false;
                 }
             });
@@ -173,7 +173,15 @@
             // thumbnailWidth x thumbnailHeight 为 100 x 100
             uploader.makeThumb(file, function (error, src) {
                 if (error) {
-                    $img.replaceWith('<img src=\"../img/file.png\"/>');
+                    if (file.ext === 'xls' || file.ext === 'xlsx') {
+                        $img.replaceWith('<img src=\"../img/xls.png\"/>');
+                    }
+                    if (file.ext === 'doc' || file.ext === 'docx') {
+                        $img.replaceWith('<img src=\"../img/doc.png\"/>');
+                    } else {
+                        $img.replaceWith('<img src=\"../img/file.png\"/>');
+                    }
+
                     return;
                 }
 
@@ -206,7 +214,7 @@
         // 文件上传成功，给item添加成功class, 用样式标记上传成功。
         uploader.on('uploadSuccess', function (file, response) {
             var $li = $('#' + file.id);
-            if(!$li.hasClass('upload-state-done')){
+            if (!$li.hasClass('upload-state-done')) {
                 $li.addClass('upload-state-done').append('<p class="uploadSuccess">上传成功</p>');
             }
 

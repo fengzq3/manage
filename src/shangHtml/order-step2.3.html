@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1"/>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <script src="../js/jquery-1.11.3.min.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/webuploader.js"></script>
+
+    <link rel="stylesheet" href="../css/manage.css">
+    <script src="../js/customDialog.js"></script>
+    <script src="../js/customUpload.js"></script>
+    <script src="../js/pinDom.js"></script>
+    <script src="../js/manage.js"></script>
+    <title>后台管理系统</title>
+</head>
+<body>
+<header class="manage-header">
+    <nav role="navigation" class="navbar navbar-manage navbar-fixed-top">
+        <div class="navbar-header">
+            <a href="/" class="navbar-brand"><img src="../img/managelogo.jpg" alt="一路展"></a>
+        </div>
+        <div class="navbar-body">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="index.html">个人中心</a></li>
+                <li><a href="#">管理首页</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <span class="glyphicon glyphicon-bell"></span>消息
+                        <small class="notice badge ">123</small>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">新消息新消息新消息111 <span class="label label-danger">紧急</span></a></li>
+                        <li><a href="#">新消息新消息新消息222</a></li>
+                        <li><a href="#">新消息新消息新消息333</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">查看更多</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span>gongchang123</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-log-out"></span>退出</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="manage-body">
+    <nav role="navigation" class="menuSlide navbar">
+        <div class="menuSlide-content">
+
+            <ul class="nav nav-pills nav-stacked">
+                <li class="divider hideSlide"><span
+                        class="glyphicon glyphicon-chevron-left"></span>个人中心
+                </li>
+                <li><a id="slideInfomation" href="fragment/infomation.html" data-custom="slidePanel"
+                       data-mywidth="600px" title="设置个人信息"><span
+                        class="glyphicon glyphicon-user"></span>个人信息</a></li>
+                <li><a id="slideInvoice" href="fragment/invoice.html" data-custom="slidePanel" data-mywidth="600px"
+                       title="设置发票信息"><span
+                        class="glyphicon glyphicon-pushpin"></span>发票信息</a></li>
+                <li><a id="slideStaff" href="fragment/renyuan.html" data-custom="slidePanel" data-mywidth="900px"
+                       title="设置管理人员"><span
+                        class="glyphicon glyphicon-tower"></span>管理人员</a></li>
+                <li class="divider"><span class="badge notice pull-right">新</span>订单管理</li>
+                <li class="shang-order-item">
+                    <a href="#" data-toggle="tooltip" title="第十二届上海珠宝首饰展览会展台海珠宝首饰展览会展台第十二届上海珠宝首饰展">
+                        <p>第十二届上海珠宝首饰展览会展台</p>
+                        <small><span class="glyphicon glyphicon-time"></span>时间：2016.03.23</small>
+                        <small><span class="glyphicon glyphicon-map-marker"></span>展位：A1235</small>
+                        <small><span class="glyphicon glyphicon-adjust"></span>面积：123㎡</small>
+                    </a>
+                </li>
+                <li class="shang-order-item">
+                    <a href="#" data-toggle="tooltip" title="第展览三界会展台第展览三界会展台第展览三界会展台">
+                        <p>第展览三界会展台</p>
+                        <small><span class="glyphicon glyphicon-time"></span>时间：2013.02.13</small>
+                        <small><span class="glyphicon glyphicon-map-marker"></span>展位：A1235</small>
+                        <small><span class="glyphicon glyphicon-adjust"></span>面积：123㎡</small>
+                    </a>
+                </li>
+                <li class="shang-order-add">
+                    <a href="fragment/addOrder.html" data-toggle="tooltip" data-custom="dialog" title="添加订单"
+                       data-mywidth="600px"><p><span></span></p></a>
+                </li>
+                <!--<li><a href="#"><span class="glyphicon glyphicon-saved"></span>签约监督</a></li>-->
+
+            </ul>
+        </div>
+
+    </nav>
+    <div class="mynuSlide-flag">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+    </div>
+    <!--主内容-->
+    <div class="manage-content">
+        <!--order 容器-->
+        <div class="main-content1">
+            <div class="panel manage-panel">
+                <div class="panel-heading">
+                    <!--进度区-->
+                    <div class="manageStep pull-right">
+                        <ul class="manageStep-inner">
+                            <li class="manageStep-item pass">
+                                <i class="glyphicon glyphicon-chevron-right"></i><span>填写基本信息</span>
+                            </li>
+                            <li class="manageStep-item pass">
+                                <i class="glyphicon glyphicon-chevron-right"></i><span>填写需求文档</span>
+                            </li>
+                            <li class="manageStep-item active">
+                                <i class="glyphicon glyphicon-chevron-right"></i><span>上传文档信息</span>
+                            </li>
+                            <li class="manageStep-last">
+                                <i class="glyphicon glyphicon-ok"></i><span>下单成功</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <h3 class="panel-title" title="继续完成订单信息" data-toggle="tooltip">请继续完成订单信息 <span
+                            class="label label-success">上传需求文档</span></h3>
+                </div>
+                <div class="panel-body">
+                    <!--基本信息-->
+                    <ul class="order-panel-des hidden-lg">
+                        <li class="col-sm-6">展会名称：第十二届上海珠宝首饰展览会展台</li>
+                        <li class="col-sm-3">展位面积：1265㎡</li>
+                        <li class="col-sm-3">展位号：A1233</li>
+                        <li class="col-sm-6">展会时间：2016.03.25 至 2016.03.28</li>
+                        <li class="clearfix"></li>
+                        <li class="col-sm-6">签约工厂：首饰展览会展台览会展台览会展台</li>
+                        <li class="col-sm-3">签约时间：2016.03.28</li>
+                        <li class="col-sm-3">最终价格：￥123123.00</li>
+                    </ul>
+
+                    <!--订单区-->
+                    <div class="col-lg-9 manage-order-area" data-custom="isOem">
+                        <!--OEM 上传表单-->
+
+                        <form action="../testData/oemSuccess.json" method="post" id="oemUploadForm">
+                            <div class="panel manage-order-panel2 now">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a class="pull-right" href="order1.html">跳过此步》</a>
+                                        上传需求文档
+                                        <span class="badge">支持doc、docx、rar、zip、tar.gz格式</span>
+                                    </h3>
+                                </div>
+                                <div class="panel-body row">
+                                    <div class="myUploader UploadDesignerWork" data-custom="uploader"
+                                         data-uploadurl="../testData/photoSuccess"
+                                         data-uploadlimit="50" data-acceptfile="true">
+                                        <!--用来存放item-->
+                                        <div class="designerWork-list"></div>
+                                        <input type="hidden" name="tax3" class="uploader-input">
+                                        <div class="designerPicker">上传需求文档</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--btn 上传图片按钮-->
+                            <div class="panel manage-order-panelBtn">
+                                <button type="submit" class="btn btn-success btn-lg pull-right">开始上传</button>
+                                <div class="panel-order-info">
+                                    请尽量详细的添加图纸，方便工厂准确报价请尽量详细的添加图纸，方便工厂准确报价请尽量详细的添加图纸
+                                </div>
+                            </div>
+                        </form>
+                        <!--OEM 上传表单 END-->
+
+                    </div>
+
+
+                    <!--订单区 END-->
+                    <!--订单简介-->
+                    <div class="col-sm-3 manage-order-des">
+                        <div class="manage-order-info visible-lg">
+                            <ul class="list-group">
+                                <li class="list-group-item active"><span class="badge">新</span> 第三方南山上带你疯狂思念对方</li>
+                                <li class="list-group-item">订单号：<span class="pull-right">1551331315</span></li>
+                                <li class="list-group-item">联系人：<span class="pull-right">A123</span></li>
+                                <li class="list-group-item">电话：<span class="pull-right">A123</span></li>
+                                <li class="list-group-item">资金预算：<span class="pull-right">A123</span></li>
+                                <li class="list-group-item">展馆名称：<span class="pull-right">A123</span></li>
+                                <li class="list-group-item">展会时间：<span class="pull-right">2016.03.25</span></li>
+                                <li class="list-group-item">展位面积：<span class="pull-right">12312㎡</span></li>
+                                <li class="list-group-item">展位号：<span class="pull-right">A123</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--订单简介 END-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--manage-body END-->
+
+
+</body>
+</html>

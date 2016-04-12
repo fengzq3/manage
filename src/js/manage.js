@@ -445,6 +445,13 @@ $(function () {
         e.preventDefault();
         customDialog.setSlidePanel(this, 'manageSlidePanel', infoFormEvent);
     });
+    //绑定 btnGroup 的btn事件
+    $('.manage-order-btnGroup').find('.btn').on('click', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        customDialog.setSlidePanel(this, 'manageSlidePanel', infoFormEvent);
+    });
+
     function infoFormEvent() {
         var manageSlidePanel = $('#manageSlidePanel'), manageSlidePanelForm = manageSlidePanel.find('form');
         //绑定关闭事件
@@ -482,6 +489,9 @@ $(function () {
                 }
 
             });
+        }else{
+            console.log('123123');
+            uploaderFlag = customUpload.init();
         }
 
         //处理二级联动
@@ -849,28 +859,32 @@ $(function () {
         picListEdit.find('a.remove-this').on('click', function (e) {
             e.stopPropagation();
             e.preventDefault();
-            var thisRemoveBtn = $(this);
-            $.get(thisRemoveBtn.attr('href')).then(function (data) {
-                try{
-                    data = $.parseJSON(data);
-                }catch (e){}
-                if(data.error == 0){
-                    load.showLoad(data.message,'load-success',2500);
-                    thisRemoveBtn.parent().animate({opacity:0,width:0},500, function () {
-                        thisRemoveBtn.parent().remove();
-                    });
-                }else{
-                    load.showLoad(data.message,'load-warning',2500);
-                }
-            }, function (e) {
-                load.showLoad('网络错误，请重试！','load-warning',2500);
-            });
+            delPicListItem($(this));
         });
         //修改内容
         $('.manage-order-info').find('[data-custom="dialog"]').on('click', function (e) {
             e.stopPropagation();
             e.preventDefault();
             customDialog.setDialog(this, 'manageDialog', dialogFormCallback);
+        });
+    }
+
+    //通用图片列表删除方法
+    function delPicListItem(thisRemoveBtn){
+        $.get(thisRemoveBtn.attr('href')).then(function (data) {
+            try{
+                data = $.parseJSON(data);
+            }catch (e){}
+            if(data.error == 0){
+                load.showLoad(data.message,'load-success',2500);
+                thisRemoveBtn.parent().animate({opacity:0,width:0},500, function () {
+                    thisRemoveBtn.parent().remove();
+                });
+            }else{
+                load.showLoad(data.message,'load-warning',2500);
+            }
+        }, function (e) {
+            load.showLoad('网络错误，请重试！','load-warning',2500);
         });
     }
 
