@@ -1364,6 +1364,12 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     right: 0;
     border-radius: 50%;
 }
+.file-item a.remove-this:hover,.file-item a.remove-this:focus{text-decoration: none;
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);}
 .file-item .upload-progress{position:absolute;left:0;right:0;height:1em;top:50%; margin: -.5em 0 0;background-color:rgba(255,255,255,.8);}
 .file-item .upload-progress span{position:absolute;left:0;height:100%;background-color:#ED7117;}
 .file-item .error{position: absolute;
@@ -1410,5 +1416,17 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     -webkit-border-radius:0;
     -moz-border-radius:0;
     border-radius:0;}
-.manage-order-panelBtn.pinBottom{background-color:#F1F1F1;}
+.manage-order-panelBtn.pinBottom{background-color:#F1F1F1;z-index: 100;}
 .panel-order-info{padding-right:120px;}
+
+/*问询表*/
+.office-form{margin-top:-15px;}
+.office-fieldSet{padding:10px;margin:10px 0;background-color:#fafafa;color:#999;border-left:3px solid transparent;}
+.office-fieldSet small,.office-fieldSet span{color:#999;}
+.office-form-item{padding:10px 5px;overflow:hidden;border-bottom:1px solid #f2f2f2;}
+.office-form-title{padding:10px 5px;overflow:hidden;border-bottom:3px solid #f2f2f2;}
+.office-form-title h4{margin:0;font-size:16px;}
+.office-form-item .row{margin-left:-5px;margin-right:-5px;}
+.office-form-item div[class*="col-"]{padding-left:5px;padding-right:5px;}
+.office-fieldSet:hover,.office-fieldSet:focus{border-color:#ffb568;}
+.office-fieldSet:hover .office-form-title,.office-fieldSet:focus .office-form-title{border-color: #ffb568;}

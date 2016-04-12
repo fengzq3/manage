@@ -133,10 +133,10 @@
                     </ul>
 
                     <!--订单区-->
-                    <div class="col-lg-9 manage-order-area" data-custom="isOem">
+                    <div class="col-lg-9 manage-order-area" data-custom="picListEdit">
                         <!--OEM 上传表单-->
 
-                        <form action="../testData/oemSuccess.json" method="post" id="oemUploadForm">
+
                             <div class="panel manage-order-panel2 now">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">
@@ -145,14 +145,38 @@
                                     </h3>
                                 </div>
                                 <div class="panel-body row">
-                                    <div class="myUploader UploadDesignerWork" data-custom="uploader"
-                                         data-uploadurl="../testData/photoSuccess"
-                                         data-uploadlimit="50">
+
+                                    <div class="myUploader UploadDesignerWork">
                                         <!--用来存放item-->
-                                        <div class="designerWork-list"></div>
-                                        <input type="hidden" name="tax3" class="uploader-input">
-                                        <div class="designerPicker">添加效果图</div>
+                                        <div class="designerWork-list">
+                                            <div class="file-item thumbnail">
+                                                <img src="../img/file.png">
+                                                <div class="info">1459488236.png</div>
+                                                <a href="../testData/success.json" class="remove-this">×</a>
+                                            </div>
+                                            <div class="file-item thumbnail">
+                                                <img src="../img/file.png">
+                                                <div class="info">1459488236.png</div>
+                                                <a href="../testData/error.json" class="remove-this">×</a>
+                                            </div>
+                                            <div class="file-item thumbnail">
+                                                <img src="../img/file.png">
+                                                <div class="info">1459488236.png</div>
+                                                <a href="/123" class="remove-this">×</a>
+                                            </div>
+                                            <div class="file-item thumbnail">
+                                                <img src="../img/file.png">
+                                                <div class="info">1459488236.png</div>
+                                                <a href="#" class="remove-this">×</a>
+                                            </div>
+                                            <div class="file-item thumbnail">
+                                                <img src="../img/file.png">
+                                                <div class="info">1459488236.png</div>
+                                                <a href="#" class="remove-this">×</a>
+                                            </div>
+                                        </div>
                                     </div>
+
                                 </div>
                             </div>
                             <div class="panel manage-order-panel2 now">
@@ -163,14 +187,18 @@
                                     </h3>
                                 </div>
                                 <div class="panel-body row">
-                                    <div class="myUploader UploadDesignerWork" data-custom="uploader"
-                                         data-uploadurl="../testData/photoSuccess"
-                                         data-uploadlimit="50">
+
+                                    <div class="myUploader UploadDesignerWork">
                                         <!--用来存放item-->
-                                        <div class="designerWork-list"></div>
-                                        <input type="hidden" name="tax3" class="uploader-input">
-                                        <div class="designerPicker">添加报馆图</div>
+                                        <div class="designerWork-list">
+                                            <div class="file-item thumbnail">
+                                                <img src="../img/file.png">
+                                                <div class="info">1459488236.png</div>
+                                                <a href="#" class="remove-this">×</a>
+                                            </div>
+                                        </div>
                                     </div>
+
                                 </div>
                             </div>
                             <div class="panel manage-order-panel2 now">
@@ -181,14 +209,18 @@
                                     </h3>
                                 </div>
                                 <div class="panel-body row">
-                                    <div class="myUploader UploadDesignerWork" data-custom="uploader"
-                                         data-uploadurl="../testData/photoSuccess"
-                                         data-uploadlimit="50">
+
+                                    <div class="myUploader UploadDesignerWork">
                                         <!--用来存放item-->
-                                        <div class="designerWork-list"></div>
-                                        <input type="hidden" name="tax3" class="uploader-input">
-                                        <div class="designerPicker">添加施工图</div>
+                                        <div class="designerWork-list">
+                                            <div class="file-item thumbnail">
+                                                <img src="../img/file.png">
+                                                <div class="info">1459488236.png</div>
+                                                <a href="#" class="remove-this">×</a>
+                                            </div>
+                                        </div>
                                     </div>
+
                                 </div>
                             </div>
                             <div class="panel manage-order-panel2 now">
@@ -199,24 +231,21 @@
                                     </h3>
                                 </div>
                                 <div class="panel-body row">
-                                    <div class="myUploader UploadDesignerWork" data-custom="uploader"
-                                         data-uploadurl="../testData/photoSuccess"
-                                         data-uploadlimit="50" data-acceptfile="true">
+
+                                    <div class="myUploader UploadDesignerWork">
                                         <!--用来存放item-->
-                                        <div class="designerWork-list"></div>
-                                        <input type="hidden" name="tax3" class="uploader-input">
-                                        <div class="designerPicker">添加3D模型</div>
+                                        <div class="designerWork-list">
+                                            <div class="file-item thumbnail">
+                                                <img src="../img/file.png">
+                                                <div class="info">1459488236.png</div>
+                                                <a href="#" class="remove-this">×</a>
+                                            </div>
+                                        </div>
                                     </div>
+
                                 </div>
                             </div>
-                            <!--btn 上传图片按钮-->
-                            <div class="panel manage-order-panelBtn">
-                                <button type="submit" class="btn btn-success btn-lg pull-right">开始上传</button>
-                                <div class="panel-order-info">
-                                    请尽量详细的添加图纸，方便工厂准确报价请尽量详细的添加图纸，方便工厂准确报价请尽量详细的添加图纸
-                                </div>
-                            </div>
-                        </form>
+
                         <!--OEM 上传表单 END-->
 
                     </div>
@@ -236,6 +265,9 @@
                                 <li class="list-group-item">展会时间：<span class="pull-right">2016.03.25</span></li>
                                 <li class="list-group-item">展位面积：<span class="pull-right">12312㎡</span></li>
                                 <li class="list-group-item">展位号：<span class="pull-right">A123</span></li>
+                                <li class="list-group-item">
+                                    <a class="btn btn-warning pull-right" href="fragment/editOrder.html" data-custom="dialog" title="修改订单" data-mywidth="600px">修改</a>
+                                </li>
                             </ul>
                         </div>
                     </div>

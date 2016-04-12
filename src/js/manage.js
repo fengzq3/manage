@@ -12,7 +12,7 @@
         },
         hideLoad: function (grade) {
             //隐藏load信息
-            loading.animate({top: '-50px', opacity: 0}, 500, function () {
+            loading.stop().animate({top: '-50px', opacity: 0}, 500, function () {
                 loading.removeClass(grade);
             });
             //清空定时器timer
@@ -26,7 +26,7 @@
              * @param time      显示持续时间
              */
             loading.addClass(grade).find('.loadLabel').html(message);
-            loading.animate({top: '50px', opacity: 1}, 300);
+            loading.stop().animate({top: '50px', opacity: 1}, 300);
             console.log('load time:' + time);
             if (typeof time !== 'undefined') {
                 timer = setTimeout(function () {
@@ -428,6 +428,17 @@ $(function () {
     }
 
     //slideMenu 中的 slidePanel 事件(个人信息/发票信息/管理人员)
+    //定义form提示
+    function setFromTip(inputCon) {
+        inputCon.find('input,textarea').focus(function () {
+            $(this).parent().siblings('.help-block').removeClass('success').addClass('error').html('<span class=\"glyphicon glyphicon-warning-sign\"></span>' + $(this).attr('placeholder'));
+        }).blur(function () {
+            if ($(this).val() !== '') {
+                $(this).parent().siblings('.help-block').removeClass('error').addClass('success').html('<span class=\"glyphicon glyphicon-ok\"></span>');
+            }
+        });
+    }
+
     //个人信息（#slideInfomation） 发票信息（#slideInvoice） 管理人员（#slideStaff）
     munuSlide.find('a[data-custom="slidePanel"]').on('click', function (e) {
         e.stopPropagation();
@@ -442,13 +453,7 @@ $(function () {
         });
         //绑定focus/blur提示事件
         var inputCon = manageSlidePanelForm.find('.manage-form-item');
-        inputCon.find('input,textarea').focus(function () {
-            $(this).parent().siblings('.help-block').removeClass('success').addClass('error').html('<span class=\"glyphicon glyphicon-warning-sign\"></span>' + $(this).attr('placeholder'));
-        }).blur(function () {
-            if ($(this).val() !== '') {
-                $(this).parent().siblings('.help-block').removeClass('error').addClass('success').html('<span class=\"glyphicon glyphicon-ok\"></span>');
-            }
-        });
+        setFromTip(inputCon);
 
         //处理radio事件
         /**
@@ -547,13 +552,7 @@ $(function () {
         //绑定input提示信息
         var manageDialog = $('#manageDialog'), manageDialogForm = manageDialog.find('.manage-form'), uploaderFlag;
         var inputCon = manageDialogForm.find('.manage-form-item');
-        inputCon.find('input,textarea').focus(function () {
-            $(this).parent().siblings('.help-block').removeClass('success').addClass('error').html('<span class=\"glyphicon glyphicon-warning-sign\"></span>' + $(this).attr('placeholder'));
-        }).blur(function () {
-            if ($(this).val() !== '') {
-                $(this).parent().siblings('.help-block').removeClass('error').addClass('success').html('<span class=\"glyphicon glyphicon-ok\"></span>');
-            }
-        });
+        setFromTip(inputCon);
         //处理表单提交
         submitDialogForm(manageDialogForm, uploaderFlag);
 
@@ -749,11 +748,10 @@ $(function () {
 
     }
 
-    //二级联动方法
-    function provinceCity() {
-        //TODO 处理二级联动方法
 
-    }
+    //TODO 处理二级联动方法
+    //TODO 处理datePicker
+
 
     //订单第二步：填写需求或上传设计稿
     //判断OEM或定制
@@ -836,6 +834,75 @@ $(function () {
             });
         }
 
+    }
+
+    //订单问询表
+    var officeForm = $('.office-form');
+    if (officeForm.length !== 0) {
+        //启用表单底部pin
+        officeForm.find('.manage-order-panelBtn').pinDown({offsetH: 20, offsetW: 20});
+    }
+
+    //OEM编辑列表
+    var picListEdit = $('[data-custom="picListEdit"]');
+    if(picListEdit.length !== 0){
+        picListEdit.find('a.remove-this').on('click', function (e) {
+            e.stopPropagation();
+            e.preventDefault();
+            var thisRemoveBtn = $(this);
+            $.get(thisRemoveBtn.attr('href')).then(function (data) {
+                try{
+                    data = $.parseJSON(data);
+                }catch (e){}
+                if(data.error == 0){
+                    load.showLoad(data.message,'load-success',2500);
+                    thisRemoveBtn.parent().animate({opacity:0,width:0},500, function () {
+                        thisRemoveBtn.parent().remove();
+                    });
+                }else{
+                    load.showLoad(data.message,'load-warning',2500);
+                }
+            }, function (e) {
+                load.showLoad('网络错误，请重试！','load-warning',2500);
+            });
+        });
+        //修改内容
+        $('.manage-order-info').find('[data-custom="dialog"]').on('click', function (e) {
+            e.stopPropagation();
+            e.preventDefault();
+            customDialog.setDialog(this, 'manageDialog', dialogFormCallback);
+        });
+    }
+
+    //通用退出方法
+    var myQuit = $('[data-custom="quit"]');
+    if (myQuit.length !== 0) {
+        myQuit.on('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $.get($(this).attr('href')).then(function (data) {
+                try {
+                    data = $.parseJSON(data);
+                } catch (e) {}
+                if(data.error == 0){
+                    load.showLoad(data.message,'load-success',2500);
+                    if(!!data.forward){
+                        $.get(data.forward).then(function () {
+                            if(!!timer) clearTimeout(timer);
+                            timer = setTimeout(function () {
+                                window.location.href = data.forward;
+                            },2000);
+
+                        });
+                    }
+
+                }else{
+                    load.showLoad(data.message,'load-warning',2500);
+                }
+            }, function (e) {
+
+            });
+        });
     }
 
 
