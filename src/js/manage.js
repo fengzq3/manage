@@ -490,9 +490,19 @@ $(function () {
 
             });
         }else{
-            console.log('123123');
-            uploaderFlag = customUpload.init();
+            uploaderFlag = customUpload.init({listCon: '.designerWork-list',btnCls:'.designerPicker'});
         }
+
+        //处理 remove-this 功能
+        var removeThis = manageSlidePanel.find('a.remove-this');
+        if(removeThis.length !== 0){
+            removeThis.on('click', function (e) {
+                e.stopPropagation();
+                e.preventDefault();
+                delPicListItem($(this));
+            });
+        }
+
 
         //处理二级联动
 
@@ -545,7 +555,7 @@ $(function () {
         }
 
         //提交表单
-        submitInfoForm(manageSlidePanelForm);
+        submitInfoForm(manageSlidePanelForm,uploaderFlag);
 
     }
 
@@ -725,6 +735,7 @@ $(function () {
         //提交方法
         function submitInfo() {
             var actionUrl = theForm.attr('action'), data = theForm.serialize();
+            console.log(data);
             //AJAX提交表单
             $.ajax({
                 type: 'post',
