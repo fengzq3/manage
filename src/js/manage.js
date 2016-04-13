@@ -396,7 +396,6 @@ $(function () {
 
     }
 
-    //TODO 签单数据 h5消息提示获取更新
     //签单区数据获取
     setFlowPanel();
     function getOrderFlow() {
@@ -483,20 +482,20 @@ $(function () {
                 }
                 if (radioVal == 1) {
                     invoiceCon.slideDown(300);
-                    //TODO 引用初始化上传控件
+                    //引用初始化上传控件
                     uploaderFlag = customUpload.init();
                     //提交表单
                     submitInfoForm(manageSlidePanelForm, uploaderFlag);
                 }
 
             });
-        }else{
-            uploaderFlag = customUpload.init({listCon: '.designerWork-list',btnCls:'.designerPicker'});
+        } else {
+            uploaderFlag = customUpload.init({listCon: '.designerWork-list', btnCls: '.designerPicker'});
         }
 
         //处理 remove-this 功能
         var removeThis = manageSlidePanel.find('a.remove-this');
-        if(removeThis.length !== 0){
+        if (removeThis.length !== 0) {
             removeThis.on('click', function (e) {
                 e.stopPropagation();
                 e.preventDefault();
@@ -505,7 +504,15 @@ $(function () {
         }
 
 
-        //处理二级联动
+        //引入二级联动方法
+        var areaSelect = $('[data-custom="area"]');
+        console.log(areaSelect);
+        if (areaSelect.length !== 0) {
+            setArea(areaSelect);
+        }
+
+        //dataPicker实现
+        setDataPick();
 
         //管理人员 改密/删除 功能
         //删除人员
@@ -519,12 +526,11 @@ $(function () {
                 var _this = $(this).parent().parent();
                 customDialog.setDialog(this, 'manageConfirm', function (data) {
                     console.log(data);
-                    //TODO 管理人员修改删除
+                    //管理人员修改删除
                     try {
                         data = $.parseJSON(data);
                     } catch (e) {
                     }
-
 
                     if (data.error == 0) {
                         load.showLoad(data.message, 'load-success', 2500);
@@ -556,7 +562,7 @@ $(function () {
         }
 
         //提交表单
-        submitInfoForm(manageSlidePanelForm,uploaderFlag);
+        submitInfoForm(manageSlidePanelForm, uploaderFlag);
 
     }
 
@@ -566,14 +572,20 @@ $(function () {
         e.preventDefault();
         customDialog.setDialog(this, 'manageDialog', dialogFormCallback);
     });
+
+
     //订单dialog回调
     function dialogFormCallback(status) {
-        //TODO dialog提交订单
+        //dialog提交订单
         console.log(status);
         //绑定input提示信息
         var manageDialog = $('#manageDialog'), manageDialogForm = manageDialog.find('.manage-form'), uploaderFlag;
         var inputCon = manageDialogForm.find('.manage-form-item');
         setFromTip(inputCon);
+
+        //dataPicker实现
+        setDataPick();
+
         //处理表单提交
         submitDialogForm(manageDialogForm, uploaderFlag);
 
@@ -584,8 +596,6 @@ $(function () {
         //定义timer
         var timer;
         //兼容IE
-        var orderSubmit = dialogForm.find('button[type="submit"]');
-
         if (navigator.userAgent.indexOf('MSIE') > 0) {
             //是IE
             dialogForm.attr('onsubmit', 'return false;').find('#offerPanelSubmit').off('click').on('click', function () {
@@ -771,10 +781,6 @@ $(function () {
     }
 
 
-    //TODO 处理二级联动方法
-    //TODO 处理datePicker
-
-
     //订单第二步：填写需求或上传设计稿
     //判断OEM或定制
     var chooseOem = $('[data-custom="chooseOem"]');
@@ -858,6 +864,78 @@ $(function () {
 
     }
 
+    //通用dataPicker实现
+    function setDataPick() {
+        var dataPicker = $('[data-custom="datepicker"]');
+        if (dataPicker.length !== 0) {
+            //判断endTime的开始时间
+            var startData = dataPicker.find('#startData').val() || 'tody';
+
+            //datapicker实例
+            dataPicker.datepicker({
+                startDate: startData,
+                language: "zh-CN",
+                keyboardNavigation: false,
+                autoclose: true
+            });
+            //实例 END
+        }
+    }
+
+    //通用二级联动
+    function setArea(obj) {
+        /**
+         * areaJson 获取数据连接
+         * 当province选择时，异步get城市数据：请求命令 ?province*
+         */
+
+        var areaJson = obj.data('areaurl'), provinceInp = obj.find('#province'), cityInp = obj.find('#city');
+        $.get(areaJson).then(function (data) {
+            console.log(data);
+            try {
+                data = $.parseJSON(data);
+            } catch (e) {
+            }
+
+            //引入省份
+            setProvince(data.province);
+            provinceInp.change(function () {
+                $.get(areaJson + '?province' + provinceInp.val()).then(function (data) {
+                    try {
+                        data = $.parseJSON(data);
+                    } catch (e) {
+                    }
+                    //引入城市
+                    setCity(data.city);
+                });
+            });
+
+        });
+
+        //设置省份（province）方法
+        function setProvince(proData) {
+
+            var content = '';
+            $.each(proData, function (i, value) {
+                content = content + '<option value=\"' + i + '\">' + value + '</option>';
+            });
+            provinceInp.html(content);
+        }
+
+        //设置城市（city）方法
+        function setCity(ctData) {
+            if ($.isArray(ctData)) {
+                var content = '';
+                $.each(ctData, function (i, value) {
+                    content = content + '<option value=\"' + i + '\">' + value + '</option>';
+                });
+                cityInp.html(content);
+            }
+
+        }
+
+    }
+
     //订单问询表
     var officeForm = $('.office-form');
     if (officeForm.length !== 0) {
@@ -867,7 +945,7 @@ $(function () {
 
     //OEM编辑列表
     var picListEdit = $('[data-custom="picListEdit"]');
-    if(picListEdit.length !== 0){
+    if (picListEdit.length !== 0) {
         picListEdit.find('a.remove-this').on('click', function (e) {
             e.stopPropagation();
             e.preventDefault();
@@ -882,21 +960,22 @@ $(function () {
     }
 
     //通用图片列表删除方法
-    function delPicListItem(thisRemoveBtn){
+    function delPicListItem(thisRemoveBtn) {
         $.get(thisRemoveBtn.attr('href')).then(function (data) {
-            try{
+            try {
                 data = $.parseJSON(data);
-            }catch (e){}
-            if(data.error == 0){
-                load.showLoad(data.message,'load-success',2500);
-                thisRemoveBtn.parent().animate({opacity:0,width:0},500, function () {
+            } catch (e) {
+            }
+            if (data.error == 0) {
+                load.showLoad(data.message, 'load-success', 2500);
+                thisRemoveBtn.parent().animate({opacity: 0, width: 0}, 500, function () {
                     thisRemoveBtn.parent().remove();
                 });
-            }else{
-                load.showLoad(data.message,'load-warning',2500);
+            } else {
+                load.showLoad(data.message, 'load-warning', 2500);
             }
         }, function (e) {
-            load.showLoad('网络错误，请重试！','load-warning',2500);
+            load.showLoad('网络错误，请重试！', 'load-warning', 2500);
         });
     }
 
@@ -909,21 +988,22 @@ $(function () {
             $.get($(this).attr('href')).then(function (data) {
                 try {
                     data = $.parseJSON(data);
-                } catch (e) {}
-                if(data.error == 0){
-                    load.showLoad(data.message,'load-success',2500);
-                    if(!!data.forward){
+                } catch (e) {
+                }
+                if (data.error == 0) {
+                    load.showLoad(data.message, 'load-success', 2500);
+                    if (!!data.forward) {
                         $.get(data.forward).then(function () {
-                            if(!!timer) clearTimeout(timer);
+                            if (!!timer) clearTimeout(timer);
                             timer = setTimeout(function () {
                                 window.location.href = data.forward;
-                            },2000);
+                            }, 2000);
 
                         });
                     }
 
-                }else{
-                    load.showLoad(data.message,'load-warning',2500);
+                } else {
+                    load.showLoad(data.message, 'load-warning', 2500);
                 }
             }, function (e) {
 

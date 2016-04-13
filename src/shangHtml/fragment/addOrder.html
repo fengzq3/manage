@@ -37,10 +37,11 @@
         <p class="help-block input-help-block">请输入展馆名称</p>
     </div>
     <div class="manage-form-item">
-        <label for="startTime" class="control-label manage-form-label">开展时间：</label>
-        <div class="manage-form-select" id="area">
-            <input class="form-control province" name="province" id="startTime" />
-            <input class="form-control city" name="city" id="endTime" />
+        <label for="startData" class="control-label manage-form-label">展会时间：</label>
+        <div class="manage-form-textarea input-daterange input-group" data-custom="datepicker">
+            <input type="text" class="form-control" name="start" id="startData" />
+            <span class="input-group-addon">至</span>
+            <input type="text" class="form-control" name="end" id="endData" />
         </div>
     </div>
     <div class="manage-form-item">
