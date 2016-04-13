@@ -2,6 +2,7 @@
  * Created by feng on 2016/3/22.
  */
 (function () {
+    "use strict";
     var loading = $('<div class=\"manage-loading\"><p class=\"loadLabel\"></p></div>'), timer;
 
     window.load = {
