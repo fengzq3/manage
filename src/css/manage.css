@@ -9,7 +9,7 @@ body {
     -o-transition: all .3s;
     transition: all .3s;}
 .navbar-manage {
-    background-color: #293038;
+    background-color: #337AB7;
 }
 
 .navbar-manage .navbar-nav > li > a {
@@ -18,7 +18,7 @@ body {
 
 .navbar-manage .navbar-nav > li > a:hover, .navbar-manage .navbar-nav > li > a:focus {
     color: #fff;
-    background-color: #37424f;
+    background-color: #1971b6;
 }
 
 .navbar-manage .navbar-nav > li.active a,
@@ -26,7 +26,7 @@ body {
 .navbar-manage .navbar-nav > .open > a:focus,
 .navbar-manage .navbar-nav > .open > a,
 .navbar-manage .navbar-nav > .open > a:hover {
-    background-color: #091317;
+    background-color: #1965A7;
     color: #fff;
 }
 
@@ -69,7 +69,7 @@ body {
 .menuSlide-content .divider{padding:10px 15px;color:#fff;background-color:#323840;}
 .menuSlide-content .divider .glyphicon{float:right;}
 .menuSlide-content .nav-pills a{color:#fff;}
-.menuSlide-content .nav-pills a .glyphicon{padding-right:5px;}
+.menuSlide-content .nav-pills a .glyphicon{padding-right:10px;padding-left:10px;}
 .menuSlide-content .nav-pills >li a:hover,.menuSlide-content .nav-pills >li a:focus{background-color:#4D5A69;color:#fff;}
 /*主内容*/
 .manage-content{position: absolute;overflow:hidden;
@@ -103,17 +103,17 @@ body {
     -webkit-border-radius:50%;
     -moz-border-radius:50%;
     border-radius:50%;}
-.main-content1{overflow:hidden;margin-left:0;margin-top:15px;}
+.main-content1{overflow:hidden;margin-left:0;margin-top:0;}
 .main-content2{margin:-15px;overflow:hidden;}
 .main-content2 .breadcrumb{padding:20px;background-color:#fff;
     -webkit-border-radius:0;
     -moz-border-radius:0;
     border-radius:0;}
 .main-content2 .breadcrumb > li + li:before{content:'>';}
-.main-content1 .col-lg-4,.main-content1 .col-md-6,.main-content1 .col-sm-6{padding-left:0;}
-.manage-panel{border-color:#C6D3EF;}
+.main-content1 div[class*="col-"]{padding-left:0;}
+.manage-panel{border-color:#fff;}
 .manage-panel>.panel-heading .panel-title{line-height:25px;}
-.manage-panel>.panel-heading{background-color:#f1f5fd;border-color:#CCD7EF;padding:20px;overflow:hidden;}
+.manage-panel>.panel-heading{border-color:#eaedf1;padding:20px;overflow:hidden;}
 .manage-panel-item{border-color:#EAEDF1;
     -webkit-border-radius:0;
     -moz-border-radius:0;
@@ -125,6 +125,7 @@ body {
 .manage-panel-item .table tr th,.manage-panel-item .table tr td{vertical-align: middle;}
 .manage-panel-item .table tr td small{display:block;color:#ccc;padding-top:5px;}
 .manage-panel-item .table tr td p{margin:0;padding-top:5px;color:#ccc;}
+.manage-panel-inner{margin-right:-15px;}
 .manage-order-dropdown>a{color:#333;text-decoration: none;padding:.5em 0 .5em .5em;white-space: nowrap;display:block;border:1px solid #F9FAFC;}
 .manage-order-dropdown a b{margin-right:.5em;}
 .manage-order-dropdown>a:hover,.manage-order-dropdown.open>a{background-color:#fff;border-color:#ddd;border-color: rgba(0, 0, 0, .15);}
@@ -225,13 +226,15 @@ body {
 
 
 /*参展商manage Ui*/
-.shang-order-item{}
+.shang-order-item{background-color:#f9fafc;color:#333;display:block;padding:10px 15px;margin-bottom:15px;}
+.shang-order-item:hover,.shang-order-item:focus{background-color:#f7f7f7;text-decoration: none;}
 .shang-order-item p{white-space: nowrap;overflow:hidden;
     -ms-text-overflow: ellipsis;
     text-overflow: ellipsis;}
-.shang-order-item small{color:#8393A9;display:block;margin-bottom:3px;white-space: nowrap;overflow:hidden;
+.shang-order-item small{color:#aaa;display:block;margin-bottom:3px;white-space: nowrap;overflow:hidden;
     -ms-text-overflow: ellipsis;
     text-overflow: ellipsis;}
+.shang-order-item small .glyphicon{padding-right:10px;}
 .shang-order-add a{background-color:#606F84;}
 .shang-order-add p{margin:0; padding: 10px; border: 1px solid #A6ADB4;opacity: .5;}
 .shang-order-add span{height:70px;width:100%;margin:0;background:url(../img/addorder.png) no-repeat center 0;display:block;}
@@ -264,7 +267,7 @@ body {
 
 .manage-order-info .list-group{margin-bottom:10px;}
 .manage-order-btnGroup{margin-bottom:10px;}
-.manage-order-area{padding:0;position:relative;}
+.manage-order-area{position:relative;}
 .manage-order-des{padding-right:0;}
 .manage-order-panel1{border-color:#EAEDF1;}
 .manage-order-panel1 .panel-heading{border:0;background-color:#EAEDF1;}

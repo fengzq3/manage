@@ -55,36 +55,25 @@
         <div class="menuSlide-content">
 
             <ul class="nav nav-pills nav-stacked">
-                <li class="divider hideSlide"><span class="badge notice pull-right">新</span><span
-                        class="glyphicon glyphicon-chevron-left"></span>个人中心
+                <li class="divider hideSlide"><!--<span class="badge notice pull-right">新</span>-->
+                    <span class="glyphicon glyphicon-chevron-left"></span>个人中心
                 </li>
-                <li><a id="slideInfomation" href="fragment/infomation.html" data-custom="slidePanel" data-mywidth="600px" title="设置个人信息"><span
+                <li><a id="slideInfomation" href="fragment/infomation.html" data-custom="slidePanel"
+                       data-mywidth="600px" title="设置个人信息"><span
                         class="glyphicon glyphicon-user"></span>个人信息</a></li>
-                <li><a id="slideInvoice" href="fragment/invoice.html" data-custom="slidePanel" data-mywidth="600px" title="设置发票信息"><span
+                <li><a id="slideInvoice" href="fragment/invoice.html" data-custom="slidePanel" data-mywidth="600px"
+                       title="设置发票信息"><span
                         class="glyphicon glyphicon-pushpin"></span>发票信息</a></li>
-                <li><a id="slideStaff" href="fragment/renyuan.html" data-custom="slidePanel" data-mywidth="900px" title="设置管理人员"><span
+                <li><a id="slideStaff" href="fragment/renyuan.html" data-custom="slidePanel" data-mywidth="900px"
+                       title="设置管理人员"><span
                         class="glyphicon glyphicon-tower"></span>管理人员</a></li>
                 <li class="divider"><span class="glyphicon glyphicon-cog"></span>订单管理</li>
-                <li class="shang-order-item">
-                    <a href="order1.html" data-toggle="tooltip" title="第十二届上海珠宝首饰展览会展台海珠宝首饰展览会展台第十二届上海珠宝首饰展">
-                        <p>第十二届上海珠宝首饰展览会展台</p>
-                        <small><span class="glyphicon glyphicon-time"></span>时间：2016.03.23</small>
-                        <small><span class="glyphicon glyphicon-map-marker"></span>展位：A1235</small>
-                        <small><span class="glyphicon glyphicon-adjust"></span>面积：123㎡</small>
-                    </a>
-                </li>
-                <li class="shang-order-item">
-                    <a href="#" data-toggle="tooltip" title="第展览三界会展台第展览三界会展台第展览三界会展台">
-                        <p>第展览三界会展台</p>
-                        <small><span class="glyphicon glyphicon-time"></span>时间：2013.02.13</small>
-                        <small><span class="glyphicon glyphicon-map-marker"></span>展位：A1235</small>
-                        <small><span class="glyphicon glyphicon-adjust"></span>面积：123㎡</small>
-                    </a>
-                </li>
-                <li class="shang-order-add">
-                    <a href="fragment/addOrder.html" data-toggle="tooltip" data-custom="dialog" title="添加订单"
-                       data-mywidth="600px"><p><span></span></p></a>
-                </li>
+                <li><a href="#" title="订单中心"><span class="glyphicon glyphicon-stats"></span>订单中心</a></li>
+
+                <!--<li class="shang-order-add">-->
+                <!--<a href="fragment/addOrder.html" data-toggle="tooltip" data-custom="dialog" title="添加订单"-->
+                <!--data-mywidth="600px"><p><span></span></p></a>-->
+                <!--</li>-->
                 <!--<li><a href="#"><span class="glyphicon glyphicon-saved"></span>签约监督</a></li>-->
 
             </ul>
@@ -106,8 +95,8 @@
             </div>
         </div>
         <div class="main-content1 row">
-            <!--展商/工厂 容器-->
-            <div class="col-lg-4 col-md-6">
+            <!--OEM 定制？-->
+            <div class="col-sm-8">
                 <div class="main-content-item">
                     <div class="main-img">
                         <span class="glyphicon glyphicon-flag"></span>
@@ -120,423 +109,106 @@
                     </p>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
+
+            <!--展商/工厂 容器-->
+            <div class="col-sm-4">
                 <div class="main-content-item">
                     <div class="main-img">
-                        <span class="glyphicon glyphicon-envelope"></span>
+                        <span class="glyphicon glyphicon-info-sign"></span>
                     </div>
-                    <div class="main-img-right">
+                    <h4><a href="#"></a></h4>
+                    <p>上次登录时间：2016.03.15
+                        <small>（北京）</small>
+                    </p>
+                    <p>上次登录时间：2016.03.15
+                        <small>（北京）</small>
+                    </p>
+                    <p>上次登录时间：2016.03.15
+                        <small>（北京）</small>
+                    </p>
 
-                    </div>
                 </div>
             </div>
+
             <div class="clearfix"></div>
+
         </div>
         <!--内容头部结束-->
         <div class="main-content1">
             <div class="panel manage-panel">
                 <div class="panel-heading">
                     <!--进度区-->
-                    <div class="manageStep pull-right">
-                        <ul class="manageStep-inner">
-                            <li class="manageStep-item pass">
-                                <i class="glyphicon glyphicon-chevron-right"></i><span>审核中</span>
-                            </li>
-                            <li class="manageStep-item pass">
-                                <i class="glyphicon glyphicon-chevron-right"></i><span>已接单</span>
-                            </li>
-                            <li class="manageStep-item active">
-                                <i class="glyphicon glyphicon-chevron-right"></i><span>设计中</span>
-                            </li>
-                            <li class="manageStep-item">
-                                <i class="glyphicon glyphicon-chevron-right"></i><span>报价中</span>
-                            </li>
-                            <li class="manageStep-last">
-                                <i class="glyphicon glyphicon-ok"></i><span>签单成功</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <h3 class="panel-title" title="第十二届上海珠宝首饰展览会展台" data-toggle="tooltip">第十二届上海珠宝首饰展览会展台 <span
-                            class="label label-info">2016.03.24</span></h3>
+
+                    <h3 class="panel-title" title="订单管理">添加订单</h3>
                 </div>
                 <div class="panel-body">
-                    <!--基本信息-->
-                    <ul class="order-panel-des hidden-lg">
-                        <li class="col-sm-6">展会名称：第十二届上海珠宝首饰展览会展台</li>
-                        <li class="col-sm-3">展位面积：1265㎡</li>
-                        <li class="col-sm-3">展位号：A1233</li>
-                        <li class="col-sm-6">展会时间：2016.03.25 至 2016.03.28</li>
-                        <li class="clearfix"></li>
-                        <li class="col-sm-6">签约工厂：首饰展览会展台览会展台览会展台</li>
-                        <li class="col-sm-3">签约时间：2016.03.28</li>
-                        <li class="col-sm-3">最终价格：￥123123.00</li>
-                    </ul>
 
-                    <!--订单区-->
-                    <div class="col-sm-9 manage-order-area">
-
-
-                        <div class="panel manage-order-panel2 now" data-workfinalurl="fragment/orderWorks.html" id="designerWorks">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">
-                                    带价选稿
-                                    <span class="badge">交稿设计师：赵单纯、赵单纯、赵单纯、赵单纯、赵单纯</span>
-                                </h3>
-                            </div>
-                            <div class="panel-body row">
-                                <div class="col-sm-6 col-lg-4">
-                                    <div href="#" class="works-list">
-                                        <div class="works-list-img">
-                                            <img src="../img/place.jpg"/>
-                                        </div>
-                                        <p class="caption works-list-designer">
-                                            <img src="../img/txtest.jpg" class="img-circle"/>
-                                            阿萨德
-                                            <small>（交稿时间：2016.03.25）</small>
-                                        </p>
-                                        <p class="caption works-list-offer">
-                                            推荐报价：<span class="pull-right">￥20163.00</span>
-                                        </p>
-                                        <p class="works-list-btnGroup">
-                                            <a href="fragment/baojia.html" data-custom="slidePanel" data-mywidth="90%"
-                                               title="报价报价不不不不报价标题" class="btn works-list-btn1">查看详情</a>
-                                            <a href="../testData/success.json" data-custom="confirm" title="确认信息"
-                                               data-confirm-content="确定选择此设计稿吗？选择后将不能更改！" data-mywidth="400px"
-                                               class="btn works-list-btn2">确认定稿</a>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-lg-4">
-                                    <div href="#" class="works-list">
-                                        <div class="works-list-img">
-                                            <img src="../img/place.jpg"/>
-                                        </div>
-                                        <p class="caption works-list-designer">
-                                            <img src="../img/txtest.jpg" class="img-circle"/>
-                                            阿萨德
-                                            <small>（交稿时间：2016.03.25）</small>
-                                        </p>
-                                        <p class="caption works-list-offer">
-                                            推荐报价：<span class="pull-right">￥20163.00</span>
-                                        </p>
-                                        <p class="works-list-btnGroup">
-                                            <a href="fragment/111baojia.html" data-custom="slidePanel"
-                                               data-mywidth="90%" title="报价报价不不不不报价标题"
-                                               class="btn works-list-btn1">查看详情</a>
-                                            <a href="../testData/error.json" data-custom="confirm" title="确认信息"
-                                               data-confirm-content="确定选择此设计稿吗？选择后将不能更改！" data-mywidth="400px"
-                                               class="btn works-list-btn2">确认定稿</a>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-lg-4">
-                                    <div href="#" class="works-list">
-                                        <div class="works-list-img">
-                                            <img src="../img/place.jpg"/>
-                                        </div>
-                                        <p class="caption works-list-designer">
-                                            <img src="../img/txtest.jpg" class="img-circle"/>
-                                            阿萨德
-                                            <small>（交稿时间：2016.03.25）</small>
-                                        </p>
-                                        <p class="caption works-list-offer">
-                                            推荐报价：<span class="pull-right">￥20163.00</span>
-                                        </p>
-                                        <p class="works-list-btnGroup">
-                                            <a href="fragment/baojia.html" data-custom="slidePanel" data-mywidth="90%"
-                                               title="报价报价不不不不报价标题" class="btn works-list-btn1">查看详情</a>
-                                            <a href="../testData/success.json" data-custom="confirm" title="确认信息"
-                                               data-confirm-content="确定选择此设计稿吗？选择后将不能更改！" data-mywidth="400px"
-                                               class="btn works-list-btn2">确认定稿</a>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-lg-4">
-                                    <div href="#" class="works-list">
-                                        <div class="works-list-img">
-                                            <img src="../img/place.jpg"/>
-                                        </div>
-                                        <p class="caption works-list-designer">
-                                            <img src="../img/txtest.jpg" class="img-circle"/>
-                                            阿萨德
-                                            <small>（交稿时间：2016.03.25）</small>
-                                        </p>
-                                        <p class="caption works-list-offer">
-                                            推荐报价：<span class="pull-right">￥20163.00</span>
-                                        </p>
-                                        <p class="works-list-btnGroup">
-                                            <a href="fragment/111baojia.html" data-custom="slidePanel"
-                                               data-mywidth="90%" title="报价报价不不不不报价标题"
-                                               class="btn works-list-btn1">查看详情</a>
-                                            <a href="../testData/error.json" data-custom="confirm" title="确认信息"
-                                               data-confirm-content="确定选择此设计稿吗？选择后将不能更改！" data-mywidth="400px"
-                                               class="btn works-list-btn2">确认定稿</a>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-lg-4">
-                                    <div href="#" class="works-list">
-                                        <div class="works-list-img">
-                                            <img src="../img/place.jpg"/>
-                                        </div>
-                                        <p class="caption works-list-designer">
-                                            <img src="../img/txtest.jpg" class="img-circle"/>
-                                            阿萨德
-                                            <small>（交稿时间：2016.03.25）</small>
-                                        </p>
-                                        <p class="caption works-list-offer">
-                                            推荐报价：<span class="pull-right">￥20163.00</span>
-                                        </p>
-                                        <p class="works-list-btnGroup">
-                                            <a href="fragment/baojia.html" data-custom="slidePanel" data-mywidth="90%"
-                                               title="报价报价不不不不报价标题" class="btn works-list-btn1">查看详情</a>
-                                            <a href="../testData/success.json" data-custom="confirm" title="确认信息"
-                                               data-confirm-content="确定选择此设计稿吗？选择后将不能更改！" data-mywidth="400px"
-                                               class="btn works-list-btn2">确认定稿</a>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-lg-4">
-                                    <div href="#" class="works-list">
-                                        <div class="works-list-img">
-                                            <img src="../img/place.jpg"/>
-                                        </div>
-                                        <p class="caption works-list-designer">
-                                            <img src="../img/txtest.jpg" class="img-circle"/>
-                                            阿萨德
-                                            <small>（交稿时间：2016.03.25）</small>
-                                        </p>
-                                        <p class="caption works-list-offer">
-                                            推荐报价：<span class="pull-right">￥20163.00</span>
-                                        </p>
-                                        <p class="works-list-btnGroup">
-                                            <a href="fragment/111baojia.html" data-custom="slidePanel"
-                                               data-mywidth="90%" title="报价报价不不不不报价标题"
-                                               class="btn works-list-btn1">查看详情</a>
-                                            <a href="../testData/error.json" data-custom="confirm" title="确认信息"
-                                               data-confirm-content="确定选择此设计稿吗？选择后将不能更改！" data-mywidth="400px"
-                                               class="btn works-list-btn2">确认定稿</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="manage-panel-inner">
+                        <div class="col-sm-6">
+                            <a href="order-step2.1.html" class="btn manage-lg-btn btn-lgStyle1" data-custom="chooseOem">
+                                <h2 class="btn-title"><span class="glyphicon glyphicon-screenshot"></span>有图询价</h2>
+                                <p>若已有设计图，可以直接上传施工图！<br/>工厂会根据您的图纸直接工厂报价!</p>
+                            </a>
                         </div>
-                        <div class="panel manage-order-panel2" data-workfinalurl="fragment/orderFlow.html" id="orderFlow">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">等待签单
-                                    <span class="badge">工厂名称名称sd水电费水电费多少 ￥20163.00</span>
-                                </h3>
-                            </div>
-                            <div class="panel-body">
-                                <!--流程图-->
-                                <div class="flow-progress">
-                                    <ul data-custom="width" class="order-panel-des">
-                                        <li class="flow-progress-item">
-                                            <a href="#flow1">
-                                                <span class="badge">等待开工</span>
-                                            </a>
-                                        </li>
-                                        <li class="flow-progress-item">
-                                            <a href="#flow1">
-                                                <span class="badge">开工</span>
-                                            </a>
-                                        </li>
-                                        <li class="flow-progress-item">
-                                            <a href="#flow2">
-                                                <span class="badge">展台制作</span>
-                                            </a>
-                                        </li>
-                                        <li class="flow-progress-item">
-                                            <a href="#flow3">
-                                                <span class="badge">框架搭建</span>
-                                            </a>
-                                        </li>
-                                        <li class="flow-progress-item">
-                                            <a href="#">
-                                                <span class="badge">流程是的</span>
-                                            </a>
-                                        </li>
-                                        <li class="flow-progress-item">
-                                            <a href="#">
-                                                <span class="badge">流程1223</span>
-                                            </a>
-                                        </li>
-                                        <li class="flow-progress-item">
-                                            <a href="#">
-                                                <span class="badge">流程456</span>
-                                            </a>
-                                        </li>
-                                        <li class="flow-progress-item">
-                                            <a href="#">
-                                                <span class="badge">完工</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <!--主流程-->
-                                <div class="manage-order-flow">
-                                    <ul class="order-flow-list">
-                                        <!--流程-->
-                                        <li id="flow1" class="order-flow-list-time">
-                                            展台制作：2016.03.23
-                                        </li>
-                                        <li>
-                                            <div class="order-flow-list-item">
-                                                <div class="media">
-                                                    <a class="pull-left" href="fragment/flowItems.html" data-custom="slidePanel" data-mywidth="600px" title="工厂上传asadfsa阿士大夫撒旦">
-                                                        <img class="media-object" src="../img/place.jpg"/>
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <h4 class="media-heading">标题标题标题标题</h4>
-                                                        <small>2016.03.23</small>
-                                                        <p>信息信息信息信息信息信息信息信息信息信息信息信息信息信息信息</p>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="order-flow-list-item">
-                                                <div class="media">
-                                                    <a class="pull-left" href="fragment/flowItems.html" data-custom="slidePanel" data-mywidth="600px" title="工厂上传asadfsa阿士大夫撒旦">
-                                                        <img class="media-object" src="../img/place.jpg"/>
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <h4 class="media-heading">标题标题标题标题</h4>
-                                                        <small>2016.03.23</small>
-                                                        <p>信息信息信息信息信息信息信息信息信息信息信息信息信息信息信息</p>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </li>
-                                        <li id="flow2" class="order-flow-list-time">
-                                            展台搭建：2016.03.25
-                                        </li>
-                                        <li>
-                                            <div class="order-flow-list-item">
-                                                <div class="media">
-                                                    <a class="pull-left" href="fragment/flowItems.html" data-custom="slidePanel" data-mywidth="600px" title="工厂上传asadfsa阿士大夫撒旦">
-                                                        <img class="media-object" src="../img/place.jpg"/>
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <h4 class="media-heading">标题标题标题标题</h4>
-                                                        <small>2016.03.23</small>
-                                                        <p>信息信息信息信息信息信息信息信息信息信息信息信息信息信息信息</p>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </li>
-                                        <li id="flow3" class="order-flow-list-time">
-                                            流程333：2016.03.28
-                                        </li>
-                                        <li class="active">
-                                            <div class="order-flow-list-item">
-                                                <div class="media">
-                                                    <a class="pull-left" href="fragment/flowItems.html" data-custom="slidePanel" data-mywidth="600px" title="工厂上传asadfsa阿士大夫撒旦">
-                                                        <img class="media-object" src="../img/place.jpg"/>
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <h4 class="media-heading">标题标题标题标题</h4>
-                                                        <small>2016.03.23</small>
-                                                        <p>信息信息信息信息信息信息信息信息信息信息信息信息信息信息信息</p>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </li>
-                                        <li class="active">
-                                            <div class="order-flow-list-item">
-                                                <div class="media">
-                                                    <a class="pull-left" href="#">
-                                                        <img src="../img/mainbg.png"/>
-                                                    </a>
-                                                    <div class="media-body">
-                                                        <h4 class="media-heading">暂无...</h4>
-                                                        <!--<small>2016.03.23</small>-->
-                                                        <p><a href="#" class="btn btn-info">添加流程</a></p>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </li>
-                                        <li class="active">
-                                            <div class="order-flow-list-item">
-                                                <div class="media">
-                                                    <div class="media-body">
-                                                        <p><a href="#" class="btn btn-info">完工</a></p>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </li>
-                                        <!--流程 END-->
-                                    </ul>
-                                </div>
-
-                            </div>
-                        </div>
-
-
-                    </div>
-
-
-                    <!--订单区 END-->
-                    <!--订单简介-->
-                    <div class="col-sm-3 manage-order-des">
-                        <div class="manage-order-info visible-lg">
-                            <ul class="list-group">
-                                <li class="list-group-item active"><span class="badge">新</span> 第三方南山上带你疯狂思念对方</li>
-                                <li class="list-group-item">订单号：<span class="pull-right">1551331315</span></li>
-                                <li class="list-group-item">展会时间：<span class="pull-right">2016.03.25</span></li>
-                                <li class="list-group-item">展位面积：<span class="pull-right">12312㎡</span></li>
-                                <li class="list-group-item">展位号：<span class="pull-right">A123</span></li>
-                            </ul>
-                        </div>
-                        <div class="panel manage-order-panel1">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">执行经理：<span class="label label-primary pull-right">李查查</span>
-                                </h3>
-                            </div>
-                            <div class="panel-body">
-                                <p><span class="glyphicon glyphicon-phone-alt"></span>电话：<span class="pull-right">010-12354456</span>
-                                </p>
-                                <p><span class="glyphicon glyphicon-phone"></span>手机：<span class="pull-right">18612037193</span>
-                                </p>
-                                <p><span class="glyphicon glyphicon-comment"></span>QQ：<span class="pull-right">18612037193</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="panel manage-order-panel1 visible-lg">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">签约工厂：<span class="label label-primary pull-right"></span>
-                                </h3>
-                            </div>
-                            <div class="panel-body">
-                                <p>工厂名称：<span class="pull-right">工厂名称名称sd水电费水电费多少</span></p>
-                                <p>签约时间：<span class="pull-right">2016.03.28</span></p>
-                                <p>最终价格：<span class="pull-right">￥20163.00</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="panel manage-order-panel1">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">监理：<span class="label label-primary pull-right">单峰查</span></h3>
-                            </div>
-                            <div class="panel-body">
-                                <p><span class="glyphicon glyphicon-phone-alt"></span>电话：<span class="pull-right">010-12354456</span>
-                                </p>
-                                <p><span class="glyphicon glyphicon-phone"></span>手机：<span class="pull-right">18612037193</span>
-                                </p>
-                                <p><span class="glyphicon glyphicon-comment"></span>QQ：<span class="pull-right">18612037193</span>
-                                </p>
-                            </div>
+                        <div class="col-sm-6">
+                            <a href="order-step2.2.html" class="btn manage-lg-btn btn-lgStyle2" data-custom="chooseOem">
+                                <h2 class="btn-title"><span class="glyphicon glyphicon-send"></span>需要设计</h2>
+                                <p>若无设计师，可以提交您的需求！<br/>一路展专业设计师团队会根据您的需求进行设计！</p>
+                            </a>
                         </div>
                     </div>
 
-                    <!--订单简介 END-->
+                </div>
+            </div>
+        </div>
+
+        <!--订单管理-->
+        <div class="main-content1">
+            <div class="panel manage-panel">
+                <div class="panel-heading">
+                    <!--进度区-->
+
+                    <h3 class="panel-title" title="订单管理">订单管理 <span
+                            class="label label-info">3</span></h3>
+                </div>
+                <div class="panel-body">
+                    <div class="manage-panel-inner">
+                        <!--订单中心-->
+                        <div class="col-sm-4">
+                            <a class="shang-order-item" href="order1.html" title="第十二届上海珠宝首饰展览会展台海珠宝首饰展览会展台第十二届上海珠宝首饰展">
+                                <p>第十二届上海珠宝首饰展览会展台</p>
+                                <small><span class="glyphicon glyphicon-time"></span>时间：2016.03.23</small>
+                                <small><span class="glyphicon glyphicon-map-marker"></span>展位：A1235</small>
+                                <small><span class="glyphicon glyphicon-adjust"></span>面积：123㎡</small>
+                            </a>
+                        </div>
+                        <div class="col-sm-4">
+                            <a class="shang-order-item" href="order1.html" title="第十二届上海珠宝首饰展览会展台海珠宝首饰展览会展台第十二届上海珠宝首饰展">
+                                <p>第十二届上海珠宝首饰展览会展台</p>
+                                <small><span class="glyphicon glyphicon-time"></span>时间：2016.03.23</small>
+                                <small><span class="glyphicon glyphicon-map-marker"></span>展位：A1235</small>
+                                <small><span class="glyphicon glyphicon-adjust"></span>面积：123㎡</small>
+                            </a>
+                        </div>
+                        <div class="col-sm-4">
+                            <a class="shang-order-item" href="order1.html" title="第十二届上海珠宝首饰展览会展台海珠宝首饰展览会展台第十二届上海珠宝首饰展">
+                                <p>第十二届上海珠宝首饰展览会展台</p>
+                                <small><span class="glyphicon glyphicon-time"></span>时间：2016.03.23</small>
+                                <small><span class="glyphicon glyphicon-map-marker"></span>展位：A1235</small>
+                                <small><span class="glyphicon glyphicon-adjust"></span>面积：123㎡</small>
+                            </a>
+                        </div>
+                        <div class="col-sm-4">
+                            <a class="shang-order-item" href="order1.html" title="第十二届上海珠宝首饰展览会展台海珠宝首饰展览会展台第十二届上海珠宝首饰展">
+                                <p>第十二届上海珠宝首饰展览会展台</p>
+                                <small><span class="glyphicon glyphicon-time"></span>时间：2016.03.23</small>
+                                <small><span class="glyphicon glyphicon-map-marker"></span>展位：A1235</small>
+                                <small><span class="glyphicon glyphicon-adjust"></span>面积：123㎡</small>
+                            </a>
+                        </div>
+
+                        <!--订单中心-->
+                    </div>
 
                 </div>
             </div>
