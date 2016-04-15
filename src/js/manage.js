@@ -566,13 +566,18 @@ $(function () {
 
     }
 
-    //添加订单
-    $('.shang-order-add').find('[data-custom="dialog"]').on('click', function (e) {
+    //添加订单-需要设计
+    $('.manage-panel-inner').find('[data-custom="dialog"]').on('click', function (e) {
         e.stopPropagation();
         e.preventDefault();
         customDialog.setDialog(this, 'manageDialog', dialogFormCallback);
     });
-
+    //修改订单
+    $('.manage-order-info').find('[data-custom="dialog"]').on('click', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        customDialog.setDialog(this, 'manageDialog', dialogFormCallback);
+    });
 
     //订单dialog回调
     function dialogFormCallback(status) {
@@ -951,12 +956,7 @@ $(function () {
             e.preventDefault();
             delPicListItem($(this));
         });
-        //修改内容
-        $('.manage-order-info').find('[data-custom="dialog"]').on('click', function (e) {
-            e.stopPropagation();
-            e.preventDefault();
-            customDialog.setDialog(this, 'manageDialog', dialogFormCallback);
-        });
+
     }
 
     //通用图片列表删除方法

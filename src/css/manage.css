@@ -104,7 +104,7 @@ body {
     -moz-border-radius:50%;
     border-radius:50%;}
 .main-content1{overflow:hidden;margin-left:0;margin-top:0;}
-.main-content2{margin:-15px;overflow:hidden;}
+.main-content2{margin:-15px -15px 0;overflow:hidden;}
 .main-content2 .breadcrumb{padding:20px;background-color:#fff;
     -webkit-border-radius:0;
     -moz-border-radius:0;
@@ -276,7 +276,7 @@ body {
 .manage-order-panel1 .panel-body p .glyphicon{padding-right:6px;}
 .manage-order-panel2{}
 .manage-order-panel2.now>.panel-heading{border-color:#FDF2CB;}
-.manage-order-panel2.now>.panel-heading .badge{background-color:#ED7117;}
+.manage-order-panel2.now>.panel-heading .badge{background-color:#FFAC70;}
 
 .manage-order-panel2>.panel-heading{border-bottom:5px solid #E4E4E4;padding:10px 5px;}
 .manage-order-panel2>.panel-body{padding:15px 0;}
@@ -301,9 +301,9 @@ body {
 .manageStep-item.active{color:#1da653;}
 .manageStep-item.active i{border-color:#1da653;}
 .manageStep-item.active:after{border-color:#1da653;}
-.manageStep-item.pass{color: #5BC0DE;}
-.manageStep-item.pass i{border-color:#5BC0DE;}
-.manageStep-item.pass:after{border-color:#5BC0DE;}
+.manageStep-item.pass{color: #B7E8C2;}
+.manageStep-item.pass i{border-color:#B7E8C2;}
+.manageStep-item.pass:after{border-color:#B7E8C2;}
 .order-panel-des{padding: 15px; margin: -15px 0 15px; list-style:none; background-color: #F9F9F9;overflow:hidden;}
 .order-panel-des li{padding:5px;color:#BFBFBF;}
 
@@ -363,8 +363,8 @@ body {
     -webkit-box-shadow: 0 0 0 3px #FFE8DB;
     -moz-box-shadow: 0 0 0 3px #FFE8DB;
     box-shadow: 0 0 0 3px #FFE8DB;}
-.order-flow-list li.active .order-flow-list-item{background-color: #FFFCFA;border-color:#ff6e17;}
-.order-flow-list li.active .order-flow-list-item:before{border-right-color:#ff6e17;}
+/*.order-flow-list li.active .order-flow-list-item{background-color: #FFFCFA;border-color:#ff6e17;}*/
+/*.order-flow-list li.active .order-flow-list-item:before{border-right-color:#ff6e17;}*/
 /*orderWorks.html 定稿后样式*/
 .media-orderFinal{margin-right:15px;}
 .media-orderFinal>a img{width:250px;height:150px;}
