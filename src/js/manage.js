@@ -519,6 +519,9 @@ $(function () {
         var formConfirmFlag = manageSlidePanel.find('[data-custom="confirm"]');
         console.log(formConfirmFlag);
         if (formConfirmFlag.length !== 0) {
+            //初始化confirm
+            customDialog.dialogFram('manageConfirm','confirm');
+
             //绑定confirm显示事件
             formConfirmFlag.on('click', function (e) {
                 e.stopPropagation();

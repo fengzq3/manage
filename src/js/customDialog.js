@@ -13,23 +13,26 @@
 
         //初始化容器
         dialogFram: function (id, type) {
-            var content = '';
-            content = content + '<div class=\"modal fade\" id=\"' + id + '\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myDialogLabel\" aria-hidden=\"true\">';
-            content = content + '<div class=\"modal-dialog\">';
-            content = content + '<div class=\"modal-content\">';
-            content = content + '<div class=\"modal-header\">';
-            content = content + '<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>';
-            content = content + '<h4 class=\"modal-title\" id=\"myDialogLabel\"></h4>';
-            content = content + '</div>';
-            content = content + '<div class=\"modal-body\"></div>';
+            var thisContext = $('body');
+            if(thisContext.find('#'+id).length === 0){
+                var content = '';
+                content = content + '<div class=\"modal fade\" id=\"' + id + '\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myDialogLabel\" aria-hidden=\"true\">';
+                content = content + '<div class=\"modal-dialog\">';
+                content = content + '<div class=\"modal-content\">';
+                content = content + '<div class=\"modal-header\">';
+                content = content + '<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>';
+                content = content + '<h4 class=\"modal-title\" id=\"myDialogLabel\"></h4>';
+                content = content + '</div>';
+                content = content + '<div class=\"modal-body\"></div>';
 
-            if (type === 'confirm') {
-                content = content + '<div class=\"modal-footer\"><button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">关闭</button><button type=\"button\" class=\"btn btn-primary\" id=\"confirmOk\">确认</button></div>';
+                if (type === 'confirm') {
+                    content = content + '<div class=\"modal-footer\"><button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">关闭</button><button type=\"button\" class=\"btn btn-primary\" id=\"confirmOk\">确认</button></div>';
+                }
+
+                content = content + '</div></div></div>';
+
+                thisContext.append(content);
             }
-
-            content = content + '</div></div></div>';
-
-            $('body').append(content);
         },
         //设置弹窗属性
         setDialog: function (obj, id, successCallBack) {
@@ -118,13 +121,17 @@
         },
         //slidePanel
         slidePanelFarm: function (id) {
-            var content = '';
-            content = content + '<div class=\"slidePanelBg\"></div>';
-            content = content + '<div id=\"' + id + '\" class=\"panel slidePanel panel-default\">';
-            content = content + '<div class=\"panel-heading\"><h3 class=\"panel-title\"><i class=\"pull-right\">&times;</i><span></span></h3></div>';
-            content = content + '<div class=\"panel-body\"></div></div>';
+            var thisContext = $('body');
+            if(thisContext.find('#'+id).length === 0){
+                var content = '';
+                content = content + '<div class=\"slidePanelBg\"></div>';
+                content = content + '<div id=\"' + id + '\" class=\"panel slidePanel panel-default\">';
+                content = content + '<div class=\"panel-heading\"><h3 class=\"panel-title\"><i class=\"pull-right\">&times;</i><span></span></h3></div>';
+                content = content + '<div class=\"panel-body\"></div></div>';
 
-            $('body').append(content);
+                thisContext.append(content);
+            }
+
         },
         setSlidePanel: function (obj, id, callBack) {
             //定义参数
