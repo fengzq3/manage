@@ -244,12 +244,12 @@ $(function () {
                 //处理数据并动态调整大小
                 offerPic.width('30%');
                 //显示detail面板，占位数据
-                offerDetail.width('40%').html('<div class=\"noDate\"><div class=\"noData-inner\"><img src=\"../img/listload.gif\" /><p>数据载入中...</p></div></div>');
+                offerDetail.width('40%').html('<div class=\"noDate\"><div class=\"noData-inner\"><img src=\"/expo/expo/center/img/listload.gif\" /><p>数据载入中...</p></div></div>');
                 //获取数据
                 $.ajax({type: 'get', url: thisTargetUrl})
                     .then(setOfferDetail, function (e) {
                         //获取失败，处理
-                        offerDetail.html('<div class=\"noDate\"><img src=\"../img/error.png\" /><p>获取数据失败，请重试！</p></div>');
+                        offerDetail.html('<div class=\"noDate\"><img src=\"/expo/expo/center/img/error.png\" /><p>获取数据失败，请重试！</p></div>');
                     });
             } else {
                 $(this).removeClass('on').parent().tooltip('hide');
@@ -280,7 +280,7 @@ $(function () {
                 e.stopPropagation();
                 e.preventDefault();
                 var thisUrl = $(this).attr('href');
-                offerDetail.append('<div class=\"noDate\"><div class=\"noData-inner\"><img src=\"../img/listload.gif\" /><p>提交中...</p></div></div>');
+                offerDetail.append('<div class=\"noDate\"><div class=\"noData-inner\"><img src=\"/expo/expo/center/img/listload.gif\" /><p>提交中...</p></div></div>');
                 //处理url
                 $.ajax({type: 'get', url: thisUrl})
                     .then(function (data) {
@@ -292,7 +292,7 @@ $(function () {
                         if (data.error === 0) {
                             //返回成功
                             load.showLoad(data.message, 'load-success', 2500);
-                            offerDetail.find('.noDate').html('<div class=\"noData-inner\"><img src=\"../img/success.png\" /><p>' + data.message + '</p></div>');
+                            offerDetail.find('.noDate').html('<div class=\"noData-inner\"><img src=\"/expo/expo/center/img/success.png\" /><p>' + data.message + '</p></div>');
                             if (typeof timer !== 'undefined') {
                                 clearTimeout(timer);
                             }
@@ -306,7 +306,7 @@ $(function () {
                         } else {
                             //返回失败
                             load.showLoad(data.message, 'load-warning', 2500);
-                            offerDetail.find('.noDate').html('<div class=\"noData-inner\"><img src=\"../img/error.png\" /><p>' + data.message + '</p></div>');
+                            offerDetail.find('.noDate').html('<div class=\"noData-inner\"><img src=\"/expo/expo/center/img/error.png\" /><p>' + data.message + '</p></div>');
                             if (typeof timer !== 'undefined') {
                                 clearTimeout(timer);
                             }
@@ -325,7 +325,7 @@ $(function () {
                 e.stopPropagation();
                 e.preventDefault();
                 var thisUrl = $(this).attr('href');
-                offerDetail.append('<div class=\"noDate\"><div class=\"noData-inner\"><img src=\"../img/listload.gif\" /><p>提交中...</p></div></div>');
+                offerDetail.append('<div class=\"noDate\"><div class=\"noData-inner\"><img src=\"/expo/expo/center/img/listload.gif\" /><p>提交中...</p></div></div>');
                 $.ajax({type: 'get', url: thisUrl})
                     .then(function (data) {
                         try {
@@ -337,7 +337,7 @@ $(function () {
                             //返回成功
                             load.showLoad(data.message, 'load-success', 2500);
                             //提交二次报价成功后操作
-                            offerDetail.find('.noDate').html('<div class=\"noData-inner\"><img src=\"../img/success.png\" /><p>' + data.message + '</p></div>');
+                            offerDetail.find('.noDate').html('<div class=\"noData-inner\"><img src=\"/expo/expo/center/img/success.png\" /><p>' + data.message + '</p></div>');
                             if (typeof timer !== 'undefined') {
                                 clearTimeout(timer);
                             }
@@ -349,7 +349,7 @@ $(function () {
                         } else {
                             //返回失败
                             load.showLoad(data.message, 'load-warning', 2500);
-                            offerDetail.find('.noDate').html('<div class=\"noData-inner\"><img src=\"../img/error.png\" /><p>' + data.message + '</p></div>');
+                            offerDetail.find('.noDate').html('<div class=\"noData-inner\"><img src=\"/expo/expo/center/img/error.png\" /><p>' + data.message + '</p></div>');
                             if (typeof timer !== 'undefined') {
                                 clearTimeout(timer);
                             }
@@ -375,7 +375,7 @@ $(function () {
         var designerWorksContent = designerWorks.find('.panel-body'), chooseWorkFinalUrl = designerWorks.data('workfinalurl');
         //操作设计师设计稿区域
         designerWorks.removeClass('now');
-        designerWorksContent.html('<div class=\"noDate\"><img src=\"../img/listload.gif\" /><p>定稿中...</p></div>');
+        designerWorksContent.html('<div class=\"noDate\"><img src=\"/expo/expo/center/listload.gif\" /><p>定稿中...</p></div>');
         $.ajax({type: 'get', url: chooseWorkFinalUrl})
             .then(function (data) {
                 //定稿成功后获取定稿数据，并载入
@@ -387,7 +387,7 @@ $(function () {
                     customDialog.setSlidePanel(this, 'manageSlidePanel', setOfferEvent);
                 });
             }, function (e) {
-                designerWorksContent.html('<div class=\"noDate\"><img src=\"../img/error.png\" /><p>拉取数据失败，刷新重试！</p></div>');
+                designerWorksContent.html('<div class=\"noDate\"><img src=\"/expo/expo/center/img/error.png\" /><p>拉取数据失败，刷新重试！</p></div>');
             });
         //设计稿区 END
         //签单流程区开始
@@ -400,7 +400,7 @@ $(function () {
     setFlowPanel();
     function getOrderFlow() {
         var orderFlowUrl = orderFlow.data('workfinalurl');
-        orderFlow.html('<div class=\"noDate\"><img src=\"../img/listload.gif\" /><p>载入中...</p></div>');
+        orderFlow.html('<div class=\"noDate\"><img src=\"/expo/expo/center/img/listload.gif\" /><p>载入中...</p></div>');
         $.ajax({type: 'get', url: orderFlowUrl})
             .then(function (data) {
                 orderFlow.html(data);
@@ -410,7 +410,7 @@ $(function () {
                 setFlowPanel();
 
             }, function (e) {
-                orderFlow.addClass('now').html('<div class=\"noDate\"><img src=\"../img/error.png\" /><p>拉取开工信息失败，刷新重试！</p></div>');
+                orderFlow.addClass('now').html('<div class=\"noDate\"><img src=\"/expo/expo/center/img/error.png\" /><p>拉取开工信息失败，刷新重试！</p></div>');
             });
     }
 
@@ -799,7 +799,7 @@ $(function () {
             console.log(this);
             var chooseOemBtn = $(this), dataUrl = chooseOemBtn.attr('href'), btnText = chooseOemBtn.html();
             //显示loading状态
-            chooseOemBtn.html('<div class=\"noDate\"><div class=\"noData-inner\"><img src=\"../img/listload.gif\" /><h2>loading...</h2></div></div>');
+            chooseOemBtn.html('<div class=\"noDate\"><div class=\"noData-inner\"><img src=\"/expo/expo/center/img/listload.gif\" /><h2>loading...</h2></div></div>');
             $.get(dataUrl).then(function () {
                 window.location.href = dataUrl;
             }, function (e) {

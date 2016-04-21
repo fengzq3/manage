@@ -123,7 +123,7 @@
             auto: autoUpload,
 
             // swf文件路径
-            swf: '../js/Uploader.swf',
+            swf: '/expo/expo/center/js/Uploader.swf',
 
             // 文件接收服务端。
             server: serUrl,
@@ -174,12 +174,12 @@
             uploader.makeThumb(file, function (error, src) {
                 if (error) {
                     if (file.ext === 'xls' || file.ext === 'xlsx') {
-                        $img.replaceWith('<img src=\"../img/xls.png\"/>');
+                        $img.replaceWith('<img src=\"/expo/expo/center/img/xls.png\"/>');
                     }
                     if (file.ext === 'doc' || file.ext === 'docx') {
-                        $img.replaceWith('<img src=\"../img/doc.png\"/>');
+                        $img.replaceWith('<img src=\"/expo/expo/center/img/doc.png\"/>');
                     } else {
-                        $img.replaceWith('<img src=\"../img/file.png\"/>');
+                        $img.replaceWith('<img src=\"/expo/expo/center/img/file.png\"/>');
                     }
 
                     return;
