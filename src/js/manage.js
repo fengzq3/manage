@@ -557,9 +557,10 @@ $(function () {
                 e.preventDefault();
                 var _this = $(this).parent().siblings('span');
 
-                manageSlidePanelForm.find('#ppUser').val($(_this[0]).text());
-                manageSlidePanelForm.find('#ppName').val($(_this[1]).text());
-                manageSlidePanelForm.find('#ppTel').val($(_this[2]).text());
+                manageSlidePanelForm.find('#ppUid').val($(_this[0]).text());
+                manageSlidePanelForm.find('#ppUser').val($(_this[1]).text());
+                manageSlidePanelForm.find('#ppName').val($(_this[2]).text());
+                manageSlidePanelForm.find('#ppTel').val($(_this[3]).text());
 
             });
         }
