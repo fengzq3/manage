@@ -503,6 +503,9 @@ $(function () {
             });
         }
 
+        //处理上传提交文件
+
+
 
         //引入二级联动方法
         var areaSelect = $('[data-custom="area"]');

@@ -141,7 +141,7 @@
 
         //当非图片文件加入队列前，判断文件类型是否合法
         if (!!acceptFile) {
-            var fileType = ['rar', 'zip', 'gz', 'doc', 'docx', 'xls', 'xlsx'];
+            var fileType = ['rar', 'zip', 'gz', 'doc', 'docx', 'xls', 'xlsx','jpg','png'];
             uploader.on('beforeFileQueued', function (file) {
                 if (fileType.indexOf(file.ext) < 0) {
                     load.showLoad('文件格式不正确', 'load-warning', 2500);
