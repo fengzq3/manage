@@ -506,7 +506,6 @@ $(function () {
         //处理上传提交文件
 
 
-
         //引入二级联动方法
         var areaSelect = $('[data-custom="area"]');
         console.log(areaSelect);
@@ -523,7 +522,7 @@ $(function () {
         console.log(formConfirmFlag);
         if (formConfirmFlag.length !== 0) {
             //初始化confirm
-            customDialog.dialogFram('manageConfirm','confirm');
+            customDialog.dialogFram('manageConfirm', 'confirm');
 
             //绑定confirm显示事件
             formConfirmFlag.on('click', function (e) {
@@ -874,6 +873,14 @@ $(function () {
             });
         }
 
+        //删除按钮事件
+        isOem.find('a.remove-this').on('click', function (e) {
+            e.stopPropagation();
+            e.preventDefault();
+            delPicListItem($(this));
+        });
+
+
     }
 
     //通用dataPicker实现
@@ -912,7 +919,7 @@ $(function () {
             //引入省份
             setProvince(data.province);
             provinceInp.change(function () {
-                $.get(areaJson + '?province' + provinceInp.val()).then(function (data) {
+                $.get(areaJson + '?province=' + provinceInp.val()).then(function (data) {
                     try {
                         data = $.parseJSON(data);
                     } catch (e) {
@@ -956,15 +963,15 @@ $(function () {
     }
 
     //OEM编辑列表
-    var picListEdit = $('[data-custom="picListEdit"]');
-    if (picListEdit.length !== 0) {
-        picListEdit.find('a.remove-this').on('click', function (e) {
-            e.stopPropagation();
-            e.preventDefault();
-            delPicListItem($(this));
-        });
-
-    }
+    //var picListEdit = $('[data-custom="picListEdit"]');
+    //if (picListEdit.length !== 0) {
+    //    picListEdit.find('a.remove-this').on('click', function (e) {
+    //        e.stopPropagation();
+    //        e.preventDefault();
+    //        delPicListItem($(this));
+    //    });
+    //
+    //}
 
     //通用图片列表删除方法
     function delPicListItem(thisRemoveBtn) {
