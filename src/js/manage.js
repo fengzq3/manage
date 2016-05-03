@@ -894,6 +894,7 @@ $(function () {
             dataPicker.datepicker({
                 startDate: startData,
                 language: "zh-CN",
+                format:"yyyy-mm-dd",
                 keyboardNavigation: false,
                 autoclose: true
             });
