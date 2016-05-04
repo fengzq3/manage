@@ -7,10 +7,10 @@ body {
 .searchNav-header{padding-right:15px;}
 .searchNav-header img{height:50px;}
 .searchNav-nav{list-style:none;margin:0;padding:0;}
-.searchNav-nav li{float:left;}
+.searchNav-nav li{float:left;line-height:40px;}
 .searchNav-nav a{color:#5A5A5A;line-height:50px;display:block;padding:0 12px;}
-.searchNav-nav a:hover{text-decoration: none;background-color:#ECECEC;}
-.formSearch .btn{background-color: #FFF; border-color: #D8D8D8; padding: 6px 20px;}
+.searchNav-nav a:hover,.searchNav-nav a.active{text-decoration: none;background-color:#ECECEC;border-bottom:1px solid #5AC625;}
+.formSearch .btn{background-color: #5AC625; color:#fff; border-color: #5AC625; padding: 6px 20px;}
 .formSearch .form-control{border-color: #D8D8D8;}
 .searchFooter{text-align: center;position:absolute;bottom:0;width:100%;border-top:1px solid #D8D8D8;}
 .listFooter{margin:0;padding:0;display:inline-block;list-style: none;line-height:2em;}
@@ -18,16 +18,24 @@ body {
 .listFooter li a{color:#A0A0A0;}
 
 /*list*/
+.searchCon{overflow:hidden;padding:20px 0 0 160px;}
 .searchTitleList{padding:0 15px;overflow:hidden;border-bottom:1px solid #5AC625;}
 .formSearchList{max-width:500px;padding:8px 0;}
 .formSearchList .btn{background-color: #5AC625;color:#fff; border-color: #5AC625; padding: 6px 20px;}
 .formSearchList .form-control{border-color: #D8D8D8;}
 .listTitle{overflow:hidden;background-color:#F5F5F5;padding-left:160px;}
 .listTitle .searchNav-nav a{line-height:40px;}
-.searchList{overflow:hidden;}
-.searchList ul{margin:0;padding:0 0 0 160px;list-style:none;}
+.searchList{overflow:hidden;padding-left:0;padding-right:30px;}
+.searchList ul{margin:0;list-style:none;padding:0;}
 .searchList ul li h4 a{text-decoration: underline;color:#00C;}
 .searchList ul li p{color:#333;}
 .searchList ul li p>span{color: #e70002;}
 .searchList ul li p a{color: #008000;}
+.searchListRight{border-left:1px solid #D4D4D4;}
+.searchListRight p{color:#5AC625;}
 .listFooterCon{overflow:hidden;text-align: center;border-top:1px solid #D8D8D8;}
+
+/*about*/
+.searchAbout{max-width:1000px;margin:auto;padding-top:20px;}
+.searchAbout h3{text-align: center;padding-bottom:10px;}
+.searchAbout p{text-indent: 2em;line-height:2em;}
