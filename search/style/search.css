@@ -39,3 +39,6 @@ body {
 .searchAbout{max-width:1000px;margin:auto;padding-top:20px;}
 .searchAbout h3{text-align: center;padding-bottom:10px;}
 .searchAbout p{text-indent: 2em;line-height:2em;}
+
+/*get*/
+.section{display:none;}

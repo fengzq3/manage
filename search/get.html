@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1"/>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <link href="style/bootstrap.css" rel="stylesheet">
+    <script src="style/jquery-1.11.3.min.js"></script>
+    <script src="style/bootstrap.js"></script>
+    <script src="style/main.js"></script>
+
+    <link href="style/search.css" rel="stylesheet">
+    <title>搜索</title>
+</head>
+<body>
+<div class="searchTitle">
+    <nav class="searchNav" role="navigation">
+        <div class="searchNav-header pull-left">
+            <img src="img/search-sm.png" alt="一起搜" />
+        </div>
+        <ul class="searchNav-nav pull-left">
+            <li><a class="active" href="#">新闻/文章</a></li>
+            <li><a href="#">行业数据</a></li>
+            <li><a href="#">商品数据</a></li>
+            <li><a href="#">整站下载</a></li>
+        </ul>
+        <ul class="searchNav-nav pull-right">
+            <li><a href="#">登录</a></li>
+            <li><a href="#">注册</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="searchAbout">
+
+
+    <form action="#" method="post" role="form" class="yqs-searchSet form-horizontal">
+        <div class="form-group">
+            <label for="s1" class="control-label col-sm-2">任务名称：</label>
+            <div class="col-sm-10">
+                <input type="text" id="s1" name="123" class="form-control" placeholder="输入内容">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="s2" class="control-label col-sm-2">抓取深度：</label>
+            <div class="col-sm-10">
+                <input type="text" id="s2" name="123" class="form-control" placeholder="输入内容">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="s3" class="control-label col-sm-2">是否列表页：</label>
+            <div class="col-sm-10" id="s3">
+                <label class="radio-inline">
+                    <input type="radio" name="123" value="1">是
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="123" value="0" checked>否
+                </label>
+            </div>
+        </div>
+        <div id="section" class="section">
+            <div class="form-group">
+                <label for="s4" class="control-label col-sm-2">列表页URL：</label>
+                <div class="col-sm-10">
+                    <input type="text" id="s4" name="123" class="form-control" placeholder="输入内容">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="s5" class="control-label col-sm-2">起始位置：</label>
+                <div class="col-sm-10">
+                    <input type="text" id="s5" name="123" class="form-control" placeholder="输入内容">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="s6" class="control-label col-sm-2">结束位置：</label>
+                <div class="col-sm-10">
+                    <input type="text" id="s6" name="123" class="form-control" placeholder="输入内容">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="s7" class="control-label col-sm-2">步长值：</label>
+                <div class="col-sm-10">
+                    <input type="text" id="s7" name="123" class="form-control" placeholder="输入内容">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2">
+                <button type="submit" class="btn btn-primary">保存</button>
+                <button type="reset" class="btn btn-info">恢复默认</button>
+            </div>
+        </div>
+    </form>
+
+
+</div>
+<div class="searchFooter">
+    <ul class="listFooter">
+        <li><a href="#">关于一起搜</a></li>
+        <li><a href="#">隐私声明</a></li>
+        <li><a href="#">使用条款</a></li>
+        <li><a href="#">版权声明</a></li>
+    </ul>
+</div>
+</body>
+</html>
