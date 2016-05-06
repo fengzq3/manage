@@ -1,13 +1,48 @@
 
-.adGuild{position:absolute;height:700px;width:100%;overflow:hidden;background:#accfe3;}
-.guild-bg{position:absolute;top:0;width:100%;height:100%;}
-.guild-bg img{position:absolute;top:0;left:0;}
+.adGuild{position:relative;height:700px;width:1200px;background:#accfe3;margin:auto;}
+.guild-bg{position:absolute;top:0;left:0;width:9942px;height:100%;overflow:hidden;}
+.guild-bg>img{position:absolute;top:0;left:0;}
 
 .guild-setp{position:absolute;top:0;width:100%;height:588px;overflow:hidden;}
-.guild-setp1{position:absolute;bottom:-286px;left:20%;}
+.guild-setp1{position:absolute;bottom:0;left:700px;width:9942px;}
+.guild-setp1 img{vertical-align: bottom;padding-right:150px;opacity: 0;}
+.step1-1{margin-bottom:200px;}
+
+.setp1{margin-bottom:-286px;}
+
+/*zoom*/
+.zoomIn{
+    opacity: 1 !important;
+    -webkit-animation:zoomIn .5s;
+    -o-animation:zoomIn .5s;
+    animation:zoomIn .5s;
+}
+@-webkit-keyframes zoomIn {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(.5);
+        transform: scale(.5)
+    }
+    50% {
+        opacity: 1
+    }
+}
+
+@keyframes zoomIn {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(.5);
+        -ms-transform: scale(.5);
+        transform: scale(.5)
+    }
+    50% {
+        opacity: 1
+    }
+}
+
 
 /*人*/
-.guild-person{height:228px;width:99px;position:absolute;bottom:50px;left:-300px;}
+.guild-person{height:228px;width:99px;position:absolute;bottom:50px;left:-100px;}
 .guild-person img{position:absolute;}
 .guild-person .leftHead{top:90px;right:12px;z-index: 1;transform-origin: top left;
     -webkit-transform:rotate(30deg);
