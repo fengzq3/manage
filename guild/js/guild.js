@@ -6,9 +6,10 @@ $(function () {
 
     //元素
     var guildBgP = $('#guildBgP'), guildPerson = $('.guild-person');
+    //消息区
+    var messageA = $('#messageArea');
 
     //初始载入 小人走入画面
-    //根据移动距离计算时间
     guildPerson.addClass('guild-start').animate(
         {left: '500px'},
         {
@@ -20,75 +21,19 @@ $(function () {
 
     //进入flow
     function setp1() {
-        //停止走动
-        //guildPerson.removeClass('guild-start');
-        //step1
-        var step = [], i = 0;
-        step[0] = $('#setp1');
-        step[1] = $('#setp1-1');
-        step[2] = $('#setp1-2');
-        step[3] = $('#setp1-3');
-        step[4] = $('#setp2');
-        step[5] = $('#setp2-1');
-        step[6] = $('#setp2-2');
-        step[7] = $('#setp3');
-        step[8] = $('#setp3-1');
-        step[9] = $('#setp3-2');
-
-
+        //展开消息区
+        messageA.show(500);
         //继续走动
         var moveBgA = moveBg();
         moveBgA.startMove();
 
         guildBgP.on('guildMove', function (e, leftL) {
-            setActive();
-            //判断元素位置
-            function setActive() {
-                if (i < step.length) {
+            console.log(leftL);
 
-                    if ((step[i].offset().left - ($(document).width() - 1200) / 2) < 600) {
-
-                        //开始处理动作
-                        if (i == 0 || i == 4 || i == 7) {
-                            bounceSign(step[i]);
-                        } else {
-                            step[i].addClass('zoomIn').delay(1000);
-                            //停止运动一秒
-                            console.log('停止');
-                            guildPerson.removeClass('guild-start');
-                            moveBgA.stopMove();
-                            //一秒后开始
-                            setTimeout(function () {
-                                moveBgA.startMove(true);
-                                guildPerson.addClass('guild-start');
-                            }, 1000);
-
-                        }
-
-                        //循环判断
-                        i++;
-                        setActive();
-                    }
-                } else {
-                    return false;
-                }
-
-            }
 
         });
 
 
-    }
-
-    //弹出标牌
-    function bounceSign(obj) {
-        obj.animate(
-            {marginBottom: 0, opacity: 1},
-            {
-                duration: 500,
-                easing: 'easeOutBounce'
-            }
-        );
     }
 
 
@@ -104,10 +49,16 @@ $(function () {
             leftL--;
             guildBgP.css('left', leftL);
             guildBgP.trigger('guildMove', [leftL]);
-            if (leftL > -9617 && flag) {
+            if (leftL > -8739 && flag) {
                 timer = setTimeout(startMove, 10);
             } else {
+                //停止小人走路
+                guildPerson.removeClass('guild-start');
+                //清除定时器
                 clearTimeout(timer);
+                //隐藏消息框
+                messageA.hide(300);
+                //派发停止事件
                 guildBgP.trigger('guildStop', [leftL]);
             }
         }

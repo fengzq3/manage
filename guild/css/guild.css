@@ -1,5 +1,5 @@
 
-.adGuild{position:relative;height:700px;width:1200px;background:#accfe3;margin:auto;}
+.adGuild{position:relative;height:700px;width:1200px;background:#accfe3;margin:auto;overflow:hidden;}
 .guild-bg{position:absolute;top:0;left:0;width:9942px;height:100%;overflow:hidden;}
 .guild-bg>img{position:absolute;top:0;left:0;}
 
@@ -132,3 +132,9 @@
     }
 }
 
+/*信息框*/
+.guild-message{border:1px solid #924042;position:absolute;top:50px;left:400px;height:300px;width:500px;background:#fff;opacity: .8;display:none;padding:15px;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    border-radius:10px;}
+.guild-message .message-area{line-height:1.5em;color: #2e1717;font-size:16px;}
