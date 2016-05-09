@@ -1,22 +1,43 @@
 
-.adGuild{position:relative;height:700px;width:1200px;background:#accfe3;margin:auto;overflow:hidden;}
-.guild-bg{position:absolute;top:0;left:0;width:9942px;height:100%;overflow:hidden;}
-.guild-bg>img{position:absolute;top:0;left:0;}
+.adGuild {
+    position: relative;
+    height: 700px;
+    width: 1200px;
+    background: #accfe3;
+    margin: auto;
+    overflow: hidden;
+}
 
-.guild-setp{position:absolute;top:0;width:100%;height:588px;overflow:hidden;}
-.guild-setp1{position:absolute;bottom:0;left:700px;width:9942px;}
-.guild-setp1 img{vertical-align: bottom;padding-right:150px;opacity: 0;}
-.step1-1{margin-bottom:200px;}
+.guild-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 7302px;
+    height: 100%;
+    overflow: hidden;
+}
 
-.setp1{margin-bottom:-286px;}
+.guild-bg > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/*.guild-setp{position:absolute;top:0;width:100%;height:588px;overflow:hidden;}*/
+/*.guild-setp1{position:absolute;bottom:0;left:700px;width:9942px;}*/
+/*.guild-setp1 img{vertical-align: bottom;padding-right:150px;opacity: 0;}*/
+/*.step1-1{margin-bottom:200px;}*/
+
+/*.setp1{margin-bottom:-286px;}*/
 
 /*zoom*/
-.zoomIn{
+.zoomIn {
     opacity: 1 !important;
-    -webkit-animation:zoomIn .5s;
-    -o-animation:zoomIn .5s;
-    animation:zoomIn .5s;
+    -webkit-animation: zoomIn .5s;
+    -o-animation: zoomIn .5s;
+    animation: zoomIn .5s;
 }
+
 @-webkit-keyframes zoomIn {
     0% {
         opacity: 0;
@@ -40,91 +61,130 @@
     }
 }
 
-
 /*人*/
-.guild-person{height:228px;width:99px;position:absolute;bottom:50px;left:-100px;}
-.guild-person img{position:absolute;}
-.guild-person .leftHead{top:90px;right:12px;z-index: 1;transform-origin: top left;
-    -webkit-transform:rotate(30deg);
-    -moz-transform:rotate(30deg);
-    transform:rotate(30deg);}
-.guild-person .perBody{top:0;left:1px;z-index: 2;}
-.guild-person .rightHead{top:90px;left:0;z-index:4;transform-origin: top right;
-    -webkit-transform: rotate(-30deg);
-    -moz-transform: rotate(-30deg);
-    transform: rotate(-30deg);}
-.guild-person .leftLeg{bottom:11px;left:0;z-index:1;transform-origin: top right;
-    -webkit-transform: rotate(-30deg);
-    -moz-transform: rotate(-30deg);
-    transform: rotate(-30deg);}
-.guild-person .rightLeg{bottom:15px;right:0;z-index:3;transform-origin: top left;
+.guild-person {
+    height: 228px;
+    width: 99px;
+    position: absolute;
+    bottom: 50px;
+    left: -100px;
+}
+
+.guild-person img {
+    position: absolute;
+}
+
+.guild-person .leftHead {
+    top: 90px;
+    right: 12px;
+    z-index: 1;
+    transform-origin: top left;
     -webkit-transform: rotate(30deg);
     -moz-transform: rotate(30deg);
-    transform: rotate(30deg);}
-
-
-
-.guild-start .rightHead,.guild-start .leftLeg{
-    -webkit-animation:topRight 1s infinite;
-    -o-animation:topRight 1s infinite;
-    animation:topRight 1s infinite;
+    transform: rotate(30deg);
 }
-.guild-start .leftHead,.guild-start .rightLeg{
-    -webkit-animation:topLeft 1s infinite;
-    -o-animation:topLeft 1s infinite;
-    animation:topLeft 1s infinite;
+
+.guild-person .perBody {
+    top: 0;
+    left: 1px;
+    z-index: 2;
+}
+
+.guild-person .rightHead {
+    top: 90px;
+    left: 0;
+    z-index: 4;
+    transform-origin: top right;
+    -webkit-transform: rotate(-30deg);
+    -moz-transform: rotate(-30deg);
+    transform: rotate(-30deg);
+}
+
+.guild-person .leftLeg {
+    bottom: 11px;
+    left: 0;
+    z-index: 1;
+    transform-origin: top right;
+    -webkit-transform: rotate(-30deg);
+    -moz-transform: rotate(-30deg);
+    transform: rotate(-30deg);
+}
+
+.guild-person .rightLeg {
+    bottom: 15px;
+    right: 0;
+    z-index: 3;
+    transform-origin: top left;
+    -webkit-transform: rotate(30deg);
+    -moz-transform: rotate(30deg);
+    transform: rotate(30deg);
+}
+
+.guild-start .rightHead, .guild-start .leftLeg {
+    -webkit-animation: topRight 1s infinite;
+    -o-animation: topRight 1s infinite;
+    animation: topRight 1s infinite;
+}
+
+.guild-start .leftHead, .guild-start .rightLeg {
+    -webkit-animation: topLeft 1s infinite;
+    -o-animation: topLeft 1s infinite;
+    animation: topLeft 1s infinite;
 }
 
 @-webkit-keyframes topRight {
-    0%{
+    0% {
         -webkit-transform: rotate(0deg);
         -moz-transform: rotate(0deg);
         transform: rotate(0deg);
         /*transform-origin: top right;*/
     }
-    100%{
+    100% {
         -webkit-transform: rotate(-70deg);
         -moz-transform: rotate(-70deg);
         transform: rotate(-70deg);
         /*transform-origin: top right;*/
     }
 }
+
 @keyframes topRight {
-    0%,100%{
+    0%, 100% {
         -webkit-transform: rotate(0deg);
         -moz-transform: rotate(0deg);
         transform: rotate(0deg);
         /*transform-origin: top right;*/
     }
-    50%{
+    50% {
         -webkit-transform: rotate(-70deg);
         -moz-transform: rotate(-70deg);
         transform: rotate(-70deg);
         /*transform-origin: top right;*/
     }
 }
+
 @-webkit-keyframes topLeft {
-    0%{
+    0% {
         -webkit-transform: rotate(-10deg);
         -moz-transform: rotate(-10deg);
         transform: rotate(-10deg);
         /*transform-origin: top right;*/
     }
-    100%{
+    100% {
         -webkit-transform: rotate(70deg);
         -moz-transform: rotate(70deg);
         transform: rotate(70deg);
         /*transform-origin: top right;*/
     }
 }
+
 @keyframes topLeft {
-    0%,100%{
+    0%, 100% {
         -webkit-transform: rotate(-10deg);
         -moz-transform: rotate(-10deg);
         transform: rotate(-10deg);
         /*transform-origin: top right;*/
     }
-    50%{
+    50% {
         -webkit-transform: rotate(70deg);
         -moz-transform: rotate(70deg);
         transform: rotate(70deg);
@@ -133,8 +193,28 @@
 }
 
 /*信息框*/
-.guild-message{border:1px solid #924042;position:absolute;top:50px;left:400px;height:300px;width:500px;background:#fff;opacity: .8;display:none;padding:15px;
-    -webkit-border-radius:10px;
-    -moz-border-radius:10px;
-    border-radius:10px;}
-.guild-message .message-area{line-height:1.5em;color: #2e1717;font-size:16px;}
+.guild-message {
+    border: 1px solid #924042;
+    position: absolute;
+    top: -300px;
+    left: 400px;
+    height: 200px;
+    width: 450px;
+    background: #fff;
+    opacity: .8;
+    display: table;
+    padding: 15px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+.guild-message-inner{display:table-cell;vertical-align: middle;text-align: center;}
+.guild-message-inner h2{margin-top:10px;color:#2e1717;}
+
+.guild-message .message-area {
+    line-height: 2em;
+    color: #2e1717;
+    font-size: 1.5em;
+}
+
+
