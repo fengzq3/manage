@@ -6,6 +6,7 @@
     background: #accfe3;
     margin: auto;
     overflow: hidden;
+    border:3px solid #642929;
 }
 
 .guild-bg {
@@ -216,5 +217,19 @@
     color: #2e1717;
     font-size: 1.5em;
 }
-
+/*loading*/
+.guild-load{position:absolute;top:0;left:0;width:100%;height:100%;background-color: #642929;display:table;}
+.guild-load .guild-loader{display:table-cell;color:#fff;vertical-align: middle;text-align: center;}
+.guild-load h2{
+    -webkit-animation:loading 1s infinite;
+    -o-animation:loading 1s infinite;
+    animation:loading 1s infinite;}
+@-webkit-keyframes loading {
+    0%,100%{opacity: 0}
+    50%{opacity: .5;}
+}
+@keyframes loading {
+    0%,100%{opacity: 0}
+    50%{opacity: .5;}
+}
 

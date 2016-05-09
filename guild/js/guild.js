@@ -3,28 +3,39 @@
  */
 
 $(function () {
-    //载入loading
-
-
-
-
-
-
-
     //元素
-    var guildBgP = $('#guildBgP'), guildPerson = $('.guild-person');
+    var guildBgP = $('#guildBgP'), guildPerson = $('.guild-person'), loading = $('.guild-load');
+    //载入loading
+    guildBgP.find('img').load(function () {
+        loading.animate(
+            {opacity:0},
+            {
+                duration: 1000,
+                easing: 'linear',
+                complete: initAni
+            }
+        );
+    });
+
+    //退场loading
+    function loadOut(){
+
+    }
+
     //消息区
     var messageA = $('#messageArea');
 
     //初始载入 小人走入画面
-    guildPerson.addClass('guild-start').animate(
-        {left: '500px'},
-        {
-            duration: 6000,
-            easing: 'linear',
-            complete: step1
-        }
-    );
+    function initAni() {
+        guildPerson.addClass('guild-start').animate(
+            {left: '500px'},
+            {
+                duration: 6000,
+                easing: 'linear',
+                complete: step1
+            }
+        );
+    }
 
     //显示消息框
     function showMessage() {
@@ -38,12 +49,12 @@ $(function () {
     }
 
     //隐藏消息框
-    function hideMessage(){
+    function hideMessage() {
         messageA.animate(
             {top: '-300px'},
             {
                 duration: 500,
-                easing: 'easeInBounce'
+                easing: 'easeOutBounce'
             }
         );
     }
@@ -55,7 +66,7 @@ $(function () {
             {
                 duration: 6000,
                 easing: 'linear',
-                complete:hideMessage
+                complete: hideMessage
             }
         );
     }
@@ -96,7 +107,7 @@ $(function () {
                     messageA.find('h2').text('设计阶段');
                     messageA.find('.message-area').empty();
                     break;
-                case -1036:
+                case -1136:
                     messageA.find('h2').text('');
                     showWord(['多名设计师同时出稿 快速', '全网专业大咖设计师随意选择']);
                     break;
@@ -104,7 +115,7 @@ $(function () {
                     messageA.find('h2').text('报价阶段');
                     messageA.find('.message-area').empty();
                     break;
-                case -1848:
+                case -1948:
                     messageA.find('h2').text('');
                     showWord(['平台综合评估工厂，推荐最优报价']);
                     break;
@@ -112,7 +123,7 @@ $(function () {
                     messageA.find('h2').text('第二步：提交需求');
                     messageA.find('.message-area').empty();
                     break;
-                case -2600:
+                case -2700:
                     //停止走动
                     moveBgA.stopMove();
                     messageA.find('h2').text('');
@@ -125,7 +136,7 @@ $(function () {
                     messageA.find('h2').text('工程监理');
                     messageA.find('.message-area').empty();
                     break;
-                case -3100:
+                case -3200:
                     messageA.find('h2').text('');
                     showWord(['专业监理严格把控搭建质量', '搭建进度实时查看，全程透明可监控']);
                     break;
@@ -133,7 +144,7 @@ $(function () {
                     messageA.find('h2').text('第三步：成功参展');
                     messageA.find('.message-area').empty();
                     break;
-                case -4700:
+                case -4800:
                     //停止走动
                     moveBgA.stopMove();
                     messageA.find('h2').text('');
@@ -149,6 +160,10 @@ $(function () {
                 case -5400:
                     messageA.find('h2').text('');
                     showWord(['快速撤展，无需展商操心']);
+                    break;
+                case -6000:
+                    messageA.find('h2').text('');
+                    showWord(['期待下次！']);
                     break;
             }
 
