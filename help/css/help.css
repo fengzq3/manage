@@ -41,6 +41,9 @@ body {
 .help-list li a{line-height:2.5em;color:#555555;display:block;margin:0 50px;padding:0 .5em;overflow:hidden;white-space: nowrap;
     -ms-text-overflow: ellipsis;
     text-overflow: ellipsis;}
+.help-list li a p{overflow:hidden;white-space: nowrap;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;}
 .help-list li a span{float:right;padding-left:20px;}
 .help-list li a:hover{text-decoration: none;background-color:#FBFBFB;}
 .btn-help-more{background-color:#fbb143;color:#fff;padding:8px 25px;}
