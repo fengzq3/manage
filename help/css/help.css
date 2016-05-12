@@ -60,7 +60,7 @@ body {
 /*左*/
 .helpList{padding:20px 0;}
 .helpList .container{position:relative;}
-.helpList-left{width:200px;}
+.helpList-left{width:200px;float:left;}
 .helpList-left h4{background:url(../img/left-icon.png) no-repeat bottom left;line-height:3em;padding-left:10px;font-weight:700;}
 .help-left-nav{padding-left:10px;border-bottom:1px dashed #ccc;padding-bottom:20px;}
 .help-left-nav li a{background:url(../img/icon1.png) no-repeat left center;color:#666;}
@@ -68,7 +68,7 @@ body {
 .help-left-nav p{color:#888;}
 .help-left-nav .btn{background-color:#ed7117;color:#fff;}
 
-.help-listCon{position:absolute;left:250px;top:0;margin:40px 0;padding:0;list-style:none;}
+.help-listCon{top:0;margin:40px 0 0 250px;padding:0;list-style:none;}
 .help-listCon li{padding:10px 0;border-bottom:1px dashed #ccc;}
 .help-listCon li h4{font-size:16px;position:relative;padding-left:10px;}
 .help-listCon li h4:before{content:' ';width:4px;height:4px;background-color:#121212;position:absolute;left:0;top:50%;margin-top:-2px;}
@@ -77,7 +77,8 @@ body {
 .help-listCon li h4 span{color:#ccc;float:right;}
 .help-listCon li p{line-height:2em;color:#6b6b6b;margin-bottom:0;padding-left:10px;}
 .help-listCon li p a{color:#21bee6;}
-.helpList-pagination{}
+.helpList-foot{text-align: center;}
+.helpList-pagination{display:inline-block;}
 .helpList-pagination li a{color:#666;}
 .helpList-pagination li a:hover{background-color:#ed7117;color:#fff;border-color:#ed7117;}
 
