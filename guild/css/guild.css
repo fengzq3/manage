@@ -1,10 +1,11 @@
 
 .adGuild {
-    position: relative;
+    top:50%;margin-top:-350px;
+    left:50%;margin-left:-600px;
+    position: absolute;
     height: 700px;
     width: 1200px;
     background: #accfe3;
-    margin: auto;
     overflow: hidden;
     border:3px solid #642929;
 }
@@ -26,7 +27,7 @@
 
 /*.guild-setp{position:absolute;top:0;width:100%;height:588px;overflow:hidden;}*/
 /*.guild-setp1{position:absolute;bottom:0;left:700px;width:9942px;}*/
-/*.guild-setp1 img{vertical-align: bottom;padding-right:150px;opacity: 0;}*/
+/*.guild-setp1 guild{vertical-align: bottom;padding-right:150px;opacity: 0;}*/
 /*.step1-1{margin-bottom:200px;}*/
 
 /*.setp1{margin-bottom:-286px;}*/
@@ -232,4 +233,11 @@
     0%,100%{opacity: 0}
     50%{opacity: .5;}
 }
+.adGuildSm{position: absolute; top: 0; left: -150px;}
 
+/*外框*/
+.guild-close{position:absolute;width:30px;height:30px;right:10px;top:10px;background-color:#BBC4D6;text-align: center;line-height:30px;color:#fff;cursor: pointer;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    border-radius:50%;}
+.adGuildOut{background-color:rgba(255,255,255,.5);position:absolute;top:0;bottom:0;left:0;right:0; z-index:5000;}

@@ -157,12 +157,12 @@
         uploader.on('fileQueued', function (file) {
             var $li = $(
                     '<div id="' + file.id + '" class="file-item thumbnail">' +
-                    '<img>' +
+                    '<guild>' +
                     '<div class="info">' + file.name + '</div>' +
                     '<div class="remove-this">&times;</div>' +
                     '</div>'
                 ),
-                $img = $li.find('img');
+                $img = $li.find('guild');
 
 
             // $list为容器jQuery实例
@@ -174,12 +174,12 @@
             uploader.makeThumb(file, function (error, src) {
                 if (error) {
                     if (file.ext === 'xls' || file.ext === 'xlsx') {
-                        $img.replaceWith('<img src=\"/xhltpl/default/center/img/xls.png\"/>');
+                        $img.replaceWith('<guild src=\"/xhltpl/default/center/guild/xls.png\"/>');
                     }
                     if (file.ext === 'doc' || file.ext === 'docx') {
-                        $img.replaceWith('<img src=\"/xhltpl/default/center/img/doc.png\"/>');
+                        $img.replaceWith('<guild src=\"/xhltpl/default/center/guild/doc.png\"/>');
                     } else {
-                        $img.replaceWith('<img src=\"/xhltpl/default/center/img/file.png\"/>');
+                        $img.replaceWith('<guild src=\"/xhltpl/default/center/guild/file.png\"/>');
                     }
 
                     return;

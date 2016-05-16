@@ -2206,7 +2206,7 @@
              *         if ( error ) {
              *             $li.text('预览错误');
              *         } else {
-             *             $li.append('<img alt="" src="' + ret + '" />');
+             *             $li.append('<guild alt="" src="' + ret + '" />');
              *         }
              *     });
              *
@@ -8025,7 +8025,7 @@
         'widgets/widget'
     ], function( Base, Uploader ) {
         var $ = Base.$,
-            logUrl = ' http://static.tieba.baidu.com/tb/pms/img/st.gif??',
+            logUrl = ' http://static.tieba.baidu.com/tb/pms/guild/st.gif??',
             product = (location.hostname || location.host || 'protected').toLowerCase(),
     
             // 只针对 baidu 内部产品用户做统计功能。

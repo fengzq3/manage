@@ -27,14 +27,19 @@ $(function () {
 
     //初始载入 小人走入画面
     function initAni() {
-        guildPerson.addClass('guild-start').animate(
-            {left: '500px'},
-            {
-                duration: 6000,
-                easing: 'linear',
-                complete: step1
-            }
-        );
+        //guildPerson.addClass('guild-start').animate(
+        //    {left: '500px'},
+        //    {
+        //        duration: 2000,
+        //        easing: 'linear',
+        //        complete: step1
+        //    }
+        //);
+        guildPerson.css({left:'500px'});
+        setTimeout(function () {
+            step1();
+            guildPerson.addClass('guild-start');
+        },300);
     }
 
     //显示消息框
@@ -61,14 +66,16 @@ $(function () {
 
     //小人走出可视区
     function personOut() {
-        guildPerson.animate(
-            {left: '1300px'},
-            {
-                duration: 6000,
-                easing: 'linear',
-                complete: hideMessage
-            }
-        );
+        //guildPerson.animate(
+        //    {left: '1300px'},
+        //    {
+        //        duration: 6000,
+        //        easing: 'linear',
+        //        complete: hideMessage
+        //    }
+        //);
+        guildPerson.removeClass('guild-start');
+
     }
 
     guildBgP.on('guildStop', personOut);
@@ -269,6 +276,40 @@ $(function () {
         }
 
     }
+
+    //弹出隐藏整个框架
+    var guildMain = {
+        init: function () {
+            //初始化
+
+
+            //绑定事件
+            $('.guild-close').on('click', guildMain.hide);
+            $('.adGuildSm').on('click',guildClose.hide);
+        },
+        show: function () {
+            //显示
+            $('.adGuildOut').animate({top:0},500);
+
+        },
+        hide: function () {
+            //隐藏
+            $('.adGuildOut').animate({top:'-200%'},500,guildClose.show);
+        }
+    };
+
+    var guildClose = {
+        show: function () {
+            //显示
+            $('.adGuildSm').animate({left:0},500);
+        },
+        hide: function () {
+            //隐藏
+            $('.adGuildSm').animate({left:'-150px'},500,guildMain.show);
+        }
+    };
+
+    setTimeout(guildMain.init,1000);
 
 
 });
