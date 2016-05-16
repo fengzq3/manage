@@ -220,15 +220,15 @@
 
             console.log(response._raw);
             //处理返回数据
-            try {
-                response = $.parseJSON(response._raw);
-            } catch (e) {
-            }
+            //try {
+            //    response = $.parseJSON(response._raw);
+            //} catch (e) {
+            //}
             //组装url存入hidden input
             if (typeof photoUrl === 'undefined') {
-                photoUrl = response.photo;
+                photoUrl = response._raw;
             } else {
-                photoUrl = photoUrl + ',' + response.photo;
+                photoUrl = photoUrl + ',' + response._raw;
             }
 
             //装入input
