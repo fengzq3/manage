@@ -73,7 +73,7 @@
 
             if (confirmContent === '' || typeof confirmContent === 'undefined') {
                 //显示占位
-                dialog.find('.modal-body').html('<div class=\"noDate\"><img src=\"/xhltpl/default/center/guild/listload.gif\" /><p>数据载入中...</p></div>');
+                dialog.find('.modal-body').html('<div class=\"noDate\"><img src=\"/xhltpl/default/center/img/listload.gif\" /><p>数据载入中...</p></div>');
                 //获取并设置内容
                 $.ajax({
                     url: action,
@@ -111,7 +111,7 @@
             }
 
             function setDialogError(e) {
-                dialog.find('.modal-body').html('<div class=\"noDate\"><img src=\"/xhltpl/default/center/guild/error.png\" /><p>数据载入错误，请重试！</p></div>');
+                dialog.find('.modal-body').html('<div class=\"noDate\"><img src=\"/xhltpl/default/center/img/error.png\" /><p>数据载入错误，请重试！</p></div>');
                 if(!!successCallBack){
                     successCallBack = successCallBack('error');
                 }
@@ -150,7 +150,7 @@
             //设置标题
             slidePanel.find('.panel-title span').html(title);
             //设置占位内容
-            slidePanel.find('.panel-body').html('<div class=\"noDate\"><img src=\"/xhltpl/default/center/guild/listload.gif\" /><p>数据载入中...</p></div>');
+            slidePanel.find('.panel-body').html('<div class=\"noDate\"><img src=\"/xhltpl/default/center/img/listload.gif\" /><p>数据载入中...</p></div>');
             //显示slidePanel
             slidePanelBg.show();
             slidePanel.css({right: 0});
@@ -171,7 +171,7 @@
 
             //获取失败回调
             function setSlideFail(data) {
-                slidePanel.find('.panel-body').html('<div class=\"noDate\"><img src=\"/xhltpl/default/center/guild/error.png\" /><p>数据载入失败，请重试！</p></div>');
+                slidePanel.find('.panel-body').html('<div class=\"noDate\"><img src=\"/xhltpl/default/center/img/error.png\" /><p>数据载入失败，请重试！</p></div>');
                 if (typeof callBack === 'function') {
                     callBack = callBack('fail', data);
                 }

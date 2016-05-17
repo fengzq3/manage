@@ -174,12 +174,12 @@
             uploader.makeThumb(file, function (error, src) {
                 if (error) {
                     if (file.ext === 'xls' || file.ext === 'xlsx') {
-                        $img.replaceWith('<img src=\"/xhltpl/default/center/guild/xls.png\"/>');
+                        $img.replaceWith('<img src=\"/xhltpl/default/center/img/xls.png\"/>');
                     }
                     if (file.ext === 'doc' || file.ext === 'docx') {
-                        $img.replaceWith('<img src=\"/xhltpl/default/center/guild/doc.png\"/>');
+                        $img.replaceWith('<img src=\"/xhltpl/default/center/img/doc.png\"/>');
                     } else {
-                        $img.replaceWith('<img src=\"/xhltpl/default/center/guild/file.png\"/>');
+                        $img.replaceWith('<img src=\"/xhltpl/default/center/img/file.png\"/>');
                     }
 
                     return;
