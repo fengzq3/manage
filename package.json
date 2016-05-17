@@ -10,6 +10,7 @@
     "grunt-contrib-jshint": "*",
     "grunt-contrib-nodeunit": "*",
     "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "^1.0.0",
     "grunt-css": "*",
     "grunt-css-combo": "*",
     "grunt-css-import": "*"

@@ -6,7 +6,7 @@ module.exports = function (grunt) {
 
         uglify: {
             options: {
-                ASCIIOnly:true,
+                ASCIIOnly: true,
                 banner: '/*! <%= pkg.name %><%= pkg.version %> <%= grunt.template.today("yyyy-mm-dd HH:mm:ss") %> author:feng */',
                 compress: {
                     drop_console: true
@@ -23,7 +23,7 @@ module.exports = function (grunt) {
         },
         cssmin: {
             options: {
-                ASCIIOnly:true,
+                ASCIIOnly: true,
                 banner: '/*! <%= pkg.name %><%= pkg.version %> <%= grunt.template.today("yyyy-mm-dd HH:mm:ss") %> author:feng */',
                 compress: {
                     drop_console: true
@@ -37,6 +37,20 @@ module.exports = function (grunt) {
                     dest: 'build/css'
                 }]
             }
+        },
+        watch: {
+            options: {
+                livereload:true,
+                debounceDelay:1000
+            },
+            js:{
+                files:'src/js/**/*.js',
+                tasks:['uglify']
+            },
+            css:{
+                files:'src/css/**/*.css',
+                tasks:['cssmin']
+            }
         }
 
 
@@ -46,6 +60,7 @@ module.exports = function (grunt) {
     //grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-watch');
     //grunt.loadNpmTasks('grunt-contrib-htmlmin');
     //grunt.loadNpmTasks('grunt-css-import');
     //grunt.loadNpmTasks('grunt-css-combo');
