@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1"/>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <link href="style/bootstrap.css" rel="stylesheet">
+    <title>Title</title>
+    <style>
+        .main{padding:15px;}
+        .listCon-list{padding:0; margin:0;}
+        .listPage-num{text-align: center;}
+        .listPage-num .pagination{display:inline-block;}
+        .conlist-search{margin:0 -15px;}
+        .conlist-title{line-height:32px;}
+        .listCon-table{padding:0;margin:0;list-style:none;}
+        .listCon-head{background-color:#f5f5f5;}
+        .listCon-table li{line-height:3em;overflow:hidden;border-bottom:1px solid #eee;}
+        .listCon-table li>a{display:block;overflow:hidden;}
+        .listCon-table li>a:hover{background-color:#f9f9f9;text-decoration: none;}
+        .listCon-table li span{overflow:hidden;white-space: nowrap;
+            -ms-text-overflow: ellipsis;
+            text-overflow: ellipsis;}
+    </style>
+</head>
+<body>
+<div class="navbar navbar-default">
+    <div class="navbar-header">
+        <a href="#" class="navbar-brand">展会信息网</a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li class="active">
+            <a href="#">行业会展</a>
+        </li>
+        <li>
+            <a href="#">会展场馆</a>
+        </li>
+    </ul>
+
+</div>
+<div class="main">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">行业：</h3>
+        </div>
+        <div class="panel-body">
+            <div class="small-con">
+                <a href="#" class="btn btn-danger">行业行业</a>
+                <a href="#" class="btn btn-default">行业行业</a>
+                <a href="#" class="btn btn-default">行业行业</a>
+                <a href="#" class="btn btn-default">行业行业</a>
+                <a href="#" class="btn btn-default">行业行业</a>
+                <a href="#" class="btn btn-default">行业行业</a>
+                <a href="#" class="btn btn-default">行业行业</a>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">地区：</h3>
+        </div>
+        <div class="panel-body">
+            <div class="small-con">
+                <a href="#" class="btn btn-default">北京</a>
+                <a href="#" class="btn btn-default">北京</a>
+                <a href="#" class="btn btn-danger">北京</a>
+                <a href="#" class="btn btn-default">北京</a>
+                <a href="#" class="btn btn-default">北京</a>
+                <a href="#" class="btn btn-default">北京</a>
+                <a href="#" class="btn btn-default">北京</a>
+                <a href="#" class="btn btn-default">北京</a>
+                <a href="#" class="btn btn-default">北京</a>
+                <a href="#" class="btn btn-default">北京</a>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title conlist-title">列表标题
+                <form class="navbar-form navbar-right conlist-search" role="search">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label for="year" class="input-group-addon">年：</label>
+                            <select id="year" class="form-control">
+                                <option>2016 年</option>
+                                <option>2016 年</option>
+                                <option>2016 年</option>
+                                <option>2016 年</option>
+                                <option>2016 年</option>
+                                <option>2016 年</option>
+                            </select>
+                            <label for="month" class="input-group-addon">月：</label>
+                            <select id="month" class="form-control">
+                                <option>1 月</option>
+                                <option>2 月</option>
+                                <option>3 月</option>
+                                <option>4 月</option>
+                                <option>5 月</option>
+                                <option>6 月</option>
+                                <option>7 月</option>
+                                <option>8 月</option>
+                                <option>9 月</option>
+                                <option>10月</option>
+                                <option>11月</option>
+                                <option>12月</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-warning">提交</button>
+                </form>
+            </h3>
+
+        </div>
+        <div class="panel-body listCon-list">
+            <ul class="listCon-table">
+                <li class="listCon-head">
+                    <span class="col-sm-5">展会名称</span>
+                    <span class="col-sm-3">展会场馆</span>
+                    <span class="col-sm-2">行业</span>
+                    <span class="col-sm-2">举办时间</span>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="col-sm-5">展会名称会名称会名称会名称会名称</span>
+                        <span class="col-sm-3">场馆场馆馆场馆馆场馆馆场馆</span>
+                        <span class="col-sm-2">机械/工业/加工</span>
+                        <span class="col-sm-2">2016.12.54-5122.54.12</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="col-sm-5">展会名称会名称会名称会名称会名称</span>
+                        <span class="col-sm-3">场馆场馆馆场馆馆场馆馆场馆</span>
+                        <span class="col-sm-2">机械/工业/加工</span>
+                        <span class="col-sm-2">2016.12.54-5122.54.12</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="col-sm-5">展会名称会名称会名称会名称会名称</span>
+                        <span class="col-sm-3">场馆场馆馆场馆馆场馆馆场馆</span>
+                        <span class="col-sm-2">机械/工业/加工</span>
+                        <span class="col-sm-2">2016.12.54-5122.54.12</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="col-sm-5">展会名称会名称会名称会名称会名称</span>
+                        <span class="col-sm-3">场馆场馆馆场馆馆场馆馆场馆</span>
+                        <span class="col-sm-2">机械/工业/加工</span>
+                        <span class="col-sm-2">2016.12.54-5122.54.12</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="col-sm-5">展会名称会名称会名称会名称会名称</span>
+                        <span class="col-sm-3">场馆场馆馆场馆馆场馆馆场馆</span>
+                        <span class="col-sm-2">机械/工业/加工</span>
+                        <span class="col-sm-2">2016.12.54-5122.54.12</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="col-sm-5">展会名称会名称会名称会名称会名称</span>
+                        <span class="col-sm-3">场馆场馆馆场馆馆场馆馆场馆</span>
+                        <span class="col-sm-2">机械/工业/加工</span>
+                        <span class="col-sm-2">2016.12.54-5122.54.12</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="listPage-num">
+                <ul class="pagination">
+                    <li><a href="#">&laquo;</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">&raquo;</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <div class="footer text-center">
+        <h4>一路展</h4>
+        <p>一路展版权 @ www.16-expo.com <a href="#">一路展</a></p>
+    </div>
+
+</div>
+</body>
+</html>
